@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cổng thông tin điện tử Tỉnh Hưng Yên</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Roboto', sans-serif;
+    }
+
+
+    .header {
+      position: relative;
+      width: 100%;
+      overflow: hidden;
+    }
+    .header img {
+      width: 100%;
+      height: auto;
+      display: none;
+    }
+    .header img.active {
+      display: block;
+    }
+
+    nav {
+      background: #0066cc;
+      color: white;
+      display: flex;
+      align-items: center;
+      padding: 0 15px;
+      position: relative;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      flex: 1;
+    }
+    nav ul li {
+      position: relative;
+    }
+    nav ul li a {
+      display: block;
+      padding: 15px 18px;
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    nav ul li:hover {
+      background: #004c99;
+    }
+
+    /* Submenu */
+    nav ul li ul {
+      display: none;
+      position: absolute;
+      top: 50px;
+      left: 0;
+      background: #0066cc;
+      min-width: 200px;
+      z-index: 100;
+      flex-direction: column;
+    }
+    nav ul li:hover ul {
+      display: block;
+    }
+    nav ul li ul li a {
+      font-weight: normal;
+      padding: 10px 15px;
+    }
+
+    /* Right section */
+    .right-section {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    /* Thanh tìm kiếm ẩn */
+    .search-box {
+      position: relative;
+      display: none;
+    }
+    .search-box input {
+      padding: 6px 10px;
+      border-radius: 3px;
+      border: none;
+    }
+
+    .flags img {
+      width: 30px;
+      height: 20px;
+      cursor: pointer;
+      border: 1px solid #fff;
+    }
+
+    /* Banner dưới */
+    .banner {
+      width: 100%;
+    }
+    .banner img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* Responsive */
+    .menu-toggle {
+      display: none;
+      font-size: 24px;
+      cursor: pointer;
+      padding: 10px;
+    }
+
+    @media (max-width: 768px) {
+      nav ul {
+        display: none;
+        position: absolute;
+        top: 50px;
+        left: 0;
+        flex-direction: column;
+        width: 100%;
+        background: #0066cc;
+      }
+      nav ul.show {
+        display: flex;
+      }
+      .menu-toggle {
+        display: block;
+        color: white;
+      }
+      .right-section {
+        margin-left: auto;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Bìa trên cùng (slider không cắt ảnh) -->
+  <div class="header">
+    <img src="https://hungyenhoinhapvaphattrien.github.io/vi/DU%20L%E1%BB%8ACH%20V%C3%80%20DI%20S%E1%BA%A2N%20(10).png" class="active">
+    <img src="https://hungyenhoinhapvaphattrien.github.io/vi/DU%20L%E1%BB%8ACH%20V%C3%80%20DI%20S%E1%BA%A2N%20(11).png">
+    <img src="https://hungyenhoinhapvaphattrien.github.io/vi/DU%20L%E1%BB%8ACH%20V%C3%80%20DI%20S%E1%BA%A2N%20(12).png">
+  </div>
+
+  <!-- Menu -->
+  <nav>
+    <span class="menu-toggle"><i class="fa-solid fa-bars"></i></span>
+    <ul>
+      <li><a href="#"><i class="fa fa-home"></i></a></li>
+      <li>
+        <a href="javascript:void(0)">Tổng quát</a>
+        <ul>
+          <li><a href="#">Giới thiệu</a></li>
+          <li><a href="#">Lãnh đạo</a></li>
+          <li><a href="#">Nhân vật</a></li>
+        </ul>
+      </li>
+      <li><a href="#">Kinh tế</a></li>
+      <li>
+        <a href="javascript:void(0)">Khám phá Hưng Yên</a>
+        <ul>
+          <li><a href="#">Du lịch</a></li>
+          <li><a href="#">Di sản & Lịch sử</a></li>
+          <li><a href="#">Ẩm thực & Làng nghề</a></li>
+          <li><a href="#">MiniGame</a></li>
+          <li><a href="#">Âm nhạc</a></li>
+        </ul>
+      </li>
+      <li><a href="#">Thư viện Media</a></li>
+      <li><a href="#">Liên hệ</a></li>
+    </ul>
+
+    <div class="right-section">
+      <i class="fas fa-search" id="search-icon" style="cursor:pointer;"></i>
+      <div class="search-box" id="search-box">
+        <input type="text" id="search" placeholder="Tìm kiếm...">
+      </div>
+      <div class="flags">
+        <img src="https://hungyenhoinhapvaphattrien.github.io/vi/vn.png" alt="VN">
+        <img src="https://hungyenhoinhapvaphattrien.github.io/vi/en.png" alt="EN">
+      </div>
+    </div>
+  </nav>
+
+  <!-- Banner dưới -->
+  <div class="banner">
+    <img src="https://hungyenhoinhapvaphattrien.github.io/vi/BAONEW.png" alt="Banner">
+  </div>
+
+  <!-- Font Awesome -->
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+  <!-- JS đổi ảnh bìa -->
+  <script>
+    const images = document.querySelectorAll('.header img');
+    let current = 0;
+    setInterval(() => {
+      images[current].classList.remove('active');
+      current = (current + 1) % images.length;
+      images[current].classList.add('active');
+    }, 5000);
+
+    // Responsive menu toggle
+    const menuToggle = document.querySelector('.menu-toggle');
+    const menu = document.querySelector('nav ul');
+    menuToggle.addEventListener('click', () => {
+      menu.classList.toggle('show');
+    });
+
+    // Ẩn/hiện thanh tìm kiếm
+    const searchIcon = document.getElementById('search-icon');
+    const searchBox = document.getElementById('search-box');
+    searchIcon.addEventListener('click', () => {
+      if (searchBox.style.display === 'block') {
+        searchBox.style.display = 'none';
+      } else {
+        searchBox.style.display = 'block';
+      }
+    });
+  </script>
+
+</body>
+</html>
