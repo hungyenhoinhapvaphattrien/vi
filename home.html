@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giới thiệu Tỉnh Hưng Yên Mới</title>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-red: #d70202;
+            --light-yellow: #fff3b6;
+        }
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding-top: 140px;
+            color: #333;
+            line-height: 1.5;
+        }
+        
+        .banner-container {
+            width: 100%;
+            overflow: hidden;
+        }
+        
+        .banner-container img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--light-yellow);
+            color: var(--primary-red);
+            padding: 10px 25px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s;
+            font-size: 0.9rem;
+        }
+        
+        .btn:hover {
+            background-color: white;
+            transform: translateY(-3px);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        section {
+            padding: 30px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            color: var(--primary-red);
+            margin-bottom: 20px;
+            position: relative;
+            font-size: 1.5rem;
+        }
+        
+        .section-title:after {
+            content: "";
+            display: block;
+            width: 60px;
+            height: 2px;
+            background-color: var(--primary-red);
+            margin: 10px auto;
+        }
+        
+        .intro-text {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 20px;
+            font-size: 1rem;
+        }
+        
+        .info-boxes {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+            gap: 10px;
+        }
+        
+        .info-box {
+            flex: 1;
+            padding: 15px;
+            background-color: var(--light-yellow);
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        
+        .info-box:hover {
+            transform: translateY(-3px);
+        }
+        
+        .info-box h3 {
+            color: var(--primary-red);
+            margin-top: 0;
+            font-size: 1.1rem;
+            border-bottom: 1px solid var(--primary-red);
+            padding-bottom: 8px;
+        }
+        
+        .gallery {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .gallery-item {
+            flex: 0 1 calc(50% - 8px);
+            max-width: 500px;
+            position: relative;
+            overflow: hidden;
+            border-radius: 5px;
+            box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+        
+        .view-more {
+            text-align: center;
+            margin-top: 15px;
+        }
+        
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            margin-top: 20px;
+            border-radius: 5px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+        
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        
+        .news-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .news-item {
+            background-color: white;
+            border-radius: 5px;
+            overflow: hidden;
+            box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        
+        .news-item:hover {
+            transform: translateY(-5px);
+        }
+        
+        .news-img {
+            height: 180px;
+            overflow: hidden;
+        }
+        
+        .news-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .news-item:hover .news-img img {
+            transform: scale(1.1);
+        }
+        
+        .news-content {
+            padding: 12px;
+        }
+        
+        .news-date {
+            color: var(--primary-red);
+            font-size: 0.8rem;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .news-date i {
+            margin-right: 5px;
+        }
+        
+        .news-title {
+            font-size: 1rem;
+            margin-bottom: 8px;
+            color: #333;
+        }
+        
+        .about-image {
+            max-width: 800px;
+            margin: 15px auto;
+            border-radius: 5px;
+            overflow: hidden;
+            box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+        }
+        
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .footer-content {
+            background-color: var(--primary-red);
+            color: white;
+            padding: 20px 0;
+        }
+        
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+        
+        .footer-section {
+            flex: 1;
+            min-width: 250px;
+            margin-bottom: 15px;
+        }
+        
+        .footer-section h3 {
+            color: var(--light-yellow);
+            margin-top: 0;
+            font-size: 1.1rem;
+            border-bottom: 1px solid var(--light-yellow);
+            padding-bottom: 8px;
+        }
+        
+        .contact-item {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            font-size: 0.9rem;
+        }
+        
+        .contact-item i {
+            margin-right: 8px;
+            color: var(--light-yellow);
+        }
+        
+        .rating-options {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+        
+        .rating-option {
+            display: flex;
+            align-items: center;
+            font-size: 0.9rem;
+        }
+        
+        .rating-option input {
+            margin-right: 5px;
+        }
+        
+        .submit-btn {
+            background-color: white;
+            color: var(--primary-red);
+            border: none;
+            padding: 6px 15px;
+            border-radius: 3px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            font-size: 0.9rem;
+            font-weight: bold;
+        }
+        
+        .submit-btn:hover {
+            background-color: var(--light-yellow);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding: 10px 0;
+            background-color: var(--primary-red);
+            color: white;
+            font-size: 0.9rem;
+        }
+        
+        .social-icons {
+            margin: 10px 0;
+        }
+        
+        .social-icons a {
+            color: white;
+            font-size: 1.2rem;
+            margin: 0 8px;
+            transition: color 0.3s;
+        }
+        
+        .social-icons a:hover {
+            color: var(--light-yellow);
+        }
+        
+        @media (max-width: 768px) {
+            .info-boxes {
+                flex-direction: column;
+            }
+            
+            .gallery {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .gallery-item {
+                flex: 0 1 auto;
+                max-width: 100%;
+                width: 100%;
+            }
+            
+            .footer-section {
+                flex: 0 0 100%;
+            }
+        }
+        .iframe-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: auto;
+            z-index: 1000;
+        }
+        
+        .iframe-overlay {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            border: none;
+            background-color: transparent;
+
+        }
+    </style>
+</head>
+<body>
+    <div class="iframe-container">
+        <iframe class="iframe-overlay" src="https://hungyenhoinhapvaphattrien.github.io/vi/top"></iframe>
+    </div>
+    
+    <section id="about">
+        <div class="container">
+            <h2 class="section-title"><i class="fas fa-book-open"></i> GIỚI THIỆU TỈNH HƯNG YÊN MỚI</h2>
+            <p class="intro-text">Tỉnh Hưng Yên mới được hình thành sau khi sát nhập với tỉnh Thái Bình, tạo nên một vùng đất rộng lớn với nhiều tiềm năng phát triển về kinh tế, văn hóa và du lịch.</p>
+            
+            <div class="info-boxes">
+                <div class="info-box">
+                    <h3>Vị trí địa lý</h3>
+                    <p>Nằm trong vùng đồng bằng sông Hồng, có vị trí chiến lược trong phát triển kinh tế - xã hội của cả nước.</p>
+                </div>
+                
+                <div class="info-box">
+                    <h3>Di sản văn hóa</h3>
+                    <p>Hàng trăm di tích lịch sử, làng nghề truyền thống và lễ hội đặc sắc của cả hai vùng đất.</p>
+                </div>
+                
+                <div class="info-box">
+                    <h3>Ẩm thực đặc sắc</h3>
+                    <p>Kế thừa tinh hoa ẩm thực của cả Hưng Yên và Thái Bình với nhiều món ngon nổi tiếng.</p>
+                </div>
+            </div>
+            
+            <div class="about-image">
+                <img src="https://i.ibb.co/sdC0vGhb/Purple-Doodle-Mind-Map-A4-Document.png" alt="Sơ đồ Hưng Yên mới">
+            </div>
+        </div>
+    </section>
+    
+    <section id="gallery" style="background-color: #f9f9f9;">
+        <div class="container">
+            <h2 class="section-title"><i class="fas fa-camera"></i> HÌNH ẢNH HƯNG YÊN MỚI</h2>
+            <p class="intro-text">Những hình ảnh đẹp về con người, cảnh quan và cuộc sống tại tỉnh Hưng Yên mới</p>
+            
+            <div class="gallery">
+                <div class="gallery-item">
+                    <img src="https://scontent.iocvnpt.com/resources/portal/Images/TBH/ttxuctien/ck6_606095991.jpg" alt="Hưng Yên mới">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/V%C4%83n_mi%E1%BA%BFu_X%C3%ADch_%C4%90%E1%BA%B1ng_02.JPG/1200px-V%C4%83n_mi%E1%BA%BFu_X%C3%ADch_%C4%90%E1%BA%B1ng_02.JPG" alt="Văn miếu Xích Đằng">
+                </div>
+            </div>
+            
+            <div class="view-more">
+                <a href="https://sites.google.com/view/hungyentoiyeu/%E1%BA%A3nh" class="btn" target="_blank"><i class="fas fa-images"></i> Xem thêm hình ảnh</a>
+            </div>
+        </div>
+    </section>
+    
+    <section id="video">
+        <div class="container">
+            <h2 class="section-title"><i class="fas fa-video"></i> VIDEO GIỚI THIỆU</h2>
+            <p class="intro-text">Những thước phim sống động về tỉnh Hưng Yên mới sau sát nhập</p>
+            
+            <div class="video-container">
+                <iframe src="https://www.youtube.com/embed/qFKGV_U0r5k" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+        </div>
+    </section>
+    
+    <section id="news" style="background-color: #f9f9f9;">
+        <div class="container">
+            <h2 class="section-title"><i class="fas fa-newspaper"></i> NỔI BẬT</h2>
+            <p class="intro-text">Những thông tin quan trọng về tỉnh Hưng Yên mới</p>
+            
+            <div class="news-container">
+                <div class="news-item">
+                    <div class="news-img">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/V%C4%83n_mi%E1%BA%BFu_X%C3%ADch_%C4%90%E1%BA%B1ng_02.JPG/1200px-V%C4%83n_mi%E1%BA%BFu_X%C3%ADch_%C4%90%E1%BA%B1ng_02.JPG" alt="Giới thiệu Hưng Yên">
+                    </div>
+                    <div class="news-content">
+                        <div class="news-date"><i class="far fa-calendar-alt"></i> 15/06/2025</div>
+                        <h3 class="news-title">Giới về tỉnh Hưng Yên - Thái Bình cũ và Hưng Yên mới</h3>
+                        <p>Tìm hiểu về lịch sử, văn hóa và những thay đổi sau khi sát nhập hai tỉnh thành một.</p>
+                        <a href="https://sites.google.com/view/hungyentoiyeu/gi%E1%BB%9Bi-thi%E1%BB%87u?authuser=0" class="btn" style="padding: 6px 12px; font-size: 0.8rem;" target="_blank">Xem thêm</a>
+                    </div>
+                </div>
+                
+                <div class="news-item">
+                    <div class="news-img">
+                        <img src="https://dnsg.1cdn.vn/2024/08/08/tbt-to-lam.jpg">
+                    </div>
+                    <div class="news-content">
+                        <div class="news-date"><i class="far fa-calendar-alt"></i> 10/06/2025</div>
+                        <h3 class="news-title">Các nhân vật nổi tiếng ở Hưng Yên</h3>
+                        <p>Những người con ưu tú của Hưng Yên đã có nhiều đóng góp cho đất nước qua các thời kỳ.</p>
+                        <a href="https://sites.google.com/view/hungyentoiyeu/nh%C3%A2n-v%E1%BA%ADt?authuser=0" class="btn" style="padding: 6px 12px; font-size: 0.8rem;" target="_blank">Xem thêm</a>
+                    </div>
+                </div>
+                
+                <div class="news-item">
+                    <div class="news-img">
+                        <img src="https://i.ibb.co/21pKMJhz/Banner-Kh-ngang-Tr-ch-d-n-Qu-c-kh-nh-Vi-t-Nam-Graffiti-V-ng-8.png" alt="Thư viện media">
+                    </div>
+                    <div class="news-content">
+                        <div class="news-date"><i class="far fa-calendar-alt"></i> 05/06/2025</div>
+                        <h3 class="news-title">Thư viện media Hưng Yên</h3>
+                        <p>Tổng hợp hình ảnh, video và tư liệu quý giá về tỉnh Hưng Yên qua các thời kỳ.</p>
+                        <a href="https://sites.google.com/view/hungyentoiyeu/th%C6%B0-vi%E1%BB%87n-media?authuser=0" class="btn" style="padding: 6px 12px; font-size: 0.8rem;" target="_blank">Xem thêm</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <div class="footer-content">
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-section">
+                    <h3>THÔNG TIN LIÊN HỆ & ĐÁNH GIÁ</h3>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <span>Hotline: 0977893086</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <span>Email: Dothoinn@gmail.com</span>
+                    </div>
+                    
+                    <div style="margin-top: 15px;">
+                        <div style="margin-bottom: 8px;">Đánh giá website:</div>
+                        <div class="rating-options">
+                            <div class="rating-option">
+                                <input type="radio" id="good" name="rating" value="good" checked>
+                                <label for="good">Tốt</label>
+                            </div>
+                            <div class="rating-option">
+                                <input type="radio" id="average" name="rating" value="average">
+                                <label for="average">Bình thường</label>
+                            </div>
+                            <div class="rating-option">
+                                <input type="radio" id="poor" name="rating" value="poor">
+                                <label for="poor">Không tốt</label>
+                            </div>
+                        </div>
+                        <button type="button" class="submit-btn" onclick="submitFeedback()">Gửi đánh giá</button>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>HƯNG YÊN MỚI</h3>
+                    <p>Trang thông tin điện tử giới thiệu về tỉnh Hưng Yên sau khi sát nhập với Thái Bình</p>
+                    <div class="social-icons">
+                        <a href="https://www.facebook.com/profile.php?id=61571817887609" target="_blank"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="#"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="copyright">
+        &copy; 2025 Bản quyền thuộc về trường THPT Trưng Vương
+    </div>
+    
+    <script>
+        function submitFeedback() {
+            const rating = document.querySelector('input[name="rating"]:checked').value;
+            alert(`Cảm ơn bạn đã đánh giá website là "${getRatingText(rating)}"!`);
+            return false;
+        }
+        
+        function getRatingText(value) {
+            switch(value) {
+                case 'good': return 'Tốt';
+                case 'average': return 'Bình thường';
+                case 'poor': return 'Không tốt';
+                default: return '';
+            }
+        }
+    </script>
+</body>
+</html>
