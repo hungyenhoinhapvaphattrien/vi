@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kinh Tế Hưng Yên - Hưng Yên Mới</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-red: #d70202;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding-top: 220px;
+            background: #f9f9f9;
+            color: #333;
+        }
+        .banner-container img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 15px;
+        }
+        .section-title {
+            text-align: center;
+            color: var(--primary-red);
+            margin: 20px 0;
+            font-size: 1.8rem;
+            position: relative;
+        }
+        .section-title:after {
+            content: "";
+            display: block;
+            width: 70px;
+            height: 3px;
+            background: var(--primary-red);
+            margin: 10px auto;
+        }
+        .intro-text {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 1rem;
+        }
+
+        /* CARD GRID */
+        .economy-options {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+        }
+        @media (min-width: 992px) {
+            .economy-options {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+        .economy-card {
+            background: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: all 0.3s;
+            display: flex;
+            flex-direction: column;
+        }
+        .economy-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+        .economy-img {
+            height: 160px;
+            overflow: hidden;
+        }
+        .economy-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            /* Bỏ hiệu ứng zoom khi hover */
+            transition: none;
+        }
+        /* Mobile: giảm chiều cao ảnh */
+        @media (max-width: 768px) {
+            .economy-img {
+                height: 110px;
+            }
+        }
+        .economy-icon {
+            background: var(--primary-red);
+            color: white;
+            font-size: 1.8rem;
+            width: 50px;
+            height: 50px;
+            line-height: 50px;
+            border-radius: 50%;
+            margin: -25px auto 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2;
+            position: relative;
+        }
+        .economy-title {
+            font-size: 1rem;
+            color: var(--primary-red);
+            margin-bottom: 10px;
+            padding: 0 5px;
+        }
+        .btn-economy {
+            display: inline-block;
+            background: var(--primary-red);
+            color: white;
+            padding: 6px 15px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-weight: bold;
+            margin: 10px auto 15px;
+            font-size: 0.85rem;
+            transition: all 0.3s;
+        }
+        .btn-economy:hover {
+            background: #b30000;
+        }
+
+        /* Video */
+        .video-section, .image-gallery {
+            margin: 25px 0;
+        }
+        .video-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 15px;
+        }
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            border: none;
+        }
+
+        /* Image */
+        .image-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 12px;
+        }
+        .image-item {
+            position: relative;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .image-item img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            transition: none; /* bỏ hiệu ứng zoom */
+        }
+        .image-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0; right: 0;
+            background: rgba(0,0,0,0.6);
+            color: white;
+            font-size: 0.8rem;
+            padding: 6px;
+            text-align: center;
+        }
+    .iframe-layer {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 550px; /* chỉ phần trên cùng */
+        z-index: 9999;
+        pointer-events: none; /* cho phép click xuyên */
+    }
+
+    .iframe-layer iframe {
+        width: 100%;
+        height: 100%;
+        border: none;
+        display: block;
+        pointer-events: auto; /* vẫn click được bên trong iframe */
+    }
+
+</style>
+</head>
+<body>
+
+    <!-- Iframe trên cùng -->
+    <div class="iframe-layer">
+        <iframe src="https://hungyenhoinhapvaphattrien.github.io/vi/top"></iframe>
+    </div>
+
+    <section class="economy-portal">
+        <div class="container">
+            <h2 class="section-title"><i class="fas fa-chart-line"></i> KINH TẾ HƯNG YÊN</h2>
+            <p class="intro-text">Khám phá tiềm năng và thành tựu kinh tế của tỉnh Hưng Yên</p>
+
+            <div class="economy-options">
+                <!-- Card 1 -->
+                <div class="economy-card">
+                    <div class="economy-img">
+                        <img src="https://cdnsgtt.thesaigontimes.vn/wp-content/uploads/2024/10/thai-binh-6.jpg" alt="Nông nghiệp lúa nước">
+                    </div>
+                    <div class="economy-icon"><i class="fas fa-tractor"></i></div>
+                    <h3 class="economy-title">NÔNG NGHIỆP LÚA NƯỚC</h3>
+                    <a href="https://sites.google.com/view/hungyentoiyeu/g%E1%BA%A1o" class="btn-economy"><i class="fas fa-arrow-right"></i> Khám phá</a>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="economy-card">
+                    <div class="economy-img">
+                        <img src="https://iipvietnam.com/Data/upload/images/ccn%20Minh%20Ti%E1%BA%BFn.jpg" alt="Khu công nghiệp">
+                    </div>
+                    <div class="economy-icon"><i class="fas fa-industry"></i></div>
+                    <h3 class="economy-title">BẢN ĐỒ KHU CÔNG NGHIỆP</h3>
+                    <a href="#" class="btn-economy"><i class="fas fa-arrow-right"></i> Khám phá</a>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="economy-card">
+                    <div class="economy-img">
+                        <img src="https://phunuvietnam.mediacdn.vn/179072216278405120/2023/5/25/lang-nghe-dan-do-do-thu-sy-3-168500498191949285523.jpg" alt="Đầu tư & ngành nghề">
+                    </div>
+                    <div class="economy-icon"><i class="fas fa-handshake"></i></div>
+                    <h3 class="economy-title">ĐẦU TƯ & NGÀNH NGHỀ</h3>
+                    <a href="https://sites.google.com/view/hungyentoiyeu/%C4%91%E1%BA%A7u-t%C6%B0" class="btn-economy"><i class="fas fa-arrow-right"></i> Khám phá</a>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="economy-card">
+                    <div class="economy-img">
+                        <img src="https://mekongasean.vn/stores/news_dataimages/mekongaseanvn/072023/22/22/hy8-6575.jpg" alt="Hạ tầng kinh tế">
+                    </div>
+                    <div class="economy-icon"><i class="fas fa-road"></i></div>
+                    <h3 class="economy-title">HẠ TẦNG KINH TẾ</h3>
+                    <a href="https://sites.google.com/view/hungyentoiyeu/h%E1%BA%A1-t%E1%BA%A7ng" class="btn-economy"><i class="fas fa-arrow-right"></i> Khám phá</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Video Section -->
+    <section class="video-section">
+        <div class="container">
+            <h2 class="section-title"><i class="fas fa-video"></i> VIDEO NỔI BẬT</h2>
+            <p class="intro-text">Những hình ảnh sống động về phát triển kinh tế Hưng Yên</p>
+            <div class="video-container">
+                <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/RsJNSfdU760" allowfullscreen></iframe></div>
+                <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/AKMTo0Pm21s" allowfullscreen></iframe></div>
+                <div class="video-wrapper"><iframe src="https://www.youtube.com/embed/xTbKg0_oRoY" allowfullscreen></iframe></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Image Gallery -->
+    <section class="image-gallery">
+        <div class="container">
+            <h2 class="section-title"><i class="fas fa-images"></i> HÌNH ẢNH DỰ ÁN</h2>
+            <p class="intro-text">Các dự án kinh tế trọng điểm tại Hưng Yên</p>
+            <div class="image-grid">
+                <div class="image-item">
+                    <img src="https://i.ex-cdn.com/danviet.vn/files/content/2025/05/23/gemini_generated_image_z524whz524whz524-1-1155.png" alt="Sân golf tập đoàn Trump">
+                    <div class="image-caption">Sân golf của tập đoàn Trump tại Hưng Yên</div>
+                </div>
+                <div class="image-item">
+                    <img src="https://bcp.cdnchinhphu.vn/334894974524682240/2025/3/26/0b34eb1e953a25647c2b-1742976791759344222282.jpg" alt="Đường sắt Nam Định - Thái Bình - Hải Phòng - Quảng Ninh">
+                    <div class="image-caption">Đường sắt Nam Định - Thái Bình - Hải Phòng - Quảng Ninh</div>
+                </div>
+                <div class="image-item">
+                    <img src="https://www.redsunland.vn/wp-content/uploads/2024/07/1-10.jpg" alt="Khu công nghiệp Thái Bình">
+                    <div class="image-caption">Khu công nghiệp Thái Bình</div>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
