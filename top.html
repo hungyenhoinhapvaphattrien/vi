@@ -144,6 +144,28 @@
       }
     }
   </style>
+<script>
+    // Gửi chiều cao thực tế của trang về trang cha
+    function sendHeightToParent() {
+        const height = document.body.scrollHeight;
+        window.parent.postMessage({ height: height }, '*');
+    }
+
+    // Gửi chiều cao ngay khi trang tải xong
+    window.addEventListener('load', sendHeightToParent);
+
+    // Theo dõi thay đổi chiều cao (nếu trang động)
+    let lastHeight = 0;
+    function checkHeightChange() {
+        const currentHeight = document.body.scrollHeight;
+        if (currentHeight !== lastHeight) {
+            lastHeight = currentHeight;
+            sendHeightToParent();
+        }
+        requestAnimationFrame(checkHeightChange);
+    }
+    checkHeightChange();
+</script>
 </head>
 <body>
 
