@@ -347,29 +347,31 @@
                 flex: 0 0 100%;
             }
         }
-        .iframe-container {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: auto;
-            z-index: 1000;
-        }
-        
-        .iframe-overlay {
-            position: fixed;
-            width: 100%;
-            height: 100%;
-            border: none;
-            background-color: transparent;
+    .iframe-layer {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 550px; /* chỉ phần trên cùng */
+        z-index: 9999;
+        pointer-events: none; /* cho phép click xuyên */
+    }
 
-        }
-    </style>
+    .iframe-layer iframe {
+        width: 100%;
+        height: 100%;
+        border: none;
+        display: block;
+        pointer-events: auto; /* vẫn click được bên trong iframe */
+    }
+
+</style>
 </head>
 <body>
-    <div class="iframe-container">
-        <iframe class="iframe-overlay" src="https://hungyenhoinhapvaphattrien.github.io/vi/top"></iframe>
+
+    <!-- Iframe trên cùng -->
+    <div class="iframe-layer">
+        <iframe src="https://hungyenhoinhapvaphattrien.github.io/vi/top"></iframe>
     </div>
     
     <section id="about">
