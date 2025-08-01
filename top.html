@@ -252,6 +252,17 @@
       }
     });
   </script>
+<script>
+    function sendHeight() {
+        const height = document.body.scrollHeight;
+        parent.postMessage({ iframeHeight: height }, "*");
+    }
+
+    // Gửi mỗi 0.1s hoặc khi resize
+    setInterval(sendHeight, 100);
+    window.addEventListener('resize', sendHeight);
+    window.addEventListener('load', sendHeight);
+</script>
 
 </body>
 </html>
