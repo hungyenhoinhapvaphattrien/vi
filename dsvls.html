@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Di sản & Lịch sử - Hưng Yên & Thái Bình</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-red: #d70202;
+            --primary-blue: #026fd7;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding-top: 220px;
+            background: #f9f9f9;
+            color: #333;
+        }
+        .banner-container img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 15px;
+        }
+        .section-title {
+            text-align: center;
+            color: var(--primary-red);
+            margin: 20px 0;
+            font-size: 1.8rem;
+            position: relative;
+        }
+        .section-title:after {
+            content: "";
+            display: block;
+            width: 70px;
+            height: 3px;
+            background: var(--primary-red);
+            margin: 10px auto;
+        }
+        .intro-text {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 1rem;
+        }
+        .province-title {
+            text-align: center;
+            color: var(--primary-blue);
+            margin: 30px 0 20px;
+            font-size: 1.5rem;
+            position: relative;
+        }
+        .province-title:after {
+            content: "";
+            display: block;
+            width: 60px;
+            height: 2px;
+            background: var(--primary-blue);
+            margin: 10px auto;
+        }
+
+        /* CARD STYLES */
+        .heritage-options {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        /* Desktop layout - 3 columns */
+        @media (min-width: 768px) {
+            .heritage-card {
+                width: calc(33.333% - 15px);
+            }
+        }
+        
+        /* Mobile layout */
+        @media (max-width: 767px) {
+            /* First two cards in one row */
+            .heritage-card:nth-child(1),
+            .heritage-card:nth-child(2) {
+                width: calc(50% - 10px);
+                min-width: 0;
+            }
+            .heritage-card:nth-child(1) .heritage-desc,
+            .heritage-card:nth-child(2) .heritage-desc {
+                display: none;
+            }
+            .heritage-card:nth-child(1) .heritage-content,
+            .heritage-card:nth-child(2) .heritage-content {
+                padding: 10px;
+            }
+            
+            /* Third card - horizontal */
+            .heritage-card:nth-child(3) {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                width: 100%;
+                max-width: 100%;
+                padding: 10px;
+                margin-top: 10px;
+            }
+            .heritage-card:nth-child(3) .heritage-img {
+                width: 120px;
+                height: 120px;
+                flex-shrink: 0;
+                border-radius: 8px 0 0 8px;
+            }
+            .heritage-card:nth-child(3) .heritage-icon {
+                position: absolute;
+                left: 100px;
+                top: 100px;
+                transform: translate(-50%, -50%);
+                margin: 0;
+            }
+            .heritage-card:nth-child(3) .heritage-content {
+                padding: 0 15px;
+                text-align: left;
+                flex-grow: 1;
+            }
+            .heritage-card:nth-child(3) .btn-heritage {
+                margin: 5px 0 0;
+                align-self: flex-start;
+            }
+        }
+        
+        .heritage-card {
+            background: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+            position: relative;
+        }
+        
+        .heritage-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+        
+        .heritage-img {
+            height: 140px;
+            overflow: hidden;
+            position: relative;
+        }
+        .heritage-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .heritage-icon {
+            background: var(--primary-red);
+            color: white;
+            font-size: 1.5rem;
+            width: 40px;
+            height: 40px;
+            line-height: 40px;
+            border-radius: 50%;
+            margin: -20px auto 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2;
+            position: relative;
+        }
+        .blue-icon {
+            background: var(--primary-blue);
+        }
+        .heritage-content {
+            padding: 15px;
+            text-align: center;
+        }
+        .heritage-title {
+            font-size: 0.95rem;
+            color: var(--primary-red);
+            margin-bottom: 8px;
+        }
+        .blue-title {
+            color: var(--primary-blue);
+        }
+        .heritage-desc {
+            font-size: 0.8rem;
+            margin-bottom: 10px;
+            display: block;
+        }
+        .btn-heritage {
+            display: inline-block;
+            background: var(--primary-red);
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 0.8rem;
+            transition: all 0.3s;
+        }
+        .blue-btn {
+            background: var(--primary-blue);
+        }
+        .btn-heritage:hover {
+            background: #b30000;
+        }
+        .blue-btn:hover {
+            background: #025bb3;
+        }
+
+        /* Language button */
+        .language-toggle {
+            text-align: center;
+            margin-bottom: 15px;
+        }
+        .language-btn {
+            background: var(--primary-red);
+            color: white;
+            padding: 6px 15px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 0.85rem;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .language-btn:hover {
+            background: #b30000;
+        }
+    .iframe-layer {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 550px; /* chỉ phần trên cùng */
+        z-index: 9999;
+        pointer-events: none; /* cho phép click xuyên */
+    }
+
+    .iframe-layer iframe {
+        width: 100%;
+        height: 100%;
+        border: none;
+        display: block;
+        pointer-events: auto; /* vẫn click được bên trong iframe */
+    }
+
+</style>
+</head>
+<body>
+
+    <!-- Iframe trên cùng -->
+    <div class="iframe-layer">
+        <iframe src="https://hungyenhoinhapvaphattrien.github.io/vi/top"></iframe>
+    </div>
+        
+<script>
+function updatePadding() {
+  const screenWidth = window.innerWidth; 
+  const padding = screenWidth * 0.25; 
+  document.body.style.paddingTop = 50 + padding + "px";
+}
+
+window.addEventListener("load", updatePadding);
+window.addEventListener("resize", updatePadding);
+</script>
+        
+        <section class="heritage-portal">
+            <h2 class="section-title"><i class="fas fa-landmark"></i> DI SẢN & LỊCH SỬ HƯNG YÊN & THÁI BÌNH</h2>
+            <p class="intro-text">Khám phá kho tàng di sản văn hóa vật thể và phi vật thể cùng những dấu ấn lịch sử đặc sắc của vùng đất Hưng Yên và Thái Bình</p>
+            
+            <!-- Hưng Yên Section -->
+            <h3 class="province-title">TỈNH HƯNG YÊN</h3>
+            
+            <div class="heritage-options">
+                <!-- Di tích lịch sử -->
+                <div class="heritage-card">
+                    <div class="heritage-img">
+                        <img src="https://mia.vn/media/uploads/blog-du-lich/chua-chuong-01-1698070246.jpg" alt="Di tích lịch sử Hưng Yên">
+                    </div>
+                    <div class="heritage-icon"><i class="fas fa-archway"></i></div>
+                    <div class="heritage-content">
+                        <h3 class="heritage-title">DI TÍCH LỊCH SỬ</h3>
+                        <p class="heritage-desc">Hệ thống các di tích lịch sử, kiến trúc nghệ thuật, khảo cổ và danh lam thắng cảnh tiêu biểu</p>
+                        <a href="https://hmtuan002.github.io/G11/so2.html" class="btn-heritage" target="_blank"><i class="fas fa-arrow-right"></i> Khám phá</a>
+                    </div>
+                </div>
+                
+                <!-- Các vị vua và tướng lĩnh -->
+                <div class="heritage-card">
+                    <div class="heritage-img">
+                        <img src="https://khonggiangom.vn/wp-content/uploads/2020/11/tran-hung-dao-1.jpg" alt="Danh nhân Hưng Yên">
+                    </div>
+                    <div class="heritage-icon"><i class="fas fa-crown"></i></div>
+                    <div class="heritage-content">
+                        <h3 class="heritage-title">CÁC VỊ VUA, TƯỚNG LĨNH TIÊU BIỂU</h3>
+                        <p class="heritage-desc">Các vị vua, tướng lĩnh, danh nhân văn hóa tiêu biểu của Hưng Yên</p>
+                        <a href="https://hmtuan002.github.io/G11/so4.html" class="btn-heritage" target="_blank"><i class="fas fa-arrow-right"></i> Khám phá</a>
+                    </div>
+                </div>
+                
+                <!-- Di sản phi vật thể -->
+                <div class="heritage-card">
+                    <div class="heritage-img">
+                        <img src="https://mediabhy.mediatech.vn/upload/image/202402/medium/65197_le_hoi_cau_mua_o_xa_lac_hong_van_lam_17181526.jpg" alt="Di sản phi vật thể Hưng Yên">
+                    </div>
+                    <div class="heritage-icon"><i class="fas fa-masks-theater"></i></div>
+                    <div class="heritage-content">
+                        <h3 class="heritage-title">DI SẢN PHI VẬT THỂ</h3>
+                        <p class="heritage-desc">Các lễ hội truyền thống, nghề thủ công, tập quán xã hội và nghệ thuật trình diễn dân gian đặc sắc</p>
+                        <a href="https://hmtuan002.github.io/G11/so6.html" class="btn-heritage" target="_blank"><i class="fas fa-arrow-right"></i> Khám phá</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Thái Bình Section -->
+            <h3 class="province-title">TỈNH THÁI BÌNH</h3>
+            
+            <div class="heritage-options">
+                <!-- Di tích lịch sử -->
+                <div class="heritage-card">
+                    <div class="heritage-img">
+                        <img src="https://phapluat.tuoitrethudo.vn/stores/news_dataimages/nguyenducminh/022024/22/08/4637_Redsvn-Lang-mo-3-vua-Tran-01.jpg?rt=20240222084947" alt="Di tích lịch sử Thái Bình">
+                    </div>
+                    <div class="heritage-icon blue-icon"><i class="fas fa-landmark"></i></div>
+                    <div class="heritage-content">
+                        <h3 class="heritage-title blue-title">DI TÍCH LỊCH SỬ</h3>
+                        <p class="heritage-desc">Các di tích lịch sử - văn hóa nổi tiếng của Thái Bình</p>
+                        <a href="https://hmtuan002.github.io/G11/so8.html" class="btn-heritage blue-btn" target="_blank"><i class="fas fa-arrow-right"></i> Khám phá</a>
+                    </div>
+                </div>
+                
+                <!-- Các vị vua và tướng lĩnh -->
+                <div class="heritage-card">
+                    <div class="heritage-img">
+                        <img src="https://danviet.ex-cdn.com/files/f1/296231569849192448/2021/12/16/13-1639630259364-163963025953574998461.jpg" alt="Danh nhân Thái Bình">
+                    </div>
+                    <div class="heritage-icon blue-icon"><i class="fas fa-user-tie"></i></div>
+                    <div class="heritage-content">
+                        <h3 class="heritage-title blue-title">CÁC VỊ VUA, TƯỚNG LĨNH TIÊU BIỂU</h3>
+                        <p class="heritage-desc">Các vị vua, tướng lĩnh, danh nhân tiêu biểu của Thái Bình</p>
+                        <a href="https://hmtuan002.github.io/G11/so9.html" class="btn-heritage blue-btn" target="_blank"><i class="fas fa-arrow-right"></i> Khám phá</a>
+                    </div>
+                </div>
+                
+                <!-- Di sản phi vật thể -->
+                <div class="heritage-card">
+                    <div class="heritage-img">
+                        <img src="https://bvhttdl.mediacdn.vn/291773308735864832/2021/9/27/85612catru2-1632735599273-1632735599462681926560.jpg" alt="Di sản phi vật thể Thái Bình">
+                    </div>
+                    <div class="heritage-icon blue-icon"><i class="fas fa-music"></i></div>
+                    <div class="heritage-content">
+                        <h3 class="heritage-title blue-title">DI SẢN PHI VẬT THỂ</h3>
+                        <p class="heritage-desc">Các di sản văn hóa phi vật thể đặc sắc của Thái Bình</p>
+                        <a href="https://hmtuan002.github.io/G11/so12.html" class="btn-heritage blue-btn" target="_blank"><i class="fas fa-arrow-right"></i> Khám phá</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</body>
+</html>
