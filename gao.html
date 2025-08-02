@@ -225,6 +225,15 @@
             text-align: center;
         }
         
+        .load-more-container {
+            text-align: center;
+            margin-top: 30px;
+        }
+        
+        .hidden-images {
+            display: none;
+        }
+        
         @media (max-width: 768px) {
             .info-boxes {
                 flex-direction: column;
@@ -384,7 +393,7 @@ window.addEventListener("resize", updatePadding);
             <h2 class="section-title"><i class="fas fa-route"></i> HÀNH TRÌNH HẠT GẠO THÁI BÌNH</h2>
             <p class="intro-text">Từ cánh đồng đến bàn ăn thế giới</p>
             
-            <div class="journey-gallery">
+            <div class="journey-gallery" id="journeyGallery">
                 <div class="journey-item">
                     <img src="https://i.ibb.co/4ZCFQ2J6/image.png" alt="Hạt giống chất lượng">
                     <div class="journey-caption">Người Hàn quốc trải nghiệm gạo Thái Bình</div>
@@ -401,6 +410,13 @@ window.addEventListener("resize", updatePadding);
                     <img src="https://i.ibb.co/fd5yYdwz/image.png" alt="Gạo Thái Bình đến thế giới">
                     <div class="journey-caption">Người Hàn quốc trải nghiệm gạo Thái Bình</div>
                 </div>
+                
+                <!-- Hidden images will be added here by JavaScript -->
+                <div id="hiddenImagesContainer" class="hidden-images"></div>
+            </div>
+            
+            <div class="load-more-container">
+                <button class="btn" id="loadMoreBtn">Xem thêm</button>
             </div>
         </div>
     </section>
@@ -435,5 +451,52 @@ window.addEventListener("resize", updatePadding);
             <!-- Đã bỏ phần footer theo yêu cầu -->
         </div>
     </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Tạo 36 ảnh với đường dẫn theo yêu cầu
+            const totalImages = 36;
+            const imagesPerLoad = 4;
+            let loadedImages = 0;
+            const hiddenImagesContainer = document.getElementById('hiddenImagesContainer');
+            const journeyGallery = document.getElementById('journeyGallery');
+            const loadMoreBtn = document.getElementById('loadMoreBtn');
+            
+            // Tạo các ảnh ẩn ban đầu
+            for (let i = 1; i <= totalImages; i++) {
+                const imgNumber = i.toString().padStart(3, '0');
+                const imgUrl = `https://hungyenhoinhapvaphattrien.github.io/database/anh_${imgNumber}.jpg`;
+                
+                const journeyItem = document.createElement('div');
+                journeyItem.className = 'journey-item';
+                journeyItem.innerHTML = `<img src="${imgUrl}" alt="Hành trình gạo Thái Bình ${i}">`;
+                
+                hiddenImagesContainer.appendChild(journeyItem);
+            }
+            
+            // Xử lý sự kiện click nút Xem thêm
+            loadMoreBtn.addEventListener('click', function() {
+                const hiddenItems = hiddenImagesContainer.querySelectorAll('.journey-item');
+                const itemsToShow = Math.min(imagesPerLoad, hiddenItems.length);
+                
+                for (let i = 0; i < itemsToShow; i++) {
+                    if (hiddenItems[i]) {
+                        journeyGallery.appendChild(hiddenItems[i]);
+                        loadedImages++;
+                    }
+                }
+                
+                // Ẩn nút khi đã hiển thị hết ảnh
+                if (loadedImages >= totalImages) {
+                    loadMoreBtn.style.display = 'none';
+                }
+            });
+            
+            // Tự động click lần đầu để load 6 ảnh đầu tiên
+            setTimeout(() => {
+                loadMoreBtn.click();
+            }, 100);
+        });
+    </script>
 </body>
 </html>
