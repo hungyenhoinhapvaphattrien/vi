@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Iframe + 2 Ảnh</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: sans-serif;
+    }
+
+    /* Iframe lớp trên cùng */
+    .iframe-layer {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 520px; /* chỉ phần trên cùng */
+      z-index: 9999;
+      pointer-events: none; /* cho phép click xuyên */
+    }
+
+    .iframe-layer iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      display: block;
+      pointer-events: auto; /* vẫn click được bên trong iframe */
+    }
+
+    /* Phần chứa ảnh */
+    .image-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+      padding: 20px 0;
+    }
+
+    .image-container img {
+      width: 90%;           /* Tối đa 70% chiều rộng web */
+      height: auto;         /* Giữ tỉ lệ gốc ảnh */
+      max-width: 1000px;    /* Giới hạn tối đa nếu ảnh quá lớn */
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      display: block;
+    }
+
+    /* Tránh ảnh bị đè lên iframe */
+    body {
+      padding-top: 200px; /* sẽ được JS cập nhật */
+      transition: padding 0.3s ease;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Iframe trên cùng -->
+  <div class="iframe-layer">
+    <iframe src="https://hungyenhoinhapvaphattrien.github.io/vi/top"></iframe>
+  </div>
+
+  <!-- 2 ảnh nằm trên – dưới -->
+  <div class="image-container">
+    <img src="https://idpvn.com/wp-content/uploads/2022/09/Ba%CC%89n-do%CC%82%CC%80-KCN-Tha%CC%81i-Bi%CC%80nh.jpeg" alt="Ảnh 1">
+    <img src="https://idpvn.com/wp-content/uploads/2022/09/Ba%CC%89n-do%CC%82%CC%80-KCN-Hu%CC%9Bng-Ye%CC%82n.jpeg" alt="Ảnh 2">
+  </div>
+
+  <script>
+    function updatePadding() {
+      const screenWidth = window.innerWidth; 
+      const padding = screenWidth * 0.2; 
+      document.body.style.paddingTop = 50 + padding + "px";
+    }
+
+    window.addEventListener("load", updatePadding);
+    window.addEventListener("resize", updatePadding);
+  </script>
+
+</body>
+</html>
