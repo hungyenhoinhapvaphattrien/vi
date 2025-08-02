@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Trang Iframe + Ảnh</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: sans-serif;
+    }
+
+    /* Iframe lớp trên cùng */
+    .iframe-layer {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 520px; /* chỉ phần trên cùng */
+      z-index: 9999;
+      pointer-events: none; /* cho phép click xuyên */
+    }
+
+    .iframe-layer iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      display: block;
+      pointer-events: auto; /* vẫn click được bên trong iframe */
+    }
+
+    /* Lưới ảnh */
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 10px;
+      padding: 20px;
+      box-sizing: border-box;
+    }
+
+    .gallery img {
+      width: 100%;
+      aspect-ratio: 10 / 4; /* Tỉ lệ 10:4 */
+      object-fit: cover;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    /* Đảm bảo trên PC là 3 ảnh/hàng */
+    @media (min-width: 900px) {
+      .gallery {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    /* Tránh ảnh bị đè lên iframe */
+    body {
+      padding-top: 200px; /* sẽ được JS cập nhật */
+      transition: padding 0.3s ease;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Iframe trên cùng -->
+  <div class="iframe-layer">
+    <iframe src="https://hungyenhoinhapvaphattrien.github.io/vi/top"></iframe>
+  </div>
+
+  <!-- Phần dưới là ảnh -->
+  <div class="gallery">
+    <img src="https://bvhttdl.mediacdn.vn/291773308735864832/2024/7/10/71478quanthekhudothivinhomesoceanparkvangiangdiemdenmoicuadulichhungyen17081009-1720576595779-1720576597601122730186.jpeg" alt="Ảnh 1">
+    <img src="https://mttq.hungyen.dcs.vn/ckfinder/userfiles/images/MTTQHY-Ph%C6%B0%C6%A1ng/2023/hung-yen.jpg" alt="Ảnh 2">
+    <img src="https://mediabhy.mediatech.vn/upload/image/202402/medium/65197_le_hoi_cau_mua_o_xa_lac_hong_van_lam_17181526.jpg" alt="Ảnh 3">
+    <img src="https://tuyengiao.hungyen.dcs.vn/images/userfiles/images/4(5).png" alt="Ảnh 4">
+    <img src="https://static-media-cdn.mekongasean.vn/stores/news_dataimages/2024/062024/10/16/25-160720240610165413.7496910.jpg" alt="Ảnh 5">
+    <img src="https://tuyengiao.hungyen.dcs.vn/images/userfiles/images/9(92).jpg" alt="Ảnh 6">
+    <img src="https://cdn3.ivivu.com/2022/12/pho-hien-hung-yen-ivivu-1.jpg" alt="Ảnh 1">
+    <img src="https://phapluat.tuoitrethudo.vn/stores/news_dataimages/nguyenducminh/022023/06/20/2045_den-dong-bang-lu.hueanh.jpg?rt=20230206202218" alt="Ảnh 2">
+    <img src="https://luhanhvietnam.com.vn/du-lich/vnt_upload/news/04_2020/cac-di-tich-co-tai-thai-binh1.jpg" alt="Ảnh 3">
+    <img src="https://luhanhvietnam.com.vn/du-lich/vnt_upload/news/04_2020/cac-di-tich-co-tai-thai-binh6.jpg" alt="Ảnh 4">
+    <img src="https://photo.znews.vn/w660/Uploaded/anqyy/2024_10_19/z5939979973148_4912ad59a38f63f32c2896930242d802_19546.jpg" alt="Ảnh 5">
+    <img src="https://lh4.googleusercontent.com/proxy/h0jtzfqo_dsT5EhUKd8A0-dEq_n36YvKeOHPRUwdDEpZqDZnZ5v5PNwjkbHmte2djIiUNOkspxHahGxuabQukD0gMy0OKlV789MxwFEbYSSrwQ_weXzqyMYzUx2mg1X7nem_q4koTg" alt="Ảnh 6">
+  </div>
+
+  <script>
+    function updatePadding() {
+      const screenWidth = window.innerWidth; 
+      const padding = screenWidth * 0.2; 
+      document.body.style.paddingTop = 50 + padding + "px";
+    }
+
+    window.addEventListener("load", updatePadding);
+    window.addEventListener("resize", updatePadding);
+  </script>
+
+</body>
+</html>
