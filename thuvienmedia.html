@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thư Viện Media - Hưng Yên Mới</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-red: #d70202;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #f9f9f9;
+            color: #333;
+        }
+        .banner-container img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 15px;
+        }
+        .section-title {
+            text-align: center;
+            color: var(--primary-red);
+            margin: 20px 0;
+            font-size: 1.8rem;
+            position: relative;
+        }
+        .section-title:after {
+            content: "";
+            display: block;
+            width: 70px;
+            height: 3px;
+            background: var(--primary-red);
+            margin: 10px auto;
+        }
+        .intro-text {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 1rem;
+        }
+
+        /* CARD GRID */
+        .economy-options {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+        }
+        @media (min-width: 992px) {
+            .economy-options {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+        .economy-card {
+            background: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: all 0.3s;
+            display: flex;
+            flex-direction: column;
+        }
+        .economy-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+        .economy-img {
+            height: 160px;
+            overflow: hidden;
+        }
+        .economy-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: none;
+        }
+        /* Mobile: giảm chiều cao ảnh */
+        @media (max-width: 768px) {
+            .economy-img {
+                height: 110px;
+            }
+        }
+        .economy-icon {
+            background: var(--primary-red);
+            color: white;
+            font-size: 1.8rem;
+            width: 50px;
+            height: 50px;
+            line-height: 50px;
+            border-radius: 50%;
+            margin: -25px auto 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2;
+            position: relative;
+        }
+        .economy-title {
+            font-size: 1rem;
+            color: var(--primary-red);
+            margin-bottom: 10px;
+            padding: 0 5px;
+        }
+        .btn-economy {
+            display: inline-block;
+            background: var(--primary-red);
+            color: white;
+            padding: 6px 15px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-weight: bold;
+            margin: 10px auto 15px;
+            font-size: 0.85rem;
+            transition: all 0.3s;
+        }
+        .btn-economy:hover {
+            background: #b30000;
+        }
+
+        /* Video Section */
+        .video-section, .image-gallery {
+            margin: 25px 0;
+        }
+        .video-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 15px;
+        }
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            border: none;
+        }
+
+        /* Image Gallery */
+        .image-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 12px;
+        }
+        .image-item {
+            position: relative;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .image-item img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            transition: none;
+        }
+        .image-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0; right: 0;
+            background: rgba(0,0,0,0.6);
+            color: white;
+            font-size: 0.8rem;
+            padding: 6px;
+            text-align: center;
+        }
+    .iframe-layer {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 510px; /* chỉ phần trên cùng */
+        z-index: 9999;
+        pointer-events: none; /* cho phép click xuyên */
+    }
+
+    .iframe-layer iframe {
+        width: 100%;
+        height: 100%;
+        border: none;
+        display: block;
+        pointer-events: auto; /* vẫn click được bên trong iframe */
+    }
+
+</style>
+</head>
+<body>
+
+    <!-- Iframe trên cùng -->
+    <div class="iframe-layer">
+        <iframe src="https://hungyenhoinhapvaphattrien.github.io/vi/top"></iframe>
+    </div>
+        
+<script>
+function updatePadding() {
+  const screenWidth = window.innerWidth; 
+  const padding = screenWidth * 0.2; 
+  document.body.style.paddingTop = 50 + padding + "px";
+}
+
+window.addEventListener("load", updatePadding);
+window.addEventListener("resize", updatePadding);
+</script>
+
+    <section class="economy-portal">
+        <div class="container">
+            <h2 class="section-title"><i class="fas fa-photo-video"></i> THƯ VIỆN MEDIA</h2>
+            <p class="intro-text">Khám phá kho tư liệu đa dạng về tỉnh Hưng Yên mới qua các hình thức truyền thông khác nhau</p>
+
+            <div class="economy-options">
+                <!-- Album ảnh -->
+                <div class="economy-card">
+                    <div class="economy-img">
+                        <img src="https://scontent.iocvnpt.com/resources/portal/Images/TBH/ttxuctien/ck6_606095991.jpg" alt="Album ảnh">
+                    </div>
+                    <div class="economy-icon"><i class="fas fa-images"></i></div>
+                    <h3 class="economy-title">ALBUM ẢNH</h3>
+                    <a href="https://sites.google.com/view/hungyentoiyeu/%E1%BA%A3nh" class="btn-economy" target="_blank"><i class="fas fa-arrow-right"></i> Khám phá</a>
+                </div>
+
+                <!-- 360 độ -->
+                <div class="economy-card">
+                    <div class="economy-img">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/V%C4%83n_mi%E1%BA%BFu_X%C3%ADch_%C4%90%E1%BA%B1ng_02.JPG/1200px-V%C4%83n_mi%E1%BA%BFu_X%C3%ADch_%C4%90%E1%BA%B1ng_02.JPG" alt="360 độ">
+                    </div>
+                    <div class="economy-icon"><i class="fas fa-globe"></i></div>
+                    <h3 class="economy-title">TRẢI NGHIỆM 360°</h3>
+                    <a href="https://sites.google.com/view/hungyentoiyeu/360" class="btn-economy" target="_blank"><i class="fas fa-arrow-right"></i> Khám phá</a>
+                </div>
+
+                <!-- Video clip -->
+                <div class="economy-card">
+                    <div class="economy-img">
+                        <img src="https://mia.vn/media/uploads/blog-du-lich/chua-chuong-01-1698070246.jpg" alt="Video clip">
+                    </div>
+                    <div class="economy-icon"><i class="fas fa-video"></i></div>
+                    <h3 class="economy-title">VIDEO CLIP</h3>
+                    <a href="https://sites.google.com/view/hungyentoiyeu/video-clip" class="btn-economy" target="_blank"><i class="fas fa-arrow-right"></i> Khám phá</a>
+                </div>
+
+                <!-- Phỏng vấn & Tư liệu -->
+                <div class="economy-card">
+                    <div class="economy-img">
+                        <img src="https://media.thanhtra.com.vn/public/uploads/2025/07/02/686523f5bb974b45ae86dd30.jpg?w=1319" alt="Phỏng vấn & Tư liệu">
+                    </div>
+                    <div class="economy-icon"><i class="fas fa-microphone"></i></div>
+                    <h3 class="economy-title">TƯ LIỆU - PHỎNG VẤN</h3>
+                    <a href="tu-lieu.html" class="btn-economy" target="_blank"><i class="fas fa-arrow-right"></i> Khám phá</a>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
