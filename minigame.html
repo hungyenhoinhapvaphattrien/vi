@@ -256,8 +256,8 @@ window.addEventListener("resize", updatePadding);
     </div>
     
     <script>
-        // Câu hỏi và đáp án
-        const questions = [
+        // Tất cả các câu hỏi có sẵn
+        const allQuestions = [
             {
                 question: "Tỉnh Hưng Yên mới được sát nhập với tỉnh nào?",
                 options: ["Hải Dương", "Hà Nam", "Thái Bình", "Hà Nội"],
@@ -307,6 +307,106 @@ window.addEventListener("resize", updatePadding);
                 question: "Hưng Yên được thành lập vào năm nào?",
                 options: ["1831", "1890", "1900", "1954"],
                 answer: 0
+            },
+            {
+                question: "Tỉnh Hưng Yên nằm ở khu vực nào của đồng bằng sông Hồng?",
+                options: ["Trung tâm đồng bằng sông Hồng", "Ven biển", "Miền núi phía Bắc", "Tây Bắc"],
+                answer: 0
+            },
+            {
+                question: "Nhãn lồng – đặc sản nổi tiếng của tỉnh Hưng Yên – thường thu hoạch vào tháng mấy?",
+                options: ["Tháng 4 – 5", "Tháng 6 – 7", "Tháng 8 – 9", "Tháng 10 – 11"],
+                answer: 2
+            },
+            {
+                question: "Hưng Yên có di tích Phố Hiến nổi tiếng, từng được mệnh danh là gì trong lịch sử?",
+                options: ["Kinh đô của Bắc Bộ", "Tiểu Tràng An", "Phố cổ của sông Hồng", "Phố cảng thứ hai của Việt Nam"],
+                answer: 3
+            },
+            {
+                question: "Ai là vị nữ tướng nổi tiếng quê ở Hưng Yên đã tham gia khởi nghĩa Hai Bà Trưng?",
+                options: ["Lê Chân", "Bát Nàn", "Thiều Hoa", "Trưng Trắc"],
+                answer: 1
+            },
+            {
+                question: "Đền Đa Hòa ở Hưng Yên thờ nhân vật lịch sử nào?",
+                options: ["Chử Đồng Tử", "Lý Thường Kiệt", "Trần Hưng Đạo", "Phạm Ngũ Lão"],
+                answer: 0
+            },
+            {
+                question: "Con sông nào chảy qua trung tâm tỉnh Hưng Yên?",
+                options: ["Sông Hồng", "Sông Đuống", "Sông Luộc", "Sông Cầu"],
+                answer: 0
+            },
+            {
+                question: "Lễ hội Chử Đồng Tử – Tiên Dung thường được tổ chức ở huyện nào của Hưng Yên?",
+                options: ["Văn Lâm", "Khoái Châu", "Yên Mỹ", "Ân Thi"],
+                answer: 1
+            },
+            {
+                question: "Món bánh nào sau đây là đặc sản truyền thống nổi tiếng của Hưng Yên?",
+                options: ["Bánh chưng Tranh Khúc", "Bánh cuốn Phủ Lý", "Bánh răng bừa Thổ Hoàng", "Bánh gai Tứ Trụ"],
+                answer: 2
+            },
+            {
+                question: "Đặc sản nào sau đây của Hưng Yên không phải là sản phẩm làng nghề truyền thống?",
+                options: ["Tương Bần", "Nhãn lồng", "Chả mực", "Hương trầm"],
+                answer: 2
+            },
+            {
+                question: "Hưng Yên có tuyến quốc lộ nào chạy qua nối liền Hà Nội với Hải Phòng?",
+                options: ["Quốc lộ 1A", "Quốc lộ 5", "Quốc lộ 18", "Quốc lộ 21"],
+                answer: 1
+            },
+            {
+                question: "Thái Bình được mệnh danh là quê hương của loại hình nghệ thuật truyền thống nào?",
+                options: ["Quan họ", "Chèo", "Cải lương", "Tuồng"],
+                answer: 1
+            },
+            {
+                question: "Con sông lớn nào tạo thành ranh giới tự nhiên giữa Thái Bình và Nam Định?",
+                options: ["Sông Đáy", "Sông Luộc", "Sông Trà Lý", "Sông Hồng"],
+                answer: 3
+            },
+            {
+                question: "Nghề làm muối truyền thống nổi tiếng ở xã nào thuộc huyện Thái Thụy, Thái Bình?",
+                options: ["Diêm Điền", "Thụy Hải", "Thụy Xuân", "Thụy Tân"],
+                answer: 0
+            },
+            {
+                question: "Lễ hội đền Đồng Bằng ở Thái Bình thờ vị thần nào?",
+                options: ["Đức Thánh Trần", "Vua Đinh Tiên Hoàng", "Đức Vua Cha Bát Hải Động Đình", "Lý Nam Đế"],
+                answer: 2
+            },
+            {
+                question: "Chùa Keo – một di tích nổi tiếng của Thái Bình – có niên đại xây dựng từ thế kỷ nào?",
+                options: ["Thế kỷ XI", "Thế kỷ XII", "Thế kỷ XVII", "Thế kỷ XIX"],
+                answer: 2
+            },
+            {
+                question: "Thái Bình là quê hương của vị vua nào triều Trần?",
+                options: ["Trần Thái Tông", "Trần Nhân Tông", "Trần Cảnh", "Trần Hưng Đạo"],
+                answer: 2
+            },
+            {
+                question: "Biển Thái Bình nổi tiếng với khu du lịch biển nào?",
+                options: ["Biển Đồng Châu", "Biển Cửa Lò", "Biển Hải Tiến", "Biển Sầm Sơn"],
+                answer: 0
+            },
+            {
+                question: "Thái Bình có đặc sản nổi tiếng là cây dược liệu gì được trồng nhiều ở huyện Quỳnh Phụ?",
+                options: ["Hoa cúc", "Hoa nhài", "Cây nghệ", "Cây thìa canh"],
+                answer: 3
+            },
+            {
+                question: "Ngôi làng nghề nào của Thái Bình nổi tiếng với sản phẩm chiếu cói truyền thống?",
+                options: ["Làng Hới", "Làng Vạn Phúc", "Làng Ninh Hiệp", "Làng Đông Hồ"],
+                answer: 0
+            },
+            {
+                question: "Địa hình chủ yếu của Thái Bình là gì?",
+                options: ["Đồng bằng ven biển", "Trung du", "Đồi núi thấp", "Cao nguyên"],
+                answer: 0
             }
         ];
         
@@ -316,6 +416,7 @@ window.addEventListener("resize", updatePadding);
         let timer;
         let timeLeft = 15;
         let selectedOption = null;
+        let questions = []; // Mảng chứa 10 câu hỏi ngẫu nhiên
         
         // DOM Elements
         const startScreen = document.querySelector('.start-screen');
@@ -338,11 +439,21 @@ window.addEventListener("resize", updatePadding);
         restartBtn.addEventListener('click', restartGame);
         
         function startGame() {
+            // Chọn ngẫu nhiên 10 câu hỏi từ danh sách
+            questions = getRandomQuestions(10);
+            
             startScreen.style.display = 'none';
             gameScreen.style.display = 'block';
             currentQuestion = 0;
             score = 0;
             loadQuestion();
+        }
+        
+        // Hàm chọn ngẫu nhiên n câu hỏi từ danh sách
+        function getRandomQuestions(n) {
+            // Tạo bản sao của mảng allQuestions để không ảnh hưởng đến mảng gốc
+            const shuffled = [...allQuestions].sort(() => 0.5 - Math.random());
+            return shuffled.slice(0, n);
         }
         
         function loadQuestion() {
