@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gạo Hưng Yên - Thương hiệu gạo chất lượng cao</title>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-red: #d70202;
+            --light-yellow: #fff3b6;
+        }
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding-top: 100px;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .banner-container {
+            width: 100%;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .banner-container img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--light-yellow);
+            color: var(--primary-red);
+            padding: 12px 30px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn:hover {
+            background-color: white;
+            transform: translateY(-3px);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        section {
+            padding: 60px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            color: var(--primary-red);
+            margin-bottom: 40px;
+            position: relative;
+        }
+        
+        .section-title:after {
+            content: "";
+            display: block;
+            width: 80px;
+            height: 3px;
+            background-color: var(--primary-red);
+            margin: 15px auto;
+        }
+        
+        .intro-text {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 40px;
+            font-size: 1.1rem;
+        }
+        
+        .info-boxes {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 40px;
+            gap: 20px;
+        }
+        
+        .info-box {
+            flex: 1;
+            padding: 25px;
+            background-color: var(--light-yellow);
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        
+        .info-box:hover {
+            transform: translateY(-5px);
+        }
+        
+        .info-box h3 {
+            color: var(--primary-red);
+            margin-top: 0;
+            font-size: 1.3rem;
+            border-bottom: 2px solid var(--primary-red);
+            padding-bottom: 10px;
+        }
+        
+        .gallery {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .gallery-item {
+            flex: 0 1 calc(50% - 15px);
+            max-width: 500px;
+            position: relative;
+            overflow: hidden;
+            border-radius: 5px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+        
+        .stats-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            margin-top: 40px;
+        }
+        
+        .stat-item {
+            text-align: center;
+            margin: 20px;
+            flex: 1 1 200px;
+        }
+        
+        .stat-number {
+            font-size: 3rem;
+            font-weight: bold;
+            color: var(--primary-red);
+            margin-bottom: 10px;
+        }
+        
+        .stat-label {
+            font-size: 1.1rem;
+        }
+        
+        .vision-cards {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .vision-card {
+            flex: 1 1 300px;
+            background-color: white;
+            border-radius: 8px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        
+        .vision-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .vision-card h3 {
+            color: var(--primary-red);
+            border-bottom: 2px solid var(--light-yellow);
+            padding-bottom: 10px;
+        }
+
+        /* New styles for rice journey section */
+        .rice-journey {
+            background-color: #f9f9f9;
+            padding: 60px 0;
+        }
+
+        .journey-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .journey-item {
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .journey-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .journey-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .journey-caption {
+            padding: 15px;
+            background-color: white;
+            text-align: center;
+        }
+        
+        @media (max-width: 768px) {
+            .info-boxes {
+                flex-direction: column;
+            }
+            
+            .gallery {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .gallery-item {
+                flex: 0 1 auto;
+                max-width: 100%;
+                width: 100%;
+            }
+
+            .journey-gallery {
+                grid-template-columns: 1fr;
+            }
+        }
+    .iframe-layer {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 520px; /* chỉ phần trên cùng */
+        z-index: 9999;
+        pointer-events: none; /* cho phép click xuyên */
+    }
+
+    .iframe-layer iframe {
+        width: 100%;
+        height: 100%;
+        border: none;
+        display: block;
+        pointer-events: auto; /* vẫn click được bên trong iframe */
+    }
+
+</style>
+</head>
+<body>
+
+    <!-- Iframe trên cùng -->
+    <div class="iframe-layer">
+        <iframe src="https://hungyenhoinhapvaphattrien.github.io/vi/top"></iframe>
+    </div>
+        
+<script>
+function updatePadding() {
+  const screenWidth = window.innerWidth; 
+  const padding = screenWidth * 0.2; 
+  document.body.style.paddingTop = padding + "px";
+}
+
+window.addEventListener("load", updatePadding);
+window.addEventListener("resize", updatePadding);
+</script>
+    
+    <section id="overview">
+        <div class="container">
+            <h2 class="section-title"><i class="fas fa-seedling"></i> ĐỀ XUẤT PHÁT TRIỂN THƯƠNG HIỆU GẠO HƯNG YÊN</h2>
+            
+            <div class="info-boxes">
+                <div class="info-box">
+                    <h3>Tiềm năng sản xuất</h3>
+                    <p>• Diện tích gieo cấy lúa hằng năm đạt 145.000-155.000 ha</p>
+                    <p>• Năng suất cao (130-132 tạ/ha)</p>
+                    <p>• Sản lượng thóc ổn định ~1 triệu tấn/năm</p>
+                    <p>• Hơn 10.778 ha sản xuất theo chuỗi giá trị hợp đồng</p>
+                </div>
+                
+                <div class="info-box">
+                    <h3>Các vùng sản xuất chính</h3>
+                    <p>• Tiền Hải: TBR39, Bắc Thơm 7, OCOP</p>
+                    <p>• Đông Hưng: lúa hữu cơ - rươi sinh thái ~60ha</p>
+                    <p>• Thái Thụy: giống chất lượng cao TBR225</p>
+                    <p>• Quỳnh Phụ, Vũ Thư, Kiến Xương: Tám Xuân, Hom Râu, Nếp Keo, Rươi Hồng Tiến (OCOP 3 sao)</p>
+                </div>
+                
+                <div class="info-box">
+                    <h3>Công nghệ áp dụng</h3>
+                    <p>• Canh tác ngập - đứt xen kẽ</p>
+                    <p>• Sử dụng UAV</p>
+                    <p>• Tiêu chuẩn VietGAP, Organic</p>
+                    <p>• Công nghệ cảm biến nước - dinh dưỡng</p>
+                    <p>• 200 cơ sở chế biến, công suất >200.000 tấn/năm</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="strategy" style="background-color: #f9f9f9;">
+        <div class="container">
+            <h2 class="section-title"><i class="fas fa-chart-line"></i> ĐỊNH HƯỚNG PHÁT TRIỂN</h2>
+            
+            <div class="vision-cards">
+                <div class="vision-card">
+                    <h3>1. Cuộc thi video sáng tạo</h3>
+                    <p>"Hành trình hạt gạo Thái Bình - Từ cánh đồng đến bàn ăn thế giới" (3-5 phút, phụ đề tiếng Anh)</p>
+                    <p>Khẩu hiệu: "Rice from the heart of Red River - Clean. Safe. Delicious." hoặc "Thái Bình Rice - Purely Vietnamese. Globally Loved."</p>
+                    <p>Kênh phát: Facebook, YouTube, TikTok, hội chợ nông nghiệp quốc tế, VTV/VTC</p>
+                </div>
+                
+                <div class="vision-card">
+                    <h3>2. Hệ thống nhận diện thương hiệu</h3>
+                    <p>• Logo: "Thái Bình Rice - Green Gold of Vietnam"</p>
+                    <p>• Bao bì ghi VietGAP, Organic, mã QR truy xuất nguồn gốc</p>
+                    <p>• Hình ảnh: bông lúa, nông dân, bản đồ sông Hồng</p>
+                </div>
+            </div>
+            
+            <div class="vision-cards">
+                <div class="vision-card">
+                    <h3>3. Nền tảng số xuất khẩu</h3>
+                    <p>• Website đa ngữ (Việt - Anh - Nhật - Trung)</p>
+                    <p>• Đưa sản phẩm lên Alibaba, Amazon, Shopee Global</p>
+                </div>
+                
+                <div class="vision-card">
+                    <h3>4. Bộ ảnh "Gương mặt gạo Thái Bình"</h3>
+                    <p>• Chụp tại cánh đồng (Vũ Thư, Tiền Hải, Thái Thụy)</p>
+                    <p>• Nhà máy chế biến tại Thái Bình</p>
+                    <p>• Bếp gia đình Việt/Nhà hàng quốc tế</p>
+                    <p>• Nhân vật: học sinh, sinh viên, người mẫu, ca sĩ, kỹ sư nông nghiệp, đầu bếp, đại sứ thương hiệu</p>
+                </div>
+            </div>
+            
+            <div class="vision-cards">
+                <div class="vision-card">
+                    <h3>5. Bài PR chuyên sâu</h3>
+                    <p>• "Từ đồng rươi đến hạt gạo hữu cơ xuất khẩu châu Âu"</p>
+                    <p>• "Nông dân Thái Bình làm chủ công nghệ sạch"</p>
+                    <p>• Phát hành trên báo Nông nghiệp, Dân Việt, VietnamPlus</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <h2 class="section-title"><i class="fa-solid fa-bowl-rice"></i> MÙA LÚA THÁI BÌNH & HƯNG YÊN</h2>
+            
+            <div class="gallery">
+                <div class="gallery-item">
+                    <img src="https://cdnsgtt.thesaigontimes.vn/wp-content/uploads/2024/10/thai-binh-6.jpg" alt="Lãnh đạo tỉnh kiểm tra đồng ruộng">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://2saigon.vn/wp-content/uploads/2024/10/mua-lua-chin-dep-la-tai-thai-binh_6715abe2dde14-scaled.jpeg" alt="Lãnh đạo tỉnh thăm nhà máy">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- New Rice Journey Section -->
+    <section class="rice-journey">
+        <div class="container">
+            <h2 class="section-title"><i class="fas fa-route"></i> HÀNH TRÌNH HẠT GẠO THÁI BÌNH</h2>
+            <p class="intro-text">Từ cánh đồng đến bàn ăn thế giới</p>
+            
+            <div class="journey-gallery">
+                <div class="journey-item">
+                    <img src="https://i.ibb.co/4ZCFQ2J6/image.png" alt="Hạt giống chất lượng">
+                    <div class="journey-caption">Người Hàn quốc trải nghiệm gạo Thái Bình</div>
+                </div>
+                <div class="journey-item">
+                    <img src="https://i.ibb.co/5gKkRsXp/image.png" alt="Canh tác hiện đại">
+                    <div class="journey-caption">Người Hàn quốc trải nghiệm gạo Thái Bình</div>
+                </div>
+                <div class="journey-item">
+                    <img src="https://i.ibb.co/gLK227yN/image.png" alt="Thu hoạch lúa">
+                    <div class="journey-caption">Người Hàn quốc trải nghiệm gạo Thái Bình</div>
+                </div>
+                <div class="journey-item">
+                    <img src="https://i.ibb.co/fd5yYdwz/image.png" alt="Gạo Thái Bình đến thế giới">
+                    <div class="journey-caption">Người Hàn quốc trải nghiệm gạo Thái Bình</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="leader">
+        <div class="container">
+            <h2 class="section-title"><i class="fas fa-user-tie"></i> LÃNH ĐẠO TỈNH CHỈ ĐẠO</h2>
+            
+            <div class="gallery">
+                <div class="gallery-item">
+                    <img src="https://cdn.nhandan.vn/images/1ef398c4e2fb4bf07980a2ded785b3efb22a74c3b1c89eac8b349697e514a915685457efba553e3011197b041dc7e792c2381094306107c33e4c998a37d06158/img-3813-876.jpg" alt="Lãnh đạo tỉnh kiểm tra đồng ruộng">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://thaibinh.gov.vn/upload/80571/fck/files/42de0531341460772ee28c1b78f5bc36.jpg" alt="Lãnh đạo tỉnh thăm nhà máy">
+                </div>
+            </div>
+            
+            <div class="info-boxes" style="margin-top: 40px;">
+                <div class="info-box">
+                    <h3>Các hoạt động chỉ đạo</h3>
+                    <p>• Thăm mô hình nâng cao giá trị tại Bình Định (Kiến Xương)</p>
+                    <p>• Thị sát nhà máy giống ThaiBinh Seed ở Vũ Chính (TP Thái Bình)</p>
+                    <p>• Làm việc tại Viện nghiên cứu cây trồng (Đông Xá)</p>
+                    <p>• Kiểm tra đồng ruộng tại Quỳnh Trang (Quỳnh Phụ)</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="container">
+            <!-- Đã bỏ phần footer theo yêu cầu -->
+        </div>
+    </footer>
+</body>
+</html>
