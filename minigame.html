@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mini Game - Kiến Thức Hưng Yên Mới</title>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-red: #d70202;
+            --light-yellow: #fff3b6;
+        }
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            line-height: 1.6;
+            background-color: #f5f5f5;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--light-yellow);
+            color: var(--primary-red);
+            padding: 12px 30px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s;
+            cursor: pointer;
+            border: none;
+            font-size: 1rem;
+        }
+        
+        .btn:hover {
+            background-color: white;
+            transform: translateY(-3px);
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .section-title {
+            text-align: center;
+            color: var(--primary-red);
+            margin-bottom: 20px;
+            position: relative;
+        }
+        
+        .section-title:after {
+            content: "";
+            display: block;
+            width: 80px;
+            height: 3px;
+            background-color: var(--primary-red);
+            margin: 15px auto;
+        }
+        
+        .intro-text {
+            text-align: center;
+            margin: 0 auto 20px;
+            font-size: 1.1rem;
+        }
+        
+        /* Game Styles */
+        .game-container {
+            background-color: white;
+            border-radius: 8px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            margin: 20px auto;
+        }
+        
+        .start-screen, .game-screen, .result-screen {
+            text-align: center;
+        }
+        
+        .game-screen, .result-screen {
+            display: none;
+        }
+        
+        .timer-container {
+            height: 10px;
+            background-color: #eee;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            overflow: hidden;
+        }
+        
+        .timer-bar {
+            height: 100%;
+            background-color: var(--primary-red);
+            width: 100%;
+            transition: width 1s linear;
+        }
+        
+        .question {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+        
+        .options {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+        
+        .option {
+            padding: 15px;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-align: left;
+        }
+        
+        .option:hover {
+            background-color: var(--light-yellow);
+            border-color: var(--primary-red);
+        }
+        
+        .option.selected {
+            background-color: var(--primary-red);
+            color: white;
+            border-color: var(--primary-red);
+        }
+        
+        .progress {
+            margin-bottom: 20px;
+            font-weight: bold;
+            color: var(--primary-red);
+        }
+        
+        .result-icon {
+            font-size: 5rem;
+            margin-bottom: 20px;
+        }
+        
+        .bronze {
+            color: #cd7f32; /* Màu đồng */
+        }
+        
+        .silver {
+            color: #c0c0c0; /* Màu bạc */
+        }
+        
+        .gold {
+            color: #ffd700; /* Màu vàng */
+        }
+        
+        .result-message {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+        
+        .score {
+            font-size: 1.5rem;
+            color: var(--primary-red);
+            margin-bottom: 20px;
+        }
+        
+        @media (max-width: 768px) {
+            .game-container {
+                padding: 20px;
+            }
+            
+            .question {
+                font-size: 1.1rem;
+            }
+        }
+    .iframe-layer {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 520px; /* chỉ phần trên cùng */
+        z-index: 9999;
+        pointer-events: none; /* cho phép click xuyên */
+    }
+
+    .iframe-layer iframe {
+        width: 100%;
+        height: 100%;
+        border: none;
+        display: block;
+        pointer-events: auto; /* vẫn click được bên trong iframe */
+    }
+
+</style>
+</head>
+<body>
+
+    <!-- Iframe trên cùng -->
+    <div class="iframe-layer">
+        <iframe src="https://hungyenhoinhapvaphattrien.github.io/vi/top"></iframe>
+    </div>
+        
+<script>
+function updatePadding() {
+  const screenWidth = window.innerWidth; 
+  const padding = screenWidth * 0.2; 
+  document.body.style.paddingTop = 50 + padding + "px";
+}
+
+window.addEventListener("load", updatePadding);
+window.addEventListener("resize", updatePadding);
+</script>
+    <div class="container">
+        <h2 class="section-title"><i class="fas fa-gamepad"></i> MINI GAME: KIẾN THỨC HƯNG YÊN MỚI</h2>
+        <p class="intro-text">Thử thách kiến thức của bạn về tỉnh Hưng Yên sau khi sát nhập với Thái Bình</p>
+        
+        <div class="game-container">
+            <!-- Start Screen -->
+            <div class="start-screen">
+                <h3>Luật chơi:</h3>
+                <p>- Bạn có 15 giây để trả lời mỗi câu hỏi</p>
+                <p>- Tổng cộng có 10 câu hỏi trắc nghiệm</p>
+                <p>- Kết quả sẽ được đánh giá dựa trên số câu trả lời đúng</p>
+                <button id="start-btn" class="btn">Bắt đầu chơi</button>
+            </div>
+            
+            <!-- Game Screen -->
+            <div class="game-screen">
+                <div class="timer-container">
+                    <div class="timer-bar" id="timer-bar"></div>
+                </div>
+                <div class="progress" id="progress">Câu 1/10</div>
+                <div class="question" id="question"></div>
+                <div class="options" id="options"></div>
+                <button id="next-btn" class="btn">Câu tiếp theo</button>
+            </div>
+            
+            <!-- Result Screen -->
+            <div class="result-screen">
+                <div class="result-icon" id="result-icon">
+                    <i class="fas fa-medal"></i>
+                </div>
+                <div class="score" id="score"></div>
+                <div class="result-message" id="result-message"></div>
+                <button id="restart-btn" class="btn">Chơi lại</button>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Câu hỏi và đáp án
+        const questions = [
+            {
+                question: "Tỉnh Hưng Yên mới được sát nhập với tỉnh nào?",
+                options: ["Hải Dương", "Hà Nam", "Thái Bình", "Hà Nội"],
+                answer: 2
+            },
+            {
+                question: "Hưng Yên nổi tiếng với đặc sản nào sau đây?",
+                options: ["Nhãn lồng", "Vải thiều", "Xoài cát", "Sầu riêng"],
+                answer: 0
+            },
+            {
+                question: "Di tích lịch sử nào sau đây nằm ở Hưng Yên?",
+                options: ["Đền Hùng", "Đền Trần", "Chùa Chuông", "Văn Miếu"],
+                answer: 2
+            },
+            {
+                question: "Hưng Yên được mệnh danh là gì?",
+                options: ["Đất học", "Đất võ", "Đất nghề", "Đất thép"],
+                answer: 0
+            },
+            {
+                question: "Sông nào chảy qua địa phận Hưng Yên?",
+                options: ["Sông Hồng", "Sông Đáy", "Sông Luộc", "Tất cả các đáp án trên"],
+                answer: 3
+            },
+            {
+                question: "Lễ hội đặc trưng của Hưng Yên là gì?",
+                options: ["Lễ hội chùa Hương", "Lễ hội đền Mẫu", "Lễ hội Phố Hiến", "Lễ hội Gò Đống Đa"],
+                answer: 2
+            },
+            {
+                question: "Hưng Yên tiếp giáp với tỉnh nào sau đây?",
+                options: ["Bắc Ninh", "Hải Phòng", "Nam Định", "Tất cả các đáp án trên"],
+                answer: 3
+            },
+            {
+                question: "Nghề truyền thống nào nổi tiếng ở Hưng Yên?",
+                options: ["Gốm sứ", "Dệt lụa", "Chạm khắc gỗ", "Làm nón lá"],
+                answer: 1
+            },
+            {
+                question: "Danh nhân nào sau đây quê ở Hưng Yên?",
+                options: ["Nguyễn Trãi", "Chu Văn An", "Phạm Ngũ Lão", "Lê Quý Đôn"],
+                answer: 2
+            },
+            {
+                question: "Hưng Yên được thành lập vào năm nào?",
+                options: ["1831", "1890", "1900", "1954"],
+                answer: 0
+            }
+        ];
+        
+        // Biến game
+        let currentQuestion = 0;
+        let score = 0;
+        let timer;
+        let timeLeft = 15;
+        let selectedOption = null;
+        
+        // DOM Elements
+        const startScreen = document.querySelector('.start-screen');
+        const gameScreen = document.querySelector('.game-screen');
+        const resultScreen = document.querySelector('.result-screen');
+        const startBtn = document.getElementById('start-btn');
+        const nextBtn = document.getElementById('next-btn');
+        const restartBtn = document.getElementById('restart-btn');
+        const questionEl = document.getElementById('question');
+        const optionsEl = document.getElementById('options');
+        const progressEl = document.getElementById('progress');
+        const timerBar = document.getElementById('timer-bar');
+        const scoreEl = document.getElementById('score');
+        const resultMessageEl = document.getElementById('result-message');
+        const resultIconEl = document.getElementById('result-icon');
+        
+        // Bắt đầu game
+        startBtn.addEventListener('click', startGame);
+        nextBtn.addEventListener('click', nextQuestion);
+        restartBtn.addEventListener('click', restartGame);
+        
+        function startGame() {
+            startScreen.style.display = 'none';
+            gameScreen.style.display = 'block';
+            currentQuestion = 0;
+            score = 0;
+            loadQuestion();
+        }
+        
+        function loadQuestion() {
+            resetTimer();
+            startTimer();
+            
+            const question = questions[currentQuestion];
+            questionEl.textContent = question.question;
+            progressEl.textContent = `Câu ${currentQuestion + 1}/${questions.length}`;
+            
+            optionsEl.innerHTML = '';
+            question.options.forEach((option, index) => {
+                const optionEl = document.createElement('div');
+                optionEl.classList.add('option');
+                optionEl.textContent = option;
+                optionEl.dataset.index = index;
+                optionEl.addEventListener('click', selectOption);
+                optionsEl.appendChild(optionEl);
+            });
+            
+            nextBtn.disabled = true;
+            selectedOption = null;
+        }
+        
+        function selectOption(e) {
+            const selectedIndex = parseInt(e.target.dataset.index);
+            
+            // Bỏ chọn option trước đó nếu có
+            if (selectedOption !== null) {
+                optionsEl.children[selectedOption].classList.remove('selected');
+            }
+            
+            // Chọn option mới
+            e.target.classList.add('selected');
+            selectedOption = selectedIndex;
+            nextBtn.disabled = false;
+        }
+        
+        function nextQuestion() {
+            // Kiểm tra đáp án
+            if (selectedOption === questions[currentQuestion].answer) {
+                score++;
+            }
+            
+            // Chuyển sang câu hỏi tiếp theo hoặc kết thúc game
+            currentQuestion++;
+            if (currentQuestion < questions.length) {
+                loadQuestion();
+            } else {
+                endGame();
+            }
+        }
+        
+        function endGame() {
+            clearInterval(timer);
+            gameScreen.style.display = 'none';
+            resultScreen.style.display = 'block';
+            
+            // Hiển thị kết quả
+            scoreEl.textContent = `Bạn đã trả lời đúng ${score}/${questions.length} câu`;
+            
+            // Đánh giá kết quả
+            if (score < 5) {
+                resultMessageEl.textContent = "Kiến thức của bạn chưa vững về Hưng Yên mới";
+                resultIconEl.innerHTML = '<i class="fas fa-medal bronze"></i>';
+            } else if (score < 10) {
+                resultMessageEl.textContent = "Bạn đã có kiến thức khá ổn về Hưng Yên mới";
+                resultIconEl.innerHTML = '<i class="fas fa-medal silver"></i>';
+            } else {
+                resultMessageEl.textContent = "Thật tuyệt vời! Bạn rất am hiểu về Hưng Yên mới";
+                resultIconEl.innerHTML = '<i class="fas fa-medal gold"></i>';
+            }
+        }
+        
+        function restartGame() {
+            resultScreen.style.display = 'none';
+            startGame();
+        }
+        
+        function startTimer() {
+            timeLeft = 15;
+            updateTimerBar();
+            
+            timer = setInterval(() => {
+                timeLeft--;
+                updateTimerBar();
+                
+                if (timeLeft <= 0) {
+                    clearInterval(timer);
+                    nextQuestion();
+                }
+            }, 1000);
+        }
+        
+        function resetTimer() {
+            clearInterval(timer);
+            timeLeft = 15;
+            updateTimerBar();
+        }
+        
+        function updateTimerBar() {
+            const percentage = (timeLeft / 15) * 100;
+            timerBar.style.width = `${percentage}%`;
+            
+            // Đổi màu khi thời gian sắp hết
+            if (timeLeft <= 5) {
+                timerBar.style.backgroundColor = '#ff0000';
+            } else {
+                timerBar.style.backgroundColor = 'var(--primary-red)';
+            }
+        }
+    </script>
+</body>
+</html>
