@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đầu tư & Ngành nghề Hưng Yên mới - Cơ hội phát triển bền vững</title>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-red: #d70202;
+            --light-yellow: #fff3b6;
+        }
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            line-height: 1.5;
+            background-color: #f5f5f5;
+        }
+        
+        .banner-container {
+            width: 100%;
+            overflow: hidden;
+        }
+        
+        .banner-container img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--light-yellow);
+            color: var(--primary-red);
+            padding: 8px 20px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s;
+            font-size: 0.9rem;
+        }
+        
+        .btn:hover {
+            background-color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        section {
+            padding: 20px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            color: var(--primary-red);
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+        
+        .section-title:after {
+            content: "";
+            display: block;
+            width: 60px;
+            height: 2px;
+            background-color: var(--primary-red);
+            margin: 10px auto;
+        }
+        
+        .intro-text {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 15px;
+            font-size: 0.95rem;
+        }
+        
+        .info-boxes {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 15px;
+        }
+        
+        .info-box {
+            flex: 1 1 300px;
+            padding: 15px;
+            background-color: var(--light-yellow);
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        
+        .info-box:hover {
+            transform: translateY(-3px);
+        }
+        
+        .info-box h3 {
+            color: var(--primary-red);
+            margin: 0 0 10px;
+            font-size: 1.1rem;
+            border-bottom: 1px solid var(--primary-red);
+            padding-bottom: 8px;
+        }
+        
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 15px;
+            justify-content: center;
+        }
+        
+        .gallery-item {
+            flex: 1 1 300px;
+            max-width: 500px;
+            position: relative;
+            overflow: hidden;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            transition: transform 0.4s;
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.03);
+        }
+        
+        .stats-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 15px;
+        }
+        
+        .stat-item {
+            text-align: center;
+            padding: 10px;
+            flex: 1 1 120px;
+        }
+        
+        .stat-number {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--primary-red);
+            margin-bottom: 5px;
+        }
+        
+        .stat-label {
+            font-size: 0.9rem;
+        }
+        
+        .vision-cards {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 15px;
+            justify-content: center;
+        }
+        
+        .vision-card {
+            flex: 1 1 300px;
+            background-color: white;
+            border-radius: 5px;
+            padding: 15px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        
+        .vision-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .vision-card h3 {
+            color: var(--primary-red);
+            margin: 0 0 10px;
+            font-size: 1.1rem;
+            border-bottom: 1px solid var(--light-yellow);
+            padding-bottom: 8px;
+        }
+
+        /* Footer styles */
+        .footer-content {
+            background-color: var(--primary-red);
+            color: white;
+            padding: 20px 0;
+        }
+        
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        
+        .footer-section {
+            flex: 1;
+            min-width: 200px;
+        }
+        
+        .footer-section h3 {
+            color: var(--light-yellow);
+            margin: 0 0 10px;
+            font-size: 1.1rem;
+            border-bottom: 1px solid var(--light-yellow);
+            padding-bottom: 8px;
+        }
+        
+        .footer-contact-item {
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            font-size: 0.9rem;
+        }
+        
+        .footer-contact-item i {
+            margin-right: 6px;
+            color: var(--light-yellow);
+        }
+        
+        .rating-options {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 8px;
+            flex-wrap: wrap;
+        }
+        
+        .rating-option {
+            display: flex;
+            align-items: center;
+            font-size: 0.9rem;
+        }
+        
+        .rating-option input {
+            margin-right: 4px;
+        }
+        
+        .submit-btn {
+            background-color: white;
+            color: var(--primary-red);
+            border: none;
+            padding: 5px 12px;
+            border-radius: 3px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: bold;
+            margin-top: 5px;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding: 10px 0;
+            background-color: var(--primary-red);
+            color: white;
+            font-size: 0.8rem;
+        }
+        
+        .social-icons {
+            margin: 10px 0 5px;
+        }
+        
+        .social-icons a {
+            color: white;
+            font-size: 1.1rem;
+            margin: 0 6px;
+            transition: color 0.3s;
+        }
+        
+        .social-icons a:hover {
+            color: var(--light-yellow);
+        }
+        
+        @media (max-width: 768px) {
+            section {
+                padding: 15px 0;
+            }
+            
+            .footer-section {
+                flex: 0 0 100%;
+            }
+        }
+    .iframe-layer {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 520px; /* chỉ phần trên cùng */
+        z-index: 9999;
+        pointer-events: none; /* cho phép click xuyên */
+    }
+
+    .iframe-layer iframe {
+        width: 100%;
+        height: 100%;
+        border: none;
+        display: block;
+        pointer-events: auto; /* vẫn click được bên trong iframe */
+    }
+
+</style>
+</head>
+<body>
+
+    <!-- Iframe trên cùng -->
+    <div class="iframe-layer">
+        <iframe src="https://hungyenhoinhapvaphattrien.github.io/vi/top"></iframe>
+    </div>
+        
+<script>
+function updatePadding() {
+  const screenWidth = window.innerWidth; 
+  const padding = screenWidth * 0.2; 
+  document.body.style.paddingTop = 50 + padding + "px";
+}
+
+window.addEventListener("load", updatePadding);
+window.addEventListener("resize", updatePadding);
+</script>
+    
+    <section id="overview">
+        <div class="container">
+            <h2 class="section-title"><i class="fas fa-chart-line"></i> ĐẦU TƯ & NGÀNH NGHỀ HƯNG YÊN MỚI</h2>
+            <p class="intro-text">Hưng Yên mới - kết quả sáp nhập từ Hưng Yên và Thái Bình cũ - mang đến cơ hội đầu tư đa dạng với thế mạnh về nông nghiệp công nghệ cao, công nghiệp chế biến và dịch vụ logistics.</p>
+            
+            <div class="info-boxes">
+                <div class="info-box">
+                    <h3>Ngành nghề thế mạnh</h3>
+                    <p>• Nông nghiệp công nghệ cao (lúa gạo, thủy sản)</p>
+                    <p>• Chế biến nông thủy sản xuất khẩu</p>
+                    <p>• Công nghiệp phụ trợ, cơ khí chế tạo</p>
+                    <p>• Dệt may, da giày chất lượng cao</p>
+                    <p>• Logistics và dịch vụ cảng biển</p>
+                </div>
+                
+                <div class="info-box">
+                    <h3>Khu công nghiệp trọng điểm</h3>
+                    <p>• KCN Phố Nối A (500ha)</p>
+                    <p>• KCN Thăng Long II (334ha)</p>
+                    <p>• KCN Đồng Văn (200ha)</p>
+                    <p>• KCN Tiền Hải (150ha)</p>
+                    <p>• KCN sinh thái Tiên Lữ (300ha)</p>
+                </div>
+                
+                <div class="info-box">
+                    <h3>Ưu đãi đầu tư</h3>
+                    <p>• Miễn giảm thuế thu nhập doanh nghiệp</p>
+                    <p>• Hỗ trợ xây dựng hạ tầng</p>
+                    <p>• Thủ tục đầu tư một cửa</p>
+                    <p>• Đào tạo nhân lực theo nhu cầu</p>
+                    <p>• Kết nối chuỗi cung ứng</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="stats" style="background-color: #f9f9f9;">
+        <div class="container">
+            <h2 class="section-title"><i class="fas fa-chart-pie"></i> CHỈ SỐ ĐẦU TƯ NỔI BẬT</h2>
+            
+            <div class="stats-container">
+                <div class="stat-item">
+                    <div class="stat-number">15+</div>
+                    <div class="stat-label">Khu công nghiệp</div>
+                </div>
+                
+                <div class="stat-item">
+                    <div class="stat-number">2.5+</div>
+                    <div class="stat-label">Tỷ USD FDI</div>
+                </div>
+                
+                <div class="stat-item">
+                    <div class="stat-number">500+</div>
+                    <div class="stat-label">Dự án đầu tư</div>
+                </div>
+                
+                <div class="stat-item">
+                    <div class="stat-number">50k+</div>
+                    <div class="stat-label">Lao động chất lượng cao</div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="projects">
+        <div class="container">
+            <h2 class="section-title"><i class="fas fa-project-diagram"></i> CƠ HỘI ĐẦU TƯ TIÊU BIỂU</h2>
+            
+            <div class="vision-cards">
+                <div class="vision-card">
+                    <h3>1. Trung tâm logistics đa phương thức</h3>
+                    <p>• Vị trí: Cạnh cảng Phố Nối</p>
+                    <p>• Diện tích: 100ha</p>
+                    <p>• Tổng vốn: 300 triệu USD</p>
+                    <p>• Tiềm năng: Kết nối đường bộ, đường thủy nội địa</p>
+                </div>
+                
+                <div class="vision-card">
+                    <h3>2. Khu nông nghiệp công nghệ cao</h3>
+                    <p>• Quy mô: 200ha tại Tiền Hải</p>
+                    <p>• Ưu tiên: Công nghệ sinh học, tưới tiết kiệm</p>
+                    <p>• Hỗ trợ: 30% chi phí hạ tầng</p>
+                </div>
+                
+                <div class="vision-card">
+                    <h3>3. Nhà máy chế biến thủy sản</h3>
+                    <p>• Công suất: 50.000 tấn/năm</p>
+                    <p>• Vốn đầu tư: 50 triệu USD</p>
+                    <p>• Thị trường: EU, Nhật Bản, Hàn Quốc</p>
+                </div>
+                
+                <div class="vision-card">
+                    <h3>4. Khu đô thị thông minh</h3>
+                    <p>• Vị trí: TP Hưng Yên mới</p>
+                    <p>• Diện tích: 150ha</p>
+                    <p>• Tiện ích: Trung tâm hành chính, giáo dục, y tế</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="leader" style="background-color: #f9f9f9;">
+        <div class="container">
+            <h2 class="section-title"><i class="fas fa-handshake"></i> HỖ TRỢ ĐẦU TƯ</h2>
+            
+            <div class="gallery">
+                <div class="gallery-item">
+                    <img src="https://lh6.googleusercontent.com/proxy/n8qEOeEd68KtO_QqswdExZVgPdoXkR-5aG4E9BltCGP3tog5SUfIPqGE5C0TRzePngroCdQMJuWzKRSx5R_uDw" alt="ABC">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://media.vietnamplus.vn/images/7255a701687d11cb8c6bbc58a6c8078596da2a719f0acb59c5c73d78ee3f60518bfcbb18005a707216da5fdba198ef7e93dbd269dad4ec7a7facf2ecd94fe1c8/thai_binh_han_quoc_2.jpg" alt="Ký kết hợp tác đầu tư">
+                </div>
+            </div>
+            
+            <div class="info-box" style="margin-top: 15px;">
+                <h3>Dịch vụ hỗ trợ nhà đầu tư</h3>
+                <p>• Tư vấn pháp lý, thủ tục đầu tư</p>
+                <p>• Kết nối đối tác địa phương</p>
+                <p>• Hỗ trợ xin giấy phép con</p>
+                <p>• Giải quyết nhanh vướng mắc</p>
+                <p>• Cung cấp thông tin thị trường</p>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer from code 1 -->
+    <div class="footer-content">
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-section">
+                    <h3>THÔNG TIN LIÊN HỆ & ĐÁNH GIÁ</h3>
+                    <div class="footer-contact-item">
+                        <i class="fas fa-phone"></i>
+                        <span>Hotline: 0977893086</span>
+                    </div>
+                    <div class="footer-contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <span>Email: Dothoinn@gmail.com</span>
+                    </div>
+                    
+                    <div style="margin-top: 10px;">
+                        <div style="margin-bottom: 5px;">Đánh giá website:</div>
+                        <div class="rating-options">
+                            <div class="rating-option">
+                                <input type="radio" id="good" name="rating" value="good" checked>
+                                <label for="good">Tốt</label>
+                            </div>
+                            <div class="rating-option">
+                                <input type="radio" id="average" name="rating" value="average">
+                                <label for="average">Bình thường</label>
+                            </div>
+                            <div class="rating-option">
+                                <input type="radio" id="poor" name="rating" value="poor">
+                                <label for="poor">Không tốt</label>
+                            </div>
+                        </div>
+                        <button type="button" class="submit-btn" onclick="submitFeedback()">Gửi đánh giá</button>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>HƯNG YÊN MỚI</h3>
+                    <p>Trang thông tin điện tử giới thiệu về tỉnh Hưng Yên sau khi sát nhập với Thái Bình</p>
+                    <div class="social-icons">
+                        <a href="https://www.facebook.com/profile.php?id=61571817887609" target="_blank"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="#"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="copyright">
+        &copy; 2025 Bản quyền thuộc về trường THPT Trưng Vương
+    </div>
+    
+    <script>
+        function submitFeedback() {
+            const rating = document.querySelector('input[name="rating"]:checked').value;
+            alert(`Cảm ơn bạn đã đánh giá website là "${getRatingText(rating)}"!`);
+            return false;
+        }
+        
+        function getRatingText(value) {
+            switch(value) {
+                case 'good': return 'Tốt';
+                case 'average': return 'Bình thường';
+                case 'poor': return 'Không tốt';
+                default: return '';
+            }
+        }
+    </script>
+</body>
+</html>
