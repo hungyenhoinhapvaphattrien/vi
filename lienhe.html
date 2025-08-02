@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thông Tin Liên Hệ - Tỉnh Hưng Yên Mới</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-red: #d70202;
+            --light-yellow: #fff3b6;
+        }
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            line-height: 1.5;
+            background-color: #f5f5f5;
+        }
+        
+        .banner-container {
+            width: 100%;
+            overflow: hidden;
+        }
+        
+        .banner-container img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--light-yellow);
+            color: var(--primary-red);
+            padding: 8px 20px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s;
+            font-size: 0.9rem;
+        }
+        
+        .btn:hover {
+            background-color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        section {
+            padding: 30px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            color: var(--primary-red);
+            margin-bottom: 20px;
+            font-size: 1.3rem;
+        }
+        
+        .section-title:after {
+            content: "";
+            display: block;
+            width: 60px;
+            height: 2px;
+            background-color: var(--primary-red);
+            margin: 10px auto;
+        }
+        
+        .intro-text {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 20px;
+            font-size: 0.95rem;
+        }
+        
+        .contact-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .contact-card {
+            flex: 1 1 300px;
+            background-color: white;
+            border-radius: 5px;
+            padding: 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .contact-card h3 {
+            color: var(--primary-red);
+            margin: 0 0 10px;
+            border-bottom: 1px solid var(--light-yellow);
+            padding-bottom: 10px;
+            font-size: 1.1rem;
+        }
+        
+        .contact-info {
+            margin-top: 15px;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 12px;
+        }
+        
+        .contact-icon {
+            color: var(--primary-red);
+            font-size: 1rem;
+            margin-right: 10px;
+            margin-top: 2px;
+        }
+        
+        .social-media {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 15px;
+        }
+        
+        .social-item {
+            display: flex;
+            align-items: center;
+            background-color: var(--light-yellow);
+            padding: 8px 15px;
+            border-radius: 4px;
+            transition: all 0.3s;
+            text-decoration: none;
+            color: #333;
+            font-size: 0.9rem;
+        }
+        
+        .social-item:hover {
+            background-color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .social-icon {
+            font-size: 1.1rem;
+            margin-right: 8px;
+            color: var(--primary-red);
+        }
+        
+        .support-item {
+            background-color: #f9f9f9;
+            padding: 12px;
+            border-radius: 4px;
+            margin-bottom: 12px;
+            font-size: 0.9rem;
+        }
+        
+        .support-item h4 {
+            margin: 0 0 5px;
+            color: var(--primary-red);
+            font-size: 1rem;
+        }
+
+        /* Footer styles */
+        .footer-content {
+            background-color: var(--primary-red);
+            color: white;
+            padding: 20px 0;
+        }
+        
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        
+        .footer-section {
+            flex: 1;
+            min-width: 200px;
+        }
+        
+        .footer-section h3 {
+            color: var(--light-yellow);
+            margin: 0 0 10px;
+            font-size: 1.1rem;
+            border-bottom: 1px solid var(--light-yellow);
+            padding-bottom: 8px;
+        }
+        
+        .footer-contact-item {
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            font-size: 0.9rem;
+        }
+        
+        .footer-contact-item i {
+            margin-right: 6px;
+            color: var(--light-yellow);
+        }
+        
+        .rating-options {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 8px;
+            flex-wrap: wrap;
+        }
+        
+        .rating-option {
+            display: flex;
+            align-items: center;
+            font-size: 0.9rem;
+        }
+        
+        .rating-option input {
+            margin-right: 4px;
+        }
+        
+        .submit-btn {
+            background-color: white;
+            color: var(--primary-red);
+            border: none;
+            padding: 5px 12px;
+            border-radius: 3px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: bold;
+            margin-top: 5px;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding: 10px 0;
+            background-color: var(--primary-red);
+            color: white;
+            font-size: 0.8rem;
+        }
+        
+        .social-icons {
+            margin: 10px 0 5px;
+        }
+        
+        .social-icons a {
+            color: white;
+            font-size: 1.1rem;
+            margin: 0 6px;
+            transition: color 0.3s;
+        }
+        
+        .social-icons a:hover {
+            color: var(--light-yellow);
+        }
+        
+        @media (max-width: 768px) {
+            .contact-card {
+                flex: 1 1 100%;
+            }
+            
+            section {
+                padding: 20px 0;
+            }
+            
+            .footer-section {
+                flex: 0 0 100%;
+            }
+        }
+    .iframe-layer {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 520px; /* chỉ phần trên cùng */
+        z-index: 9999;
+        pointer-events: none; /* cho phép click xuyên */
+    }
+
+    .iframe-layer iframe {
+        width: 100%;
+        height: 100%;
+        border: none;
+        display: block;
+        pointer-events: auto; /* vẫn click được bên trong iframe */
+    }
+
+</style>
+</head>
+<body>
+
+    <!-- Iframe trên cùng -->
+    <div class="iframe-layer">
+        <iframe src="https://hungyenhoinhapvaphattrien.github.io/vi/top"></iframe>
+    </div>
+        
+<script>
+function updatePadding() {
+  const screenWidth = window.innerWidth; 
+  const padding = screenWidth * 0.2; 
+  document.body.style.paddingTop = 50 + padding + "px";
+}
+
+window.addEventListener("load", updatePadding);
+window.addEventListener("resize", updatePadding);
+</script>
+    
+    <section id="contact">
+        <div class="container">
+            <h2 class="section-title"><i class="fas fa-address-card"></i> THÔNG TIN LIÊN HỆ</h2>
+            <p class="intro-text">Liên hệ với chúng tôi để biết thêm thông tin về tỉnh Hưng Yên mới</p>
+            
+            <div class="contact-container">
+                <div class="contact-card">
+                    <h3><i class="fas fa-user-tie"></i> Thông tin chủ trì dự án web</h3>
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-building"></i>
+                            </div>
+                            <div>
+                                <strong>Nhóm tác giả</strong>
+                                <p>Trường THPT Trưng Vương</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-user"></i>
+                            </div>
+                            <div>
+                                <strong>Người phụ trách</strong>
+                                <p>Cô T Thời</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div>
+                                <strong>Địa chỉ</strong>
+                                <p>Văn Lâm - Hưng Yên</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <div>
+                                <strong>Điện thoại</strong>
+                                <p>0977893086</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div>
+                                <strong>Email</strong>
+                                <p>Dothoinn@gmail.com</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="contact-card">
+                    <h3><i class="fas fa-hashtag"></i> Mạng xã hội & hỗ trợ</h3>
+                    
+                    <div class="social-media">
+                        <a href="https://www.facebook.com/profile.php?id=61571817887609" class="social-item">
+                            <div class="social-icon">
+                                <i class="fab fa-facebook-f"></i>
+                            </div>
+                            <div>
+                                <strong>Facebook</strong>
+                                <p>61571817887609</p>
+                            </div>
+                        </a>
+                        
+                        <a href="#" class="social-item">
+                            <div class="social-icon">
+                                <i class="fab fa-zalo"></i>
+                            </div>
+                            <div>
+                                <strong>Zalo</strong>
+                                <p>0977893086</p>
+                            </div>
+                        </a>
+                    </div>
+                    
+                    <h3 style="margin-top: 20px;"><i class="fas fa-headset"></i> Hỗ trợ trực tuyến</h3>
+                    
+                    <div class="support-item">
+                        <h4>Hỗ trợ kỹ thuật website</h4>
+                        <p><i class="fas fa-phone-alt"></i> Hotline: 0977893086</p>
+                        <p><i class="fas fa-envelope"></i> Email: Dothoinn@gmail.com</p>
+                    </div>
+                    
+                    <div class="support-item">
+                        <h4>Phản ánh thông tin</h4>
+                        <p><i class="fas fa-phone-alt"></i> Hotline: 0977893086</p>
+                        <p><i class="fas fa-envelope"></i> Email: Dothoinn@gmail.com</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer from previous code -->
+    <div class="footer-content">
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-section">
+                    <h3>THÔNG TIN LIÊN HỆ & ĐÁNH GIÁ</h3>
+                    <div class="footer-contact-item">
+                        <i class="fas fa-phone"></i>
+                        <span>Hotline: 0977893086</span>
+                    </div>
+                    <div class="footer-contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <span>Email: Dothoinn@gmail.com</span>
+                    </div>
+                    
+                    <div style="margin-top: 10px;">
+                        <div style="margin-bottom: 5px;">Đánh giá website:</div>
+                        <div class="rating-options">
+                            <div class="rating-option">
+                                <input type="radio" id="good" name="rating" value="good" checked>
+                                <label for="good">Tốt</label>
+                            </div>
+                            <div class="rating-option">
+                                <input type="radio" id="average" name="rating" value="average">
+                                <label for="average">Bình thường</label>
+                            </div>
+                            <div class="rating-option">
+                                <input type="radio" id="poor" name="rating" value="poor">
+                                <label for="poor">Không tốt</label>
+                            </div>
+                        </div>
+                        <button type="button" class="submit-btn" onclick="submitFeedback()">Gửi đánh giá</button>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>HƯNG YÊN MỚI</h3>
+                    <p>Trang thông tin điện tử giới thiệu về tỉnh Hưng Yên sau khi sát nhập với Thái Bình</p>
+                    <div class="social-icons">
+                        <a href="https://www.facebook.com/profile.php?id=61571817887609" target="_blank"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="#"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="copyright">
+        &copy; 2025 Bản quyền thuộc về trường THPT Trưng Vương
+    </div>
+    
+    <script>
+        function submitFeedback() {
+            const rating = document.querySelector('input[name="rating"]:checked').value;
+            alert(`Cảm ơn bạn đã đánh giá website là "${getRatingText(rating)}"!`);
+            return false;
+        }
+        
+        function getRatingText(value) {
+            switch(value) {
+                case 'good': return 'Tốt';
+                case 'average': return 'Bình thường';
+                case 'poor': return 'Không tốt';
+                default: return '';
+            }
+        }
+    </script>
+</body>
+</html>
