@@ -396,6 +396,44 @@
             color: var(--light-yellow);
         }
         
+        /* Info row styles */
+        .info-row {
+            display: flex;
+            align-items: stretch;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+        }
+
+        .info-row img {
+            width: 40%;
+            aspect-ratio: 16/7;
+            object-fit: cover;
+        }
+
+        .info-content {
+            background-color: var(--light-yellow);
+            padding: 15px;
+            flex: 1;
+        }
+
+        .info-content h3 {
+            color: var(--primary-red);
+            margin-top: 0;
+            font-size: 1.2rem;
+            border-bottom: 1px solid var(--primary-red);
+            padding-bottom: 5px;
+        }
+        
+        /* Contact grid */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-top: 15px;
+        }
+        
         @media (max-width: 768px) {
             .tour-card, .tip-card {
                 flex: 1 1 100%;
@@ -413,26 +451,40 @@
             .footer-section {
                 flex: 0 0 100%;
             }
+            
+            .info-row {
+                flex-direction: column;
+            }
+
+            .info-row img {
+                width: 100%;
+                height: 200px;
+            }
+            
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
         }
-    .iframe-layer {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 520px; /* chỉ phần trên cùng */
-        z-index: 9999;
-        pointer-events: none; /* cho phép click xuyên */
-    }
+        
+        .iframe-layer {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 520px; /* chỉ phần trên cùng */
+            z-index: 9999;
+            pointer-events: none; /* cho phép click xuyên */
+        }
 
-    .iframe-layer iframe {
-        width: 100%;
-        height: 100%;
-        border: none;
-        display: block;
-        pointer-events: auto; /* vẫn click được bên trong iframe */
-    }
+        .iframe-layer iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            display: block;
+            pointer-events: auto; /* vẫn click được bên trong iframe */
+        }
 
-</style>
+    </style>
 </head>
 <body>
 
@@ -457,18 +509,20 @@ window.addEventListener("resize", updatePadding);
             <h2 class="section-title"><i class="fas fa-water"></i> GIỚI THIỆU TUYẾN DU LỊCH</h2>
             <p class="intro-text">Tuyến du lịch tâm linh Sông Hồng là hành trình văn hóa - tín ngưỡng liên vùng, kết nối những vùng đất "địa linh nhân kiệt" dọc theo dòng sông mẹ của nền văn minh lúa nước</p>
             
-            <div class="value-container">
-                <div class="value-item">
-                    <h3 class="value-title">Ý NGHĨA VĂN HÓA - TÂM LINH</h3>
-                    <div class="value-content">
-                        <ul>
-                            <li>Bảo tồn, gìn giữ và phát huy các giá trị văn hóa tâm linh truyền thống</li>
-                            <li>Gắn kết những vùng đất thiêng mang đậm dấu ấn "địa linh nhân kiệt"</li>
-                            <li>Tạo cơ hội tìm hiểu chiều sâu tâm linh và đạo lý "uống nước nhớ nguồn"</li>
-                        </ul>
-                    </div>
+            <div class="info-row">
+                <img src="https://bvhttdl.mediacdn.vn/291773308735864832/2024/7/10/71478quanthekhudothivinhomesoceanparkvangiangdiemdenmoicuadulichhungyen17081009-1720576595779-1720576597601122730186.jpeg" alt="Ý nghĩa văn hóa">
+                <div class="info-content">
+                    <h3>Ý NGHĨA VĂN HÓA - TÂM LINH</h3>
+                    <p>Tuyến du lịch tâm linh Sông Hồng mang ý nghĩa văn hóa sâu sắc, kết nối các di tích lịch sử, đền chùa cổ dọc theo dòng sông Hồng hùng vĩ. Hành trình này không chỉ là một chuyến đi mà còn là cơ hội để du khách tìm hiểu về lịch sử, văn hóa và tín ngưỡng của người Việt.</p>
+                    <ul>
+                        <li>Bảo tồn, gìn giữ và phát huy các giá trị văn hóa tâm linh truyền thống</li>
+                        <li>Gắn kết những vùng đất thiêng mang đậm dấu ấn "địa linh nhân kiệt"</li>
+                        <li>Tạo cơ hội tìm hiểu chiều sâu tâm linh và đạo lý "uống nước nhớ nguồn"</li>
+                    </ul>
                 </div>
-                
+            </div>
+            
+            <div class="value-container">
                 <div class="value-item">
                     <h3 class="value-title">Ý NGHĨA LỊCH SỬ - BẢN SẮC DÂN TỘC</h3>
                     <div class="value-content">
@@ -476,6 +530,8 @@ window.addEventListener("resize", updatePadding);
                             <li>Hành trình xuyên suốt qua các vùng văn hóa lớn của châu thổ sông Hồng</li>
                             <li>Khơi dậy niềm tự hào dân tộc, khẳng định bản sắc văn hóa Việt</li>
                             <li>Giáo dục thế hệ trẻ ý thức gìn giữ di sản</li>
+                            <li>Tái hiện lịch sử phát triển của vùng đồng bằng Bắc Bộ</li>
+                            <li>Kết nối các di tích lịch sử quan trọng từ thời Hùng Vương đến nay</li>
                         </ul>
                     </div>
                 </div>
@@ -484,9 +540,11 @@ window.addEventListener("resize", updatePadding);
                     <h3 class="value-title">Ý NGHĨA KINH TẾ - XÃ HỘI</h3>
                     <div class="value-content">
                         <ul>
-                            <li>Mô hình du lịch liên kết vùng giữa 5 địa phương</li>
+                            <li>Mô hình du lịch liên kết vùng giữa các địa phương</li>
                             <li>Tạo việc làm cho người dân địa phương</li>
                             <li>Kêu gọi đầu tư tư nhân theo mô hình PPP</li>
+                            <li>Phát triển cơ sở hạ tầng du lịch đồng bộ</li>
+                            <li>Quảng bá hình ảnh văn hóa Việt Nam ra thế giới</li>
                         </ul>
                     </div>
                 </div>
@@ -503,12 +561,14 @@ window.addEventListener("resize", updatePadding);
                 <div class="tour-card">
                     <img src="https://cdn3.ivivu.com/2022/12/pho-hien-hung-yen-ivivu-1.jpg" alt="Tour 1 ngày" class="tour-image">
                     <div class="tour-content">
-                        <h3 class="tour-title">Hà Nội - Phố Hiến: Hành trình khởi đầu</h3>
+                        <h3 class="tour-title">Hà Nội - Bắc Hưng Yên: Hành trình khởi đầu</h3>
                         <span class="tour-duration"><i class="fas fa-clock"></i> 1 ngày</span>
                         <ul class="tour-highlights">
-                            <li>Tham quan Phủ Tây Hồ</li>
-                            <li>Khám phá Phố Hiến với quần thể đền chùa cổ</li>
-                            <li>Viếng đền Chử Đồng Tử</li>
+                            <li>Tham quan Phủ Tây Hồ - trung tâm tín ngưỡng thờ Mẫu</li>
+                            <li>Khám phá Bắc Hưng Yên với quần thể đền chùa cổ</li>
+                            <li>Viếng đền Chử Đồng Tử - một trong "Tứ bất tử"</li>
+                            <li>Thưởng thức ẩm thực đặc sản vùng Bắc Hưng Yên</li>
+                            <li>Trải nghiệm văn hóa tâm linh đặc sắc</li>
                         </ul>
                         <div class="tour-price">Giá: 1.200.000 VNĐ/khách</div>
                         <a href="https://www.facebook.com/profile.php?id=61571817887609" target="_blank" class="btn btn-tour">Đặt tour ngay</a>
@@ -518,12 +578,14 @@ window.addEventListener("resize", updatePadding);
                 <div class="tour-card">
                     <img src="https://baonamdinh.vn/file/e7837c02816d130b0181a995d7ad7e96/022023/1_20230202153741.png" alt="Tour 2 ngày" class="tour-image">
                     <div class="tour-content">
-                        <h3 class="tour-title">Hà Nội - Hưng Yên - Thái Bình</h3>
+                        <h3 class="tour-title">Hà Nội - Bắc Hưng Yên - Nam Hưng Yên</h3>
                         <span class="tour-duration"><i class="fas fa-clock"></i> 2 ngày 1 đêm</span>
                         <ul class="tour-highlights">
-                            <li>Tham quan đền Mẫu Phố Hiến</li>
-                            <li>Viếng đền Đồng Bằng</li>
-                            <li>Khám phá chùa Keo</li>
+                            <li>Tham quan đền Mẫu Phố Hiến - di tích quốc gia đặc biệt</li>
+                            <li>Viếng đền Đồng Bằng - nơi thờ vua cha Bát Hải</li>
+                            <li>Khám phá chùa Keo - kiến trúc độc đáo thế kỷ 17</li>
+                            <li>Trải nghiệm đời sống văn hóa làng quê Bắc Bộ</li>
+                            <li>Thưởng thức đặc sản 2 vùng Bắc - Nam Hưng Yên</li>
                         </ul>
                         <div class="tour-price">Giá: 2.500.000 VNĐ/khách</div>
                         <a href="https://www.facebook.com/profile.php?id=61571817887609" target="_blank" class="btn btn-tour">Đặt tour ngay</a>
@@ -537,8 +599,10 @@ window.addEventListener("resize", updatePadding);
                         <span class="tour-duration"><i class="fas fa-clock"></i> 4 ngày 3 đêm</span>
                         <ul class="tour-highlights">
                             <li>Hà Nội: Phủ Tây Hồ, chùa Trấn Quốc</li>
-                            <li>Hưng Yên: Đền Mẫu, đền Chử Đồng Tử</li>
-                            <li>Thái Bình: Đền Đồng Bằng, chùa Keo</li>
+                            <li>Bắc Hưng Yên: Đền Mẫu, đền Chử Đồng Tử</li>
+                            <li>Nam Hưng Yên: Đền Đồng Bằng, chùa Keo</li>
+                            <li>Trải nghiệm văn hóa tâm linh đa dạng</li>
+                            <li>Khám phá ẩm thực đặc sắc 3 vùng miền</li>
                         </ul>
                         <div class="tour-price">Giá: 5.800.000 VNĐ/khách</div>
                         <a href="https://www.facebook.com/profile.php?id=61571817887609" target="_blank" class="btn btn-tour">Đặt tour ngay</a>
@@ -553,6 +617,20 @@ window.addEventListener("resize", updatePadding);
             <h2 class="section-title"><i class="fas fa-landmark"></i> GIÁ TRỊ TÂM LINH - VĂN HÓA</h2>
             <p class="intro-text">Khám phá những giá trị văn hóa - tâm linh đặc sắc dọc theo hành trình Sông Hồng</p>
             
+            <div class="info-row">
+                <img src="https://static.vinwonders.com/production/hung-yen-o-dau-banner.jpg" alt="Giá trị văn hóa">
+                <div class="info-content">
+                    <h3>DI SẢN VĂN HÓA ĐỘC ĐÁO</h3>
+                    <p>Hành trình tâm linh Sông Hồng là bảo tàng sống của văn hóa Việt, nơi lưu giữ những giá trị tinh thần qua hàng ngàn năm lịch sử. Từ tín ngưỡng thờ Mẫu, thờ Thánh đến các lễ hội dân gian đặc sắc, mỗi điểm đến đều mang trong mình câu chuyện riêng về lịch sử và văn hóa.</p>
+                    <ul>
+                        <li>Tín ngưỡng thờ Mẫu Tam phủ - Di sản văn hóa phi vật thể UNESCO</li>
+                        <li>Nghi lễ hầu đồng, hát chầu văn độc đáo</li>
+                        <li>Múa rồng, diễn xướng dân gian đặc sắc</li>
+                        <li>Kiến trúc đền chùa cổ kính hàng trăm năm tuổi</li>
+                    </ul>
+                </div>
+            </div>
+            
             <div class="tips-container">
                 <div class="tip-card">
                     <h3><i class="fas fa-water"></i> Sông Hồng - Dòng chảy linh thiêng</h3>
@@ -561,8 +639,9 @@ window.addEventListener("resize", updatePadding);
                     <h3 style="margin-top: 15px;"><i class="fas fa-map-marked-alt"></i> Điểm đến tiêu biểu</h3>
                     <ul style="padding-left: 15px;">
                         <li><strong>Hà Nội:</strong> Phủ Tây Hồ, chùa Trấn Quốc</li>
-                        <li><strong>Hưng Yên:</strong> Đền Mẫu Phố Hiến</li>
-                        <li><strong>Thái Bình:</strong> Đền Đồng Bằng</li>
+                        <li><strong>Bắc Hưng Yên:</strong> Đền Mẫu Phố Hiến, đền Chử Đồng Tử</li>
+                        <li><strong>Nam Hưng Yên:</strong> Đền Đồng Bằng, chùa Keo</li>
+                        <li><strong>Ninh Bình:</strong> Chùa Bái Đính, Tam Cốc</li>
                     </ul>
                 </div>
                 
@@ -573,13 +652,8 @@ window.addEventListener("resize", updatePadding);
                         <li>Tín ngưỡng thờ Mẫu Tam phủ</li>
                         <li>Nghi lễ hầu đồng, hát chầu văn</li>
                         <li>Múa rồng, diễn xướng dân gian</li>
-                    </ul>
-                    
-                    <h3 style="margin-top: 15px;"><i class="fas fa-calendar-alt"></i> Lễ hội truyền thống</h3>
-                    <ul style="padding-left: 15px;">
-                        <li>Lễ hội Phủ Tây Hồ</li>
-                        <li>Lễ hội Chử Đồng Tử</li>
-                        <li>Lễ hội đền Đồng Bằng</li>
+                        <li>Nghệ thuật ca trù, hát xẩm</li>
+                        <li>Lễ hội truyền thống đặc sắc</li>
                     </ul>
                 </div>
                 
@@ -590,6 +664,8 @@ window.addEventListener("resize", updatePadding);
                         <li>"Một ngày làm người giữ đền"</li>
                         <li>"Làm lễ rước kiệu, dâng hương"</li>
                         <li>Học cách gói bánh dày, dâng lễ Mẫu</li>
+                        <li>Tham gia lớp học hát chầu văn</li>
+                        <li>Trải nghiệm nghề thủ công truyền thống</li>
                     </ul>
                 </div>
             </div>
@@ -598,68 +674,102 @@ window.addEventListener("resize", updatePadding);
     
     <section id="booking">
         <div class="container">
-            <h2 class="section-title"><i class="fas fa-calendar-check"></i> ĐẶT TOUR & LIÊN HỆ</h2>
+            <h2 class="section-title"><i class="fas fa-calendar-check"></i> ĐẶT TOUR &<br>LIÊN HỆ</h2>
             <p class="intro-text">Liên hệ với chúng tôi để đặt tour hoặc nhận tư vấn về hành trình tâm linh Sông Hồng</p>
             
-            <div class="booking-container">
-                <h3 class="booking-title">Quy trình đặt tour</h3>
-                
-                <div class="booking-steps">
-                    <div class="step">
-                        <div class="step-number">1</div>
-                        <div class="step-content">
-                            <h4>Liên hệ đặt tour</h4>
-                            <p>Gọi điện hoặc nhắn tin qua Zalo/Facebook</p>
+            <div class="info-row">
+                <img src="https://bcp.cdnchinhphu.vn/334894974524682240/2024/6/10/hy-17180215364151096761394.jpg" alt="Đặt tour">
+                <div class="info-content">
+                    <h3>QUY TRÌNH ĐẶT TOUR</h3>
+                    <div class="booking-steps">
+                        <div class="step">
+                            <div class="step-number">1</div>
+                            <div class="step-content">
+                                <h4>Liên hệ đặt tour</h4>
+                                <p>Gọi điện hoặc nhắn tin qua Zalo/Facebook để được tư vấn chi tiết về các tour phù hợp với nhu cầu của bạn. Chúng tôi luôn sẵn sàng hỗ trợ 24/7.</p>
+                            </div>
                         </div>
-                    </div>
-                    
-                    <div class="step">
-                        <div class="step-number">2</div>
-                        <div class="step-content">
-                            <h4>Xác nhận thông tin</h4>
-                            <p>Chúng tôi sẽ gửi chi tiết tour</p>
+                        
+                        <div class="step">
+                            <div class="step-number">2</div>
+                            <div class="step-content">
+                                <h4>Xác nhận thông tin</h4>
+                                <p>Sau khi nhận yêu cầu, chúng tôi sẽ gửi chi tiết tour bao gồm lịch trình, giá cả, dịch vụ bao gồm và các thông tin cần thiết khác qua email hoặc tin nhắn.</p>
+                            </div>
                         </div>
-                    </div>
-                    
-                    <div class="step">
-                        <div class="step-number">3</div>
-                        <div class="step-content">
-                            <h4>Thanh toán & nhận vé</h4>
-                            <p>Thanh toán qua chuyển khoản hoặc tiền mặt</p>
+                        
+                        <div class="step">
+                            <div class="step-number">3</div>
+                            <div class="step-content">
+                                <h4>Thanh toán & nhận vé</h4>
+                                <p>Thanh toán qua chuyển khoản ngân hàng hoặc tiền mặt tại văn phòng. Sau khi thanh toán, bạn sẽ nhận được vé điện tử và hướng dẫn chi tiết cho chuyến đi.</p>
+                            </div>
                         </div>
                     </div>
                 </div>
-                
-                <div class="contact-info">
-                    <h3 style="color: var(--primary-red); margin-top: 20px;"><i class="fas fa-phone-alt"></i> Thông tin liên hệ</h3>
-                    
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <i class="fas fa-phone"></i>
+            </div>
+            
+            <div class="booking-container">
+                <div class="contact-grid">
+                    <div>
+                        <h3 class="booking-title"><i class="fas fa-phone-alt"></i> THÔNG TIN LIÊN HỆ</h3>
+                        
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <div>
+                                <strong>Điện thoại</strong>
+                                <p>0977 893 086 (24/7)</p>
+                                <p>Hotline: 1900 1234</p>
+                            </div>
                         </div>
-                        <div>
-                            <strong>Điện thoại</strong>
-                            <p>0977 893 086</p>
+                        
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div>
+                                <strong>Email</strong>
+                                <p>info@hungyentravel.com</p>
+                                <p>support@hungyentravel.com</p>
+                            </div>
                         </div>
                     </div>
                     
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <i class="fab fa-facebook"></i>
+                    <div>
+                        <h3 class="booking-title"><i class="fas fa-share-alt"></i> KẾT NỐI</h3>
+                        
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fab fa-facebook"></i>
+                            </div>
+                            <div>
+                                <strong>Facebook</strong>
+                                <p><a href="https://www.facebook.com/profile.php?id=61571817887609" target="_blank">Hưng Yên Mới Travel</a></p>
+                            </div>
                         </div>
-                        <div>
-                            <strong>Facebook</strong>
-                            <p><a href="https://www.facebook.com/profile.php?id=61571817887609" target="_blank">Hưng Yên Mới Travel</a></p>
+                        
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fab fa-zalo"></i>
+                            </div>
+                            <div>
+                                <strong>Zalo</strong>
+                                <p>0977 893 086</p>
+                                <p>Nhóm Zalo cộng đồng: 500+ thành viên</p>
+                            </div>
                         </div>
-                    </div>
-                    
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <i class="fab fa-zalo"></i>
-                        </div>
-                        <div>
-                            <strong>Zalo</strong>
-                            <p>0977 893 086</p>
+                        
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div>
+                                <strong>Văn phòng</strong>
+                                <p>Số 123, đường Trưng Trắc, TP. Hưng Yên</p>
+                                <p>Giờ làm việc: 8h00 - 18h00 hàng ngày</p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -672,6 +782,15 @@ window.addEventListener("resize", updatePadding);
             <h2 class="section-title"><i class="fas fa-lightbulb"></i> THÔNG TIN HỮU ÍCH</h2>
             <p class="intro-text">Những lời khuyên giúp bạn có chuyến hành hương tâm linh trọn vẹn nhất</p>
             
+            <div class="info-row">
+                <img src="https://scontent.iocvnpt.com/resources/portal/Images/TBH/ttxuctien/ck6_606095991.jpg" alt="Thông tin hữu ích">
+                <div class="info-content">
+                    <h3>KINH NGHIỆM DU LỊCH TÂM LINH</h3>
+                    <p>Chuyến đi tâm linh không chỉ là hành trình khám phá mà còn là cơ hội để thanh tịnh tâm hồn. Để có một chuyến đi ý nghĩa và thuận lợi, du khách nên lưu ý những điểm quan trọng sau đây.</p>
+                    <p>Trang phục khi đi lễ cần kín đáo, lịch sự, ưu tiên màu sắc trang nhã. Nên mang theo tiền lẻ để làm lễ, nhưng tránh lạm dụng việc đốt vàng mã. Khi vào khu vực đền chùa, cần giữ trật tự, không nói to, không chỉ trỏ vào tượng thờ. Nên tìm hiểu trước về phong tục, nghi lễ địa phương để tránh vi phạm những điều kiêng kỵ.</p>
+                </div>
+            </div>
+            
             <div class="tips-container">
                 <div class="tip-card">
                     <h3><i class="fas fa-calendar-alt"></i> Thời điểm lý tưởng</h3>
@@ -683,7 +802,7 @@ window.addEventListener("resize", updatePadding);
                             </div>
                             <div>
                                 <strong>Xuân (tháng 1-3)</strong>
-                                <p>Mùa lễ hội lớn, thời tiết mát mẻ</p>
+                                <p>Mùa lễ hội lớn, thời tiết mát mẻ, nhiều hoạt động văn hóa đặc sắc</p>
                             </div>
                         </div>
                         
@@ -693,7 +812,17 @@ window.addEventListener("resize", updatePadding);
                             </div>
                             <div>
                                 <strong>Hè (tháng 4-6)</strong>
-                                <p>Ngắm đồng lúa chín vàng</p>
+                                <p>Ngắm đồng lúa chín vàng, thời tiết ấm áp, thuận lợi di chuyển</p>
+                            </div>
+                        </div>
+                        
+                        <div class="time-item">
+                            <div class="time-icon">
+                                <i class="fas fa-leaf"></i>
+                            </div>
+                            <div>
+                                <strong>Thu (tháng 9-11)</strong>
+                                <p>Khí hậu mát mẻ, cảnh sắc thiên nhiên đẹp, ít mưa</p>
                             </div>
                         </div>
                     </div>
@@ -702,26 +831,39 @@ window.addEventListener("resize", updatePadding);
                 <div class="tip-card">
                     <h3><i class="fas fa-suitcase"></i> Chuẩn bị hành trang</h3>
                     <ul style="padding-left: 15px;">
-                        <li>Trang phục kín đáo, lịch sự</li>
-                        <li>Giày dép thoải mái</li>
-                        <li>Tiền lẻ để làm lễ</li>
-                        <li>Máy ảnh hoặc điện thoại</li>
+                        <li>Trang phục kín đáo, lịch sự (ưu tiên màu trầm)</li>
+                        <li>Giày dép thoải mái dễ đi bộ</li>
+                        <li>Tiền lẻ để làm lễ (nên đổi trước)</li>
+                        <li>Máy ảnh hoặc điện thoại (tắt tiếng khi vào đền)</li>
+                        <li>Ô/dù, áo mưa nhẹ phòng mưa nắng</li>
+                        <li>Thuốc cá nhân (nếu cần)</li>
                     </ul>
                     
                     <h3 style="margin-top: 15px;"><i class="fas fa-utensils"></i> Ẩm thực đặc sản</h3>
                     <ul style="padding-left: 15px;">
-                        <li>Bánh cuốn làng Kênh</li>
-                        <li>Canh cá Quỳnh Côi</li>
+                        <li>Bánh cuốn làng Kênh (Bắc Hưng Yên)</li>
+                        <li>Canh cá Quỳnh Côi (Nam Hưng Yên)</li>
                         <li>Cơm cháy Ninh Bình</li>
+                        <li>Bánh gai Nễ Châu</li>
+                        <li>Chè kho Mễ Sở</li>
                     </ul>
                 </div>
                 
                 <div class="tip-card">
                     <h3><i class="fas fa-map-marked-alt"></i> Di chuyển dọc tuyến</h3>
                     <ul style="padding-left: 15px;">
-                        <li><strong>Xe máy:</strong> 100.000-150.000đ/ngày</li>
-                        <li><strong>Taxi:</strong> Có sẵn tại các điểm du lịch</li>
-                        <li><strong>Tàu sông:</strong> Trải nghiệm độc đáo</li>
+                        <li><strong>Xe máy:</strong> 100.000-150.000đ/ngày, linh hoạt nhưng mệt</li>
+                        <li><strong>Taxi:</strong> Có sẵn tại các điểm du lịch, giá 10.000-15.000đ/km</li>
+                        <li><strong>Tàu sông:</strong> Trải nghiệm độc đáo, giá 200.000-500.000đ/người</li>
+                        <li><strong>Xe đạp:</strong> Thuê tại các điểm du lịch, 50.000-80.000đ/ngày</li>
+                        <li><strong>Xe bus tour:</strong> Tiện lợi, đưa đón tận nơi</li>
+                    </ul>
+                    
+                    <h3 style="margin-top: 15px;"><i class="fas fa-hotel"></i> Lưu trú</h3>
+                    <ul style="padding-left: 15px;">
+                        <li>Khách sạn 3-4 sao: 800.000-1.500.000đ/đêm</li>
+                        <li>Homestay: 300.000-600.000đ/đêm</li>
+                        <li>Nhà nghỉ: 200.000-400.000đ/đêm</li>
                     </ul>
                 </div>
             </div>
