@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nhân Vật Nổi Tiếng - Hưng Yên Mới</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --primary-red: #d70202;
+      --secondary-orange: #ff7b00;
+    }
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background: #f9f9f9;
+      color: #333;
+      transition: padding 0.3s ease;
+    }
+
+    /* ✅ Iframe trên cùng */
+    .iframe-layer {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 520px;
+      z-index: 9999;
+      pointer-events: none;
+    }
+    .iframe-layer iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      display: block;
+      pointer-events: auto;
+    }
+
+    /* Section title */
+    .section-title {
+      text-align: center;
+      color: var(--primary-red);
+      margin: 20px 0;
+      font-size: 2rem;
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+    .section-title:after {
+      content: "";
+      display: block;
+      width: 80px;
+      height: 3px;
+      background: var(--primary-red);
+      margin: 10px auto;
+    }
+
+    /* Container */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 15px;
+    }
+
+    /* Grid nhân vật */
+    .people-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      margin-bottom: 40px;
+    }
+
+    .person-card {
+      background: #fff;
+      border-radius: 8px;
+      padding: 15px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+
+    .person-card img {
+      width: 200px;      /* chiều rộng cố định */
+      height: 270px;     /* chiều cao cố định */
+      object-fit: cover; /* cắt ảnh để vừa khung */
+      border-radius: 4px;
+    }
+
+    .person-name {
+      font-weight: bold;
+      color: var(--primary-red);
+      margin-top: 10px;
+      font-size: 1.2rem;
+    }
+
+    .person-role {
+      color: var(--secondary-orange);
+      font-weight: bold;
+      margin: 8px 0;
+      text-transform: uppercase;
+      font-size: 0.95rem;
+    }
+
+    .person-info {
+      text-align: left;
+      font-size: 0.9rem;
+      margin-top: 8px;
+    }
+
+    .person-info p {
+      margin: 3px 0;
+    }
+
+    .person-info strong {
+      color: var(--primary-red);
+    }
+
+    @media (max-width: 768px) {
+      .person-info {
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ✅ Iframe trên đỉnh -->
+  <div class="iframe-layer">
+    <iframe src="https://hungyenhoinhapvaphattrien.github.io/vi/top"></iframe>
+  </div>
+
+  <div class="container">
+    <h2 class="section-title">NHÂN VẬT NỔI TIẾNG</h2>
+
+    <!-- ✅ Hàng 1 -->
+    <div class="people-grid">
+      <div class="person-card">
+        <img src="https://cdnimage.daihoidang.vn/t400x500/Media/Graphic/Profile/2021/02/03/nguyen-duy-ngoc.JPG" alt="Nguyễn Duy Ngọc">
+        <div class="person-name">NGUYỄN DUY NGỌC</div>
+        <div class="person-role">ỦY VIÊN BỘ CHÍNH TRỊ, BÍ THƯ TRUNG ƯƠNG ĐẢNG</div>
+        <div class="person-info">
+          <p><strong>✯ Họ và tên:</strong> Nguyễn Duy Ngọc</p>
+          <p><strong>✯ Ngày sinh:</strong> 1964</p>
+          <p><strong>✯ Quê quán:</strong> Thị trấn Lương Bằng, huyện Kim Động, Hưng Yên</p>
+        </div>
+      </div>
+
+      <div class="person-card">
+        <img src="https://cdnimage.daihoidang.vn/t200x250/Media/Graphic/Profile/2024/05/22/to-lam1-ctn.jpg" alt="Tô Lâm">
+        <div class="person-name">TÔ LÂM</div>
+        <div class="person-role">TỔNG BÍ THƯ</div>
+        <div class="person-info">
+          <p><strong>✯ Họ và tên:</strong> Tô Lâm</p>
+          <p><strong>✯ Ngày sinh:</strong> 10-07-1957</p>
+          <p><strong>✯ Quê quán:</strong> Xã Nghĩa Trụ, huyện Văn Giang, Hưng Yên</p>
+        </div>
+      </div>
+
+      <div class="person-card">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/0/09/Nguyenhaininh.jpg" alt="Nguyễn Hải Ninh">
+        <div class="person-name">NGUYỄN HẢI NINH</div>
+        <div class="person-role">BỘ TRƯỞNG BỘ TƯ PHÁP</div>
+        <div class="person-info">
+          <p><strong>✯ Họ và tên:</strong> Nguyễn Hải Ninh</p>
+          <p><strong>✯ Ngày sinh:</strong> 21-04-1976</p>
+          <p><strong>✯ Quê quán:</strong> Xã Bình Minh, huyện Khoái Châu, Hưng Yên</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ✅ Hàng 2 -->
+    <div class="people-grid">
+      <div class="person-card">
+        <img src="https://cdnimage.daihoidang.vn/t400x500/Media/Graphic/Profile/2021/02/03/hoang-xuan-chien.JPG" alt="Hoàng Xuân Chiến">
+        <div class="person-name">HOÀNG XUÂN CHIẾN</div>
+        <div class="person-role">THỨ TRƯỞNG BỘ QUỐC PHÒNG</div>
+        <div class="person-info">
+          <p><strong>✯ Họ và tên:</strong> Hoàng Xuân Chiến</p>
+          <p><strong>✯ Ngày sinh:</strong> 12-04-1961</p>
+          <p><strong>✯ Quê quán:</strong> Xã Đồng Thanh, huyện Kim Động, Hưng Yên</p>
+        </div>
+      </div>
+
+      <div class="person-card">
+        <img src="https://cdnimage.daihoidang.vn/t400x500/Media/Graphic/Profile/2021/02/03/nguyen-hong-thai-a.jpg" alt="Nguyễn Hồng Thái">
+        <div class="person-name">NGUYỄN HỒNG THÁI</div>
+        <div class="person-role">THỨ TRƯỞNG BỘ QUỐC PHÒNG</div>
+        <div class="person-info">
+          <p><strong>✯ Họ và tên:</strong> Nguyễn Hồng Thái</p>
+          <p><strong>✯ Ngày sinh:</strong> 07-05-1969</p>
+          <p><strong>✯ Quê quán:</strong> Xã Xuân Trúc, huyện Ân Thi, Hưng Yên</p>
+        </div>
+      </div>
+
+      <div class="person-card">
+        <img src="https://cdnimage.baucuquochoi.vn/t400x500/Media/Graphic/Profile/2021/02/03/do-tien-sy.JPG" alt="Đỗ Tiến Sỹ">
+        <div class="person-name">ĐỖ TIẾN SỸ</div>
+        <div class="person-role">TỔNG GIÁM ĐỐC ĐÀI TIẾNG NÓI VIỆT NAM</div>
+        <div class="person-info">
+          <p><strong>✯ Họ và tên:</strong> Đỗ Tiến Sỹ</p>
+          <p><strong>✯ Ngày sinh:</strong> 02-11-1965</p>
+          <p><strong>✯ Quê quán:</strong> Xã Đình Dù, huyện Văn Lâm, tỉnh Hưng Yên</p>
+        </div>
+      </div>
+    </div>
+    
+    <div class="people-grid">
+      <div class="person-card">
+        <img src="https://cdn.tuoitre.vn/2022/7/23/thumb660d3c8a222-4d78-4a50-8b0a-cb9bbe82e7fc-1658585507817206672654.jpg" alt="Hoàng Xuân Chiến">
+        <div class="person-name">MAI HOÀNG</div>
+        <div class="person-role">GIÁM ĐỐC CÔNG AN THÀNH PHỐ HỒ CHÍ MINH</div>
+        <div class="person-info">
+          <p><strong>✯ Họ và tên:</strong> Mai Hoàng</p>
+          <p><strong>✯ Ngày sinh:</strong> 1979</p>
+          <p><strong>✯ Quê quán:</strong> Huyện Yên Mỹ, tỉnh Hưng Yên</p>
+        </div>
+      </div>
+
+      <div class="person-card">
+        <img src="https://cdnimage.baucuquochoi.vn/t400x500/Media/Graphic/Profile/2021/05/07/dong-nai5644-jpg-quan-minh-cuong.jpg" alt="Nguyễn Hồng Thái">
+        <div class="person-name">QUẢN MINH CƯỜNG</div>
+        <div class="person-role">BÍ THƯ TỈNH ỦY CAO BẰNG</div>
+        <div class="person-info">
+          <p><strong>✯ Họ và tên:</strong> Quản Minh Cường</p>
+          <p><strong>✯ Ngày sinh:</strong> 26-06-1969</p>
+          <p><strong>✯ Quê quán:</strong> Xã Nghĩa Trụ, huyện Văn Giang, tỉnh Hưng Yên</p>
+        </div>
+      </div>
+
+      <div class="person-card">
+        <img src="https://file3.qdnd.vn/data/images/0/2024/05/01/upload_2166/anhhunghoangdangvinh.jpg?dpi=150&quality=100&w=870" alt="Đỗ Tiến Sỹ">
+        <div class="person-name">HOÀNG ĐĂNG VINH</div>
+        <div class="person-role">Xã Nghĩa Trụ, huyện Văn Giang, tỉnh Hưng Yên</div>
+        <div class="person-info">
+          <p><strong>✯ Họ và tên:</strong> Hoàng Đăng Vinh</p>
+          <p><strong>✯ Ngày sinh:</strong> 02-11-1965</p>
+          <p><strong>✯ Quê quán:</strong> Xã Tiên Tiến, huyện Phù Cừ, tỉnh Hưng Yên </p>
+        </div>
+      </div>
+    </div>
+    
+  </div>
+  
+  
+  <div class="container">
+    <h2 class="section-title">TÂN BÍ THƯ, CHỦ TỊCH TỈNH HƯNG YÊN</h2>
+
+    <!-- ✅ Hàng 1 -->
+    <div class="people-grid">
+      <div class="person-card">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT-V4lYIePMXtyUtPXv73pGVY8l01TiDNiizw&s" alt="Nguyễn Duy Ngọc">
+        <div class="person-name">NGUYỄN HỮU NGHĨA</div>
+        <div class="person-role">BÍ THƯ TỈNH ỦY HƯNG YÊN</div>
+        <div class="person-info">
+          <p><strong>✯ Họ và tên:</strong> Nguyễn Hữu Nghĩa</p>
+          <p><strong>✯ Ngày sinh:</strong> 13-03-1972</p>
+          <p><strong>✯ Quê quán:</strong> Xã Vân Hà, huyện Đông Anh, thành phố Hà Nội</p>
+        </div>
+      </div>
+
+      <div class="person-card">
+        <img src="https://imgprofile.vnanet.vn/media/graphic/profile/2024/12/03/remove-bg-ai-1733215558160.png" alt="">
+        <div class="person-name">NGUYỄN KHẮC THẬN</div>
+        <div class="person-role">TỔNG BÍ THƯ</div>
+        <div class="person-info">
+          <p><strong>✯ Họ và tên:</strong> Nguyễn Khắc Thận</p>
+          <p><strong>✯ Ngày sinh:</strong> 1974</p>
+          <p><strong>✯ Quê quán:</strong> Xã Phụ Dực, Hưng Yên</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+
+  <!-- ✅ Script căn padding -->
+  <script>
+    function updatePadding() {
+      const screenWidth = window.innerWidth; 
+      const padding = screenWidth * 0.2; 
+      document.body.style.paddingTop = 50 + padding + "px";
+    }
+    window.addEventListener("load", updatePadding);
+    window.addEventListener("resize", updatePadding);
+  </script>
+
+</body>
+</html>
