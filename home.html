@@ -31,6 +31,7 @@
 
         .info-row img {
             width: 40%;
+            aspect-ratio: 16/7;
             object-fit: cover;
         }
 
@@ -368,6 +369,29 @@
             display: block;
             pointer-events: auto;
         }
+        
+        /* Education section from code 2 */
+        .education-section {
+            background-color: #f0f8ff;
+            padding: 40px 0;
+        }
+        
+        .education-content {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .education-content h2 {
+            color: var(--primary-red);
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        .education-content p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
 
     </style>
 </head>
@@ -399,7 +423,7 @@ window.addEventListener("resize", updatePadding);
                 <img src="https://bvhttdl.mediacdn.vn/291773308735864832/2024/7/10/71478quanthekhudothivinhomesoceanparkvangiangdiemdenmoicuadulichhungyen17081009-1720576595779-1720576597601122730186.jpeg" alt="Vị trí địa lý">
                 <div class="info-content">
                     <h3>Vị trí địa lý</h3>
-                    <p>Nằm trong vùng đồng bằng sông Hồng, có vị trí chiến lược trong phát triển kinh tế - xã hội của cả nước.</p>
+                    <p>Tỉnh Hưng Yên nằm ở trung tâm vùng đồng bằng sông Hồng, thuộc khu vực kinh tế trọng điểm Bắc Bộ, giữ vai trò kết nối giữa thủ đô Hà Nội với các tỉnh ven biển phía Đông. Vị trí địa lý này không chỉ thuận lợi cho giao lưu kinh tế, văn hóa, xã hội mà còn là đầu mối quan trọng trong hệ thống giao thông đường bộ, đường thủy của khu vực.</p>
                 </div>
             </div>
 
@@ -408,7 +432,7 @@ window.addEventListener("resize", updatePadding);
                 <img src="https://bcp.cdnchinhphu.vn/334894974524682240/2024/6/10/hy-17180215364151096761394.jpg" alt="Di sản văn hóa">
                 <div class="info-content">
                     <h3>Di sản văn hóa</h3>
-                    <p>Hàng trăm di tích lịch sử, làng nghề truyền thống và lễ hội đặc sắc của cả hai vùng đất.</p>
+                    <p>Hưng Yên là vùng đất giàu truyền thống văn hóa với nhiều di sản lịch sử, kiến trúc và tín ngưỡng đặc sắc được lưu giữ qua nhiều thế kỷ. Tỉnh có hàng trăm đình, chùa, đền, miếu mang giá trị nghệ thuật và tâm linh, tiêu biểu như Phố Hiến – quần thể di tích nổi tiếng từng là trung tâm giao thương sầm uất của vùng đồng bằng Bắc Bộ.</p>
                 </div>
             </div>
 
@@ -417,7 +441,7 @@ window.addEventListener("resize", updatePadding);
                 <img src="https://static.vinwonders.com/production/hung-yen-o-dau-banner.jpg" alt="Ẩm thực đặc sắc">
                 <div class="info-content">
                     <h3>Ẩm thực đặc sắc</h3>
-                    <p>Kế thừa tinh hoa ẩm thực của cả Hưng Yên và Thái Bình với nhiều món ngon nổi tiếng.</p>
+                    <p>Ẩm thực Hưng Yên mang đậm hương vị đồng bằng Bắc Bộ, kết hợp sự tinh tế trong cách chế biến với nguyên liệu tươi ngon từ vùng quê trù phú. Nổi bật nhất là nhãn lồng Hưng Yên – đặc sản nổi tiếng cả nước, cùng nhiều món ăn dân dã như bánh cuốn Phú Thị, bún thang lươn, cá mòi kho tương hay gà Đông Tảo với thịt chắc và hương vị đặc biệt.</p>
                 </div>
             </div>
 
@@ -464,11 +488,11 @@ window.addEventListener("resize", updatePadding);
     <section id="education" class="education-section">
         <div class="education-content">
             <h2><i class="fas fa-graduation-cap"></i> HỌC SINH TRƯỜNG THPT TRƯNG VƯƠNG HỌC TẬP, HỘI NHẬP VỚI KỶ NGUYÊN KỸ THUẬT SỐ</h2>
-            <p>Trong bối cảnh cuộc Cách mạng Công nghiệp 4.0 đang diễn ra mạnh mẽ, chuyển đổi số không chỉ là xu hướng mà đã trở thành yêu cầu tất yếu đối với mọi lĩnh vực, đặc biệt là giáo dục. Nhận thức rõ điều đó, trường THPT Trưng Vương đã và đang tích cực triển khai nhiều hoạt động đổi mới phương pháp dạy – học, giúp học sinh chủ động thích nghi, sáng tạo và phát triển toàn diện trong kỷ nguyên số.</p>
-            <p>Tại Trưng Vương, học sinh được tiếp cận với nhiều công cụ và nền tảng công nghệ tiên tiến trong học tập như ứng dụng trí tuệ nhân tạo (AI) trong việc luyện tập ngoại ngữ, sử dụng phần mềm học tập trực tuyến, tham gia các hoạt động STEM tích hợp liên môn hay trải nghiệm các dự án sáng tạo mang tính ứng dụng thực tiễn cao. Qua đó, học sinh không chỉ phát triển năng lực học thuật mà còn hình thành kỹ năng số, tư duy phản biện, làm việc nhóm và giải quyết vấn đề – những năng lực cốt lõi của công dân toàn cầu trong thế kỷ XXI.</p>
-            <p>Ngoài ra, nhà trường cũng thường xuyên tổ chức các buổi hội thảo, giao lưu, cuộc thi học thuật, sân chơi sáng tạo khởi nghiệp… giúp học sinh giao lưu, học hỏi và rèn luyện khả năng hội nhập quốc tế. Nhiều học sinh Trưng Vương đã tự tin tham gia các diễn đàn, cuộc thi cấp tỉnh, quốc gia về khoa học, công nghệ, đạt được những thành tích đáng tự hào.</p>
+            <p>Trong bối cảnh cuộc Cách mạng Công nghiệp 4.0 đang diễn ra mạnh mẽ, chuyển đổi số không chỉ là xu hướng mà đã trở thành yêu cầu tất yếu đối với mọi lĩnh vực, đặc biệt là giáo dục. Nhận thức rõ điều đó, trường THPT Trưng Vương đã và đang tích cực triển khai nhiều hoạt động đổi mới phương pháp dạy - học, giúp học sinh chủ động thích nghi, sáng tạo và phát triển toàn diện trong kỷ nguyên số.</p>
+            <p>Tại Trưng Vương, học sinh được tiếp cận với nhiều công cụ và nền tảng công nghệ tiên tiến trong học tập như ứng dụng trí tuệ nhân tạo (AI) trong việc luyện tập ngoại ngữ, sử dụng phần mềm học tập trực tuyến, tham gia các hoạt động STEM tích hợp liên môn hay trải nghiệm các dự án sáng tạo mang tính ứng dụng thực tiễn cao. Qua đó, học sinh không chỉ phát triển năng lực học thuật mà còn hình thành kỹ năng số, tư duy phản biện, làm việc nhóm và giải quyết vấn đề - những năng lực cốt lõi của công dân toàn cầu trong thế kỷ XXI.</p>
+            <p>Ngoài ra, nhà trường cũng thường xuyên tổ chức các buổi hội thảo, giao lưu, cuộc thi học thuật, sân chơi sáng tạo khởi nghiệp... giúp học sinh giao lưu, học hỏi và rèn luyện khả năng hội nhập quốc tế. Nhiều học sinh Trưng Vương đã tự tin tham gia các diễn đàn, cuộc thi cấp tỉnh, quốc gia về khoa học, công nghệ, đạt được những thành tích đáng tự hào.</p>
             <p>Sự đổi mới mạnh mẽ trong tư duy giáo dục và tinh thần học tập cầu tiến của học sinh trường THPT Trưng Vương chính là minh chứng sống động cho một thế hệ học sinh năng động, bản lĩnh, sẵn sàng làm chủ tri thức và công nghệ, hội nhập sâu rộng với thế giới.</p>
-            <p style="text-align: center; font-weight: bold; font-style: italic;">Trưng Vương – nơi chắp cánh cho những ước mơ bay xa trong kỷ nguyên số!</p>
+            <p style="text-align: center; font-weight: bold; font-style: italic;">Trưng Vương - nơi chắp cánh cho những ước mơ bay xa trong kỷ nguyên số!</p>
         </div>
     </section>
 
@@ -481,75 +505,112 @@ window.addEventListener("resize", updatePadding);
             <div class="news-container">
                 <div class="news-item">
                     <div class="news-img">
-                        <img src="https://i.ibb.co/q7kDR3Qh/image.png" alt="Sát nhập Hưng Yên - Thái Bình">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/V%C4%83n_mi%E1%BA%BFu_X%C3%ADch_%C4%90%E1%BA%B1ng_02.JPG/1200px-V%C4%83n_mi%E1%BA%BFu_X%C3%ADch_%C4%90%E1%BA%B1ng_02.JPG" alt="Giới thiệu Hưng Yên">
                     </div>
                     <div class="news-content">
-                        <div class="news-date"><i class="fas fa-calendar-alt"></i> 15/07/2024</div>
-                        <div class="news-title">Chính thức công bố việc sát nhập Hưng Yên và Thái Bình thành tỉnh Hưng Yên mới</div>
+                        <div class="news-date"><i class="far fa-calendar-alt"></i> 15/06/2025</div>
+                        <h3 class="news-title">Giới về tỉnh Hưng Yên - Thái Bình cũ và Hưng Yên mới</h3>
+                        <p>Tìm hiểu về lịch sử, văn hóa và những thay đổi sau khi sát nhập hai tỉnh thành một.</p>
+                        <a href="https://hungyenhoinhapvaphattrien.github.io/vi/gioithieu" class="btn" style="padding: 6px 12px; font-size: 0.8rem;" target="_blank">Xem thêm</a>
                     </div>
                 </div>
-
+                
                 <div class="news-item">
                     <div class="news-img">
-                        <img src="https://i.ibb.co/vhW75sPQ/image.png" alt="Đầu tư hạ tầng">
+                        <img src="https://dnsg.1cdn.vn/2024/08/08/tbt-to-lam.jpg">
                     </div>
                     <div class="news-content">
-                        <div class="news-date"><i class="fas fa-calendar-alt"></i> 20/07/2024</div>
-                        <div class="news-title">Dự án đầu tư hạ tầng giao thông kết nối toàn tỉnh Hưng Yên mới</div>
+                        <div class="news-date"><i class="far fa-calendar-alt"></i> 10/06/2025</div>
+                        <h3 class="news-title">Các nhân vật nổi tiếng ở Hưng Yên</h3>
+                        <p>Những người con ưu tú của Hưng Yên đã có nhiều đóng góp cho đất nước qua các thời kỳ.</p>
+                        <a href="https://hungyenhoinhapvaphattrien.github.io/vi/nhanvat" class="btn" style="padding: 6px 12px; font-size: 0.8rem;" target="_blank">Xem thêm</a>
                     </div>
                 </div>
-
+                
                 <div class="news-item">
                     <div class="news-img">
-                        <img src="https://i.ibb.co/YtyZ18p/image.png" alt="Lễ hội văn hóa">
+                        <img src="https://i.ibb.co/21pKMJhz/Banner-Kh-ngang-Tr-ch-d-n-Qu-c-kh-nh-Vi-t-Nam-Graffiti-V-ng-8.png" alt="Thư viện media">
                     </div>
                     <div class="news-content">
-                        <div class="news-date"><i class="fas fa-calendar-alt"></i> 25/07/2024</div>
-                        <div class="news-title">Lễ hội văn hóa lớn đầu tiên tại tỉnh Hưng Yên mới sau sát nhập</div>
+                        <div class="news-date"><i class="far fa-calendar-alt"></i> 05/06/2025</div>
+                        <h3 class="news-title">Thư viện media Hưng Yên</h3>
+                        <p>Tổng hợp hình ảnh, video và tư liệu quý giá về tỉnh Hưng Yên qua các thời kỳ.</p>
+                        <a href="https://hungyenhoinhapvaphattrien.github.io/vi/thuvienmedia" class="btn" style="padding: 6px 12px; font-size: 0.8rem;" target="_blank">Xem thêm</a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-
+    
     <!-- FOOTER -->
     <footer>
         <div class="footer-content">
-            <div class="footer-container">
-                <div class="footer-section">
-                    <h3>Liên hệ</h3>
-                    <div class="contact-item"><i class="fas fa-map-marker-alt"></i> Tỉnh Hưng Yên mới, Việt Nam</div>
-                    <div class="contact-item"><i class="fas fa-envelope"></i> info@hungyenmoi.vn</div>
-                    <div class="contact-item"><i class="fas fa-phone"></i> 0123 456 789</div>
-                </div>
-
-                <div class="footer-section">
-                    <h3>Đánh giá trang web</h3>
-                    <form>
-                        <div class="rating-options">
-                            <label class="rating-option"><input type="radio" name="rating" value="good"> Tốt</label>
-                            <label class="rating-option"><input type="radio" name="rating" value="average"> Trung bình</label>
-                            <label class="rating-option"><input type="radio" name="rating" value="bad"> Chưa tốt</label>
+            <div class="container">
+                <div class="footer-container">
+                    <div class="footer-section">
+                        <h3>THÔNG TIN LIÊN HỆ & ĐÁNH GIÁ</h3>
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <span>Hotline: 0977893086</span>
                         </div>
-                        <button type="submit" class="submit-btn">Gửi</button>
-                    </form>
-                </div>
-
-                <div class="footer-section">
-                    <h3>Kết nối với chúng tôi</h3>
-                    <div class="social-icons">
-                        <a href="#"><i class="fab fa-facebook"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <span>Email: Dothoinn@gmail.com</span>
+                        </div>
+                        
+                        <div style="margin-top: 15px;">
+                            <div style="margin-bottom: 8px;">Đánh giá website:</div>
+                            <div class="rating-options">
+                                <div class="rating-option">
+                                    <input type="radio" id="good" name="rating" value="good" checked>
+                                    <label for="good">Tốt</label>
+                                </div>
+                                <div class="rating-option">
+                                    <input type="radio" id="average" name="rating" value="average">
+                                    <label for="average">Bình thường</label>
+                                </div>
+                                <div class="rating-option">
+                                    <input type="radio" id="poor" name="rating" value="poor">
+                                    <label for="poor">Không tốt</label>
+                                </div>
+                            </div>
+                            <button type="button" class="submit-btn" onclick="submitFeedback()">Gửi đánh giá</button>
+                        </div>
+                    </div>
+                    
+                    <div class="footer-section">
+                        <h3>HƯNG YÊN MỚI</h3>
+                        <p>Trang thông tin điện tử giới thiệu về tỉnh Hưng Yên sau khi sát nhập với Thái Bình</p>
+                        <div class="social-icons">
+                            <a href="https://www.facebook.com/profile.php?id=61571817887609" target="_blank"><i class="fab fa-facebook"></i></a>
+                            <a href="#"><i class="fab fa-youtube"></i></a>
+                            <a href="#"><i class="fab fa-tiktok"></i></a>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
+        
         <div class="copyright">
-            &copy; 2024 Tỉnh Hưng Yên mới. All rights reserved.
+            &copy; 2025 Bản quyền thuộc về trường THPT Trưng Vương
         </div>
     </footer>
-
+    
+    <script>
+        function submitFeedback() {
+            const rating = document.querySelector('input[name="rating"]:checked').value;
+            alert(`Cảm ơn bạn đã đánh giá website là "${getRatingText(rating)}"!`);
+            return false;
+        }
+        
+        function getRatingText(value) {
+            switch(value) {
+                case 'good': return 'Tốt';
+                case 'average': return 'Bình thường';
+                case 'poor': return 'Không tốt';
+                default: return '';
+            }
+        }
+    </script>
 </body>
 </html>
