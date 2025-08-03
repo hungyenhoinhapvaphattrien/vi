@@ -17,7 +17,7 @@
             margin: 0;
             padding-top: 140px;
             color: #333;
-            line-height: 1.5;
+            line-height: 1.6;
         }
         
         .banner-container {
@@ -83,34 +83,67 @@
             margin: 0 auto 20px;
             font-size: 1rem;
         }
+
+        .sub-section-title {
+            text-align: center;
+            color: var(--primary-red);
+            margin: 30px 0 15px;
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
         
-        .info-boxes {
+        /* === BOX LAYOUT === */
+        .info-row {
             display: flex;
-            justify-content: space-between;
-            margin-top: 20px;
-            gap: 10px;
-        }
-        
-        .info-box {
-            flex: 1;
-            padding: 15px;
+            align-items: stretch;
             background-color: var(--light-yellow);
-            border-radius: 5px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            transition: transform 0.3s;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
         }
-        
-        .info-box:hover {
-            transform: translateY(-3px);
+
+        .info-row img {
+            width: 40%;
+            object-fit: cover;
+            display: block;
+            aspect-ratio: 16/8;
         }
-        
-        .info-box h3 {
+
+        .info-content {
+            padding: 15px 20px;
+            flex: 1;
+        }
+
+        .info-content h3 {
             color: var(--primary-red);
             margin-top: 0;
             font-size: 1.1rem;
             border-bottom: 1px solid var(--primary-red);
-            padding-bottom: 8px;
+            padding-bottom: 6px;
         }
+
+        /* Map image - NO fixed aspect ratio */
+        .map-image {
+            width: 100%;
+            height: auto;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            margin: 20px 0;
+        }
+
+        @media (max-width: 768px) {
+            .info-row {
+                flex-direction: column;
+            }
+
+            .info-row img {
+                width: 100%;
+                height: auto;
+                aspect-ratio: 16/8;
+            }
+        }
+        /* === END BOX === */
         
         .gallery {
             display: flex;
@@ -132,6 +165,7 @@
             width: 100%;
             height: 200px;
             object-fit: cover;
+            aspect-ratio: 16/8;
             transition: transform 0.4s;
         }
         
@@ -163,73 +197,7 @@
             border: none;
         }
         
-        /* Timeline styles - Compact version */
-        .timeline {
-            position: relative;
-            max-width: 100%;
-            margin: 20px auto;
-        }
-        
-        .timeline::after {
-            content: '';
-            position: absolute;
-            width: 4px;
-            background-color: var(--primary-red);
-            top: 0;
-            bottom: 0;
-            left: 50%;
-            margin-left: -2px;
-        }
-        
-        .timeline-item {
-            padding: 10px 30px;
-            position: relative;
-            width: 50%;
-            box-sizing: border-box;
-            margin-bottom: 15px;
-        }
-        
-        .timeline-item::after {
-            content: '';
-            position: absolute;
-            width: 20px;
-            height: 20px;
-            background-color: white;
-            border: 3px solid var(--primary-red);
-            border-radius: 50%;
-            top: 10px;
-            z-index: 1;
-        }
-        
-        .left {
-            left: -2px;
-        }
-        
-        .right {
-            left: 50%;
-        }
-        
-        .left::after {
-            right: -14px;
-        }
-        
-        .right::after {
-            left: -14px;
-        }
-        
-        .timeline-content {
-            padding: 15px;
-            background-color: white;
-            border-radius: 5px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
-        
-        .timeline-content h3 {
-            margin-top: 0;
-            font-size: 1.1rem;
-        }
-        
-        /* Stats section - Compact */
+        /* Stats section */
         .stats-container {
             display: flex;
             flex-wrap: wrap;
@@ -255,45 +223,7 @@
             font-size: 0.9rem;
         }
         
-        /* Map image */
-        .map-image {
-            width: 100%;
-            height: auto;
-            border-radius: 5px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            margin: 20px 0;
-        }
-        
-        /* Vision cards - Compact */
-        .vision-cards {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 10px;
-            margin-top: 20px;
-        }
-        
-        .vision-card {
-            flex: 1 1 50px;
-            background-color: white;
-            border-radius: 5px;
-            padding: 15px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            transition: transform 0.3s;
-        }
-        
-        .vision-card:hover {
-            transform: translateY(-3px);
-        }
-        
-        .vision-card h3 {
-            color: var(--primary-red);
-            border-bottom: 1px solid var(--light-yellow);
-            padding-bottom: 8px;
-            font-size: 1.1rem;
-        }
-        
-        /* Footer styles - Compact */
+        /* Footer styles */
         .footer-content {
             background-color: var(--primary-red);
             color: white;
@@ -389,11 +319,6 @@
                 padding: 20px 0;
             }
             
-            .info-boxes, .vision-cards {
-                flex-direction: column;
-                gap: 10px;
-            }
-            
             .gallery {
                 flex-direction: column;
                 align-items: center;
@@ -406,28 +331,6 @@
                 width: 100%;
             }
             
-            .timeline::after {
-                left: 20px;
-            }
-            
-            .timeline-item {
-                width: 100%;
-                padding-left: 50px;
-                padding-right: 15px;
-            }
-            
-            .timeline-item::after {
-                left: 11px;
-            }
-            
-            .left::after, .right::after {
-                left: 11px;
-            }
-            
-            .right {
-                left: 0;
-            }
-            
             .footer-section {
                 flex: 0 0 100%;
             }
@@ -437,9 +340,9 @@
         top: 0;
         left: 0;
         width: 100%;
-        height: 520px; /* chỉ phần trên cùng */
+        height: 520px;
         z-index: 9999;
-        pointer-events: none; /* cho phép click xuyên */
+        pointer-events: none;
     }
 
     .iframe-layer iframe {
@@ -447,7 +350,7 @@
         height: 100%;
         border: none;
         display: block;
-        pointer-events: auto; /* vẫn click được bên trong iframe */
+        pointer-events: auto;
     }
 
 </style>
@@ -473,43 +376,55 @@ window.addEventListener("resize", updatePadding);
     <section id="history">
         <div class="container">
             <h2 class="section-title"><i class="fas fa-landmark"></i> LỊCH SỬ VÙNG ĐẤT TRƯỚC SÁT NHẬP</h2>
-            <p class="intro-text">Hưng Yên và Thái Bình - Hai tỉnh giàu truyền thống văn hóa, lịch sử của vùng đồng bằng sông Hồng</p>
+            <p class="intro-text">Bắc Hưng Yên và Nam Hưng Yên - Hai vùng đất giàu truyền thống văn hóa, lịch sử của vùng đồng bằng sông Hồng</p>
             
-            <div class="timeline">
-                <div class="timeline-item left">
-                    <div class="timeline-content">
-                        <h3>Thời kỳ đầu</h3>
-                        <p>Hưng Yên từng là trung tâm thương mại phồn thịnh với phố Hiến nổi tiếng "Thứ nhất Kinh Kỳ, thứ nhì Phố Hiến". Thái Bình với truyền thống nông nghiệp lâu đời, là vựa lúa của miền Bắc.</p>
-                    </div>
+            <div class="info-row">
+                <img src="https://mediabhy.mediatech.vn/upload/image/202202/medium/47671_35_20220203085954.jpg" alt="Thời kỳ đầu">
+                <div class="info-content">
+                    <h3>Thời kỳ đầu</h3>
+                    <p>Bắc Hưng Yên từng là trung tâm thương mại phồn thịnh với phố Hiến nổi tiếng "Thứ nhất Kinh Kỳ, thứ nhì Phố Hiến". Vùng đất này có lịch sử phát triển từ rất sớm, là nơi giao thương quan trọng của cả vùng đồng bằng Bắc Bộ. Trong khi đó, Nam Hưng Yên với truyền thống nông nghiệp lâu đời, được mệnh danh là vựa lúa của miền Bắc. Vùng đất phù sa màu mỡ này đã nuôi sống bao thế hệ người dân với những cánh đồng lúa bạt ngàn.</p>
                 </div>
-                <div class="timeline-item right">
-                    <div class="timeline-content">
-                        <h3>Thế kỷ 19-20</h3>
-                        <p>Hưng Yên phát triển các làng nghề truyền thống như gốm sứ, chạm khắc. Thái Bình trở thành một trong những tỉnh đi đầu về sản xuất lương thực với hệ thống đê điều kiên cố.</p>
-                    </div>
+            </div>
+
+            <div class="info-row">
+                <img src="https://i.ytimg.com/vi/8Da7_64ThaY/maxresdefault.jpg" alt="Thế kỷ 19-20">
+                <div class="info-content">
+                    <h3>Thế kỷ 19-20</h3>
+                    <p>Bắc Hưng Yên phát triển rực rỡ các làng nghề truyền thống như gốm sứ, chạm khắc gỗ, đúc đồng với kỹ thuật tinh xảo. Nhiều sản phẩm thủ công từ đây đã trở thành thương hiệu nổi tiếng trong và ngoài nước. Cùng thời gian này, Nam Hưng Yên trở thành một trong những vùng đi đầu về sản xuất lương thực với hệ thống đê điều kiên cố. Người dân nơi đây đã biết cách khai thác hiệu quả vùng đất phù sa màu mỡ, phát triển hệ thống thủy lợi hiện đại để canh tác nông nghiệp.</p>
                 </div>
-                <div class="timeline-item left">
-                    <div class="timeline-content">
-                        <h3>Năm 2025</h3>
-                        <p>Quyết định sáp nhập tỉnh Hưng Yên và Thái Bình được thông qua, tạo nên tỉnh Hưng Yên mới với diện tích mở rộng, tiềm năng phát triển đa ngành.</p>
-                    </div>
+            </div>
+
+            <div class="info-row">
+                <img src="https://banggiadatnen.com/wp-content/uploads/2021/11/van-phong-cong-chung-tai-bac-giang.jpg" alt="Năm 2025">
+                <div class="info-content">
+                    <h3>Năm 2025</h3>
+                    <p>Quyết định sáp nhập vùng Bắc Hưng Yên và Nam Hưng Yên được thông qua, tạo nên tỉnh Hưng Yên mới với diện tích mở rộng, tiềm năng phát triển đa ngành. Sự kiện lịch sử này đánh dấu bước ngoặt quan trọng trong quá trình phát triển của cả hai vùng đất. Với việc hợp nhất, Hưng Yên mới sẽ có lợi thế về cả công nghiệp, thương mại lẫn nông nghiệp, tạo nên một thể thống nhất vững mạnh cả về kinh tế lẫn văn hóa.</p>
+                </div>
+            </div>
+
+            <h3 class="sub-section-title">GIỚI THIỆU VỀ HƯNG YÊN</h3>
+            
+            <div class="info-row">
+                <img src="https://sanvemaybay.vn/includes/uploads/2019/12/Ch%C3%B9a-Chu%C3%B4ng-e1575444978391.jpg" alt="Di sản Bắc Hưng Yên">
+                <div class="info-content">
+                    <h3>Di sản Bắc Hưng Yên</h3>
+                    <p>Bắc Hưng Yên sở hữu hơn 1.200 di tích lịch sử văn hóa, trong đó có 180 di tích được xếp hạng cấp quốc gia. Nổi bật nhất phải kể đến quần thể di tích Phố Hiến với kiến trúc độc đáo, chùa Chuông - ngôi chùa cổ kính với lối kiến trúc đặc trưng thời Lê, đền Mẫu - nơi thờ tự linh thiêng thu hút hàng vạn du khách mỗi năm. Ngoài ra, vùng đất này còn lưu giữ nhiều di sản văn hóa phi vật thể như các làn điệu chèo, ca trù đặc sắc, các lễ hội truyền thống mang đậm bản sắc văn hóa vùng đồng bằng Bắc Bộ.</p>
                 </div>
             </div>
             
-            <div class="info-boxes">
-                <div class="info-box">
-                    <h3>Di sản Hưng Yên</h3>
-                    <p>Hơn 1.200 di tích lịch sử văn hóa, trong đó có 180 di tích cấp quốc gia. Nổi bật là quần thể di tích Phố Hiến, chùa Chuông, đền Mẫu...</p>
+            <div class="info-row">
+                <img src="https://phapluat.tuoitrethudo.vn/stores/news_dataimages/nguyenducminh/022023/06/20/0913_0d375431eb3003a799b853f63e21d70fanh-1--cong-den-tien-la-ok.jpg?rt=20230206201022" alt="Di sản Nam Hưng Yên">
+                <div class="info-content">
+                    <h3>Di sản Nam Hưng Yên</h3>
+                    <p>Nam Hưng Yên tự hào với hơn 2.000 di tích lịch sử văn hóa, cùng nhiều lễ hội đặc sắc mang đậm bản sắc vùng đồng bằng châu thổ. Nổi tiếng nhất phải kể đến lễ hội chọi trâu với truyền thống hàng trăm năm, các làn điệu hát chèo mượt mà, nghệ thuật múa rối nước độc đáo. Vùng đất này còn lưu giữ nhiều di sản ẩm thực đặc sắc như bánh cáy, bánh gai, các món ăn từ hải sản tươi ngon. Các làng nghề truyền thống như dệt chiếu, làm nón, đan lát cũng là những nét văn hóa đặc trưng không thể bỏ qua khi nhắc đến Nam Hưng Yên.</p>
                 </div>
-                
-                <div class="info-box">
-                    <h3>Di sản Thái Bình</h3>
-                    <p>Hơn 2.000 di tích lịch sử văn hóa, với các lễ hội đặc sắc như chọi trâu Đồ Sơn, hát chèo, múa rối nước...</p>
-                </div>
-                
-                <div class="info-box">
+            </div>
+            
+            <div class="info-row">
+                <img src="https://dntt.mediacdn.vn/197608888129458176/2024/3/20/z52670357555975a8ecd6b9337c40df1f8d450bb1ff30b-1710917021803421912707.jpg" alt="Văn hóa chung">
+                <div class="info-content">
                     <h3>Văn hóa chung</h3>
-                    <p>Cả hai tỉnh đều nằm trong vùng văn hóa châu thổ sông Hồng, với nhiều nét tương đồng về phong tục, tập quán, tín ngưỡng dân gian.</p>
+                    <p>Cả Bắc Hưng Yên và Nam Hưng Yên đều nằm trong vùng văn hóa châu thổ sông Hồng, với nhiều nét tương đồng về phong tục, tập quán, tín ngưỡng dân gian. Người dân hai vùng đều có truyền thống hiếu học, cần cù lao động và gắn bó với nghề nông. Các giá trị văn hóa như tín ngưỡng thờ cúng tổ tiên, tôn vinh những người có công với đất nước, tinh thần đoàn kết cộng đồng đều được bảo tồn và phát huy. Sau khi sáp nhập, những giá trị văn hóa này sẽ được kết hợp hài hòa, tạo nên bản sắc riêng của Hưng Yên mới - một vùng đất vừa giữ được nét truyền thống, vừa phát triển hiện đại.</p>
                 </div>
             </div>
         </div>
@@ -539,26 +454,36 @@ window.addEventListener("resize", updatePadding);
                 </div>
             </div>
             
-            <img src="https://xdcs.cdnchinhphu.vn/446259493575335936/2025/6/22/hungyen-1750601173365825110197.jpg" alt="Bản đồ Hưng Yên mới" class="map-image">
+            <!-- Ảnh bản đồ KHÔNG bị giới hạn tỉ lệ -->
+            <img src="https://xdcs.cdnchinhphu.vn/446259493575335936/2025/6/22/hungyen-1750601173365825110197.jpg" 
+                 alt="Bản đồ Hưng Yên mới" 
+                 class="map-image">
             
             <div class="video-container">
                 <iframe src="https://www.youtube.com/embed/pqoJQswovIA" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
             
-            <div class="info-boxes">
-                <div class="info-box">
+            <div class="info-row">
+                <img src="https://thiennhienmoitruong.vn/upload/images/btv/bvt8/btv8.1.4/bvt1.4b/2272-img-0254-ae70f76bbb48c0d19db3e364f602f528-20220907180957.jpg" alt="Vị trí chiến lược">
+                <div class="info-content">
                     <h3>Vị trí chiến lược</h3>
-                    <p>Nằm ở trung tâm đồng bằng sông Hồng, giáp Hà Nội, Hải Dương, Hải Phòng, Nam Định. Cửa ngõ quan trọng ra biển Đông.</p>
+                    <p>Hưng Yên mới nằm ở vị trí trung tâm đồng bằng sông Hồng, có ranh giới tiếp giáp với thủ đô Hà Nội ở phía Bắc, tỉnh Hải Dương ở phía Đông, thành phố Hải Phòng ở phía Đông Nam và tỉnh Nam Định ở phía Tây Nam. Đây là cửa ngõ quan trọng ra biển Đông với hệ thống giao thông thuận lợi. Vị trí địa lý đặc biệt này giúp Hưng Yên mới trở thành điểm trung chuyển quan trọng trong mạng lưới giao thương của cả vùng đồng bằng Bắc Bộ, đồng thời là cầu nối giữa thủ đô Hà Nội với các tỉnh ven biển.</p>
                 </div>
-                
-                <div class="info-box">
+            </div>
+            
+            <div class="info-row">
+                <img src="https://mekongasean.vn/stores/news_dataimages/mekongaseanvn/072023/22/22/hy8-6575.jpg" alt="Tài nguyên thiên nhiên">
+                <div class="info-content">
                     <h3>Tài nguyên thiên nhiên</h3>
-                    <p>Đất đai phì nhiêu, hệ thống sông ngòi dày đặc (sông Hồng, sông Luộc, sông Trà Lý), tài nguyên biển phong phú.</p>
+                    <p>Hưng Yên mới sở hữu nguồn tài nguyên thiên nhiên phong phú với đất đai phì nhiêu do phù sa sông Hồng bồi đắp, hệ thống sông ngòi dày đặc (sông Hồng, sông Luộc, sông Trà Lý) cung cấp nguồn nước dồi dào cho sản xuất nông nghiệp và nuôi trồng thủy sản. Đặc biệt, với đường bờ biển dài thuộc khu vực Nam Hưng Yên trước đây, tỉnh có tiềm năng lớn về khai thác và phát triển kinh tế biển. Ngoài ra, vùng đất này còn có nguồn tài nguyên khoáng sản đa dạng như than nâu, sét gạch ngói, cát xây dựng... tạo điều kiện thuận lợi cho phát triển công nghiệp.</p>
                 </div>
-                
-                <div class="info-box">
+            </div>
+            
+            <div class="info-row">
+                <img src="https://mediabhy.mediatech.vn/upload/image/202410/medium/76699_san_xuat_tai_cong_ty_co_phan_may_va_dich_vu_hung_long_thi_xa_my_hao_18174323.jpg" alt="Hạ tầng giao thông">
+                <div class="info-content">
                     <h3>Hạ tầng giao thông</h3>
-                    <p>Mạng lưới giao thông thuận lợi với quốc lộ 5, 10, 39, đường cao tốc Hà Nội - Hải Phòng, cảng biển nước sâu.</p>
+                    <p>Hưng Yên mới được đầu tư hệ thống hạ tầng giao thông đồng bộ và hiện đại. Mạng lưới giao thông đường bộ gồm các tuyến quốc lộ huyết mạch như quốc lộ 5, 10, 39 kết nối với các tỉnh lân cận; đường cao tốc Hà Nội - Hải Phòng giúp rút ngắn thời gian di chuyển. Hệ thống đường thủy phát triển với các cảng sông quan trọng dọc sông Hồng, sông Luộc. Đặc biệt, cảng biển nước sâu tại khu vực Nam Hưng Yên trước đây có khả năng tiếp nhận tàu lớn, mở ra cơ hội phát triển logistics và giao thương quốc tế. Trong tương lai, tỉnh sẽ tiếp tục đầu tư nâng cấp hệ thống giao thông để trở thành trung tâm logistics quan trọng của vùng.</p>
                 </div>
             </div>
         </div>
@@ -569,20 +494,27 @@ window.addEventListener("resize", updatePadding);
             <h2 class="section-title"><i class="fas fa-bullseye"></i> TẦM NHÌN PHÁT TRIỂN</h2>
             <p class="intro-text">Định hướng phát triển tỉnh Hưng Yên mới đến năm 2030 và tầm nhìn 2045</p>
             
-            <div class="vision-cards">
-                <div class="vision-card">
+            <div class="info-row">
+                <img src="https://cdn.nhandan.vn/images/22f099ca8bc7ae81aa2a8d3416a84bf84c698a89ddb531631197c552ad8b949c57832c63210f5cf8a99a9a083dbfab6cc30f4af8241d2ca2041cef91173b1738/q9-487.jpg.webp" alt="Kinh tế">
+                <div class="info-content">
                     <h3>Kinh tế</h3>
-                    <p>Phát triển đa ngành: nông nghiệp công nghệ cao, công nghiệp chế biến, logistics, du lịch sinh thái - văn hóa. Xây dựng các khu công nghiệp tập trung, trung tâm đổi mới sáng tạo.</p>
+                    <p>Hưng Yên mới sẽ phát triển đa ngành nghề với trọng tâm là nông nghiệp công nghệ cao ứng dụng các tiến bộ khoa học kỹ thuật vào sản xuất; công nghiệp chế biến nông sản, thực phẩm chất lượng cao; phát triển hệ thống logistics hiện đại phục vụ giao thương; du lịch sinh thái - văn hóa kết hợp khai thác tiềm năng từ cả hai vùng Bắc và Nam Hưng Yên. Tỉnh sẽ xây dựng các khu công nghiệp tập trung với hạ tầng đồng bộ, thu hút đầu tư trong và ngoài nước. Đặc biệt, trung tâm đổi mới sáng tạo sẽ được hình thành để thúc đẩy khởi nghiệp, ứng dụng công nghệ vào sản xuất. Mục tiêu đến năm 2030, Hưng Yên mới sẽ trở thành một trong những trung tâm kinh tế quan trọng của vùng đồng bằng sông Hồng.</p>
                 </div>
-                
-                <div class="vision-card">
+            </div>
+            
+            <div class="info-row">
+                <img src="https://mediabhy.mediatech.vn/upload/image/202303/medium/50407_van_mieu_20230302155139.jpg" alt="Hạ tầng">
+                <div class="info-content">
                     <h3>Hạ tầng</h3>
-                    <p>Đầu tư đồng bộ hệ thống giao thông, đô thị thông minh, hạ tầng số. Phát triển các đô thị vệ tinh kết nối với Hà Nội và Hải Phòng.</p>
+                    <p>Tỉnh sẽ tập trung đầu tư đồng bộ hệ thống hạ tầng với các dự án trọng điểm: hoàn thiện mạng lưới giao thông kết nối liên vùng; xây dựng các đô thị thông minh ứng dụng công nghệ 4.0 trong quản lý; phát triển hạ tầng số với hệ thống internet tốc độ cao phủ sóng toàn tỉnh; nâng cấp hệ thống điện, nước sạch đáp ứng nhu cầu phát triển. Các đô thị vệ tinh sẽ được quy hoạch khoa học để kết nối hiệu quả với Hà Nội và Hải Phòng, tạo thành chuỗi đô thị động lực của vùng. Hạ tầng y tế, giáo dục cũng được chú trọng đầu tư nhằm nâng cao chất lượng cuộc sống người dân. Đến năm 2045, Hưng Yên mới hướng tới trở thành tỉnh có hạ tầng hiện đại ngang tầm khu vực.</p>
                 </div>
-                
-                <div class="vision-card">
+            </div>
+            
+            <div class="info-row">
+                <img src="https://mediabhy.mediatech.vn/upload/image/202202/medium/47671_35_20220203085954.jpg" alt="Văn hóa - Xã hội">
+                <div class="info-content">
                     <h3>Văn hóa - Xã hội</h3>
-                    <p>Bảo tồn và phát huy giá trị di sản hai vùng. Phát triển giáo dục chất lượng cao, y tế chuyên sâu. Nâng cao đời sống người dân.</p>
+                    <p>Hưng Yên mới sẽ bảo tồn và phát huy giá trị di sản từ cả hai vùng Bắc và Nam Hưng Yên, tạo nên bản sắc văn hóa đặc trưng. Tỉnh sẽ phát triển hệ thống giáo dục chất lượng cao với các trường đạt chuẩn quốc gia, trung tâm đào tạo nghề hiện đại. Lĩnh vực y tế được đầu tư chuyên sâu với bệnh viện tuyến tỉnh đạt tiêu chuẩn quốc tế, hệ thống y tế cơ sở được nâng cấp toàn diện. Đời sống người dân sẽ được cải thiện rõ rệt thông qua các chính sách an sinh xã hội, hỗ trợ việc làm, nhà ở. Văn hóa cộng đồng sẽ được chú trọng phát triển để tạo sự gắn kết giữa người dân hai vùng, xây dựng hình ảnh Hưng Yên mới - một cộng đồng đoàn kết, năng động và giàu bản sắc.</p>
                 </div>
             </div>
             
@@ -648,7 +580,7 @@ window.addEventListener("resize", updatePadding);
                 
                 <div class="footer-section">
                     <h3>HƯNG YÊN MỚI</h3>
-                    <p>Trang thông tin điện tử giới thiệu về tỉnh Hưng Yên sau khi sát nhập với Thái Bình</p>
+                    <p>Trang thông tin điện tử giới thiệu về tỉnh Hưng Yên sau khi sát nhập hai vùng Bắc Hưng Yên và Nam Hưng Yên</p>
                     <div class="social-icons">
                         <a href="https://www.facebook.com/profile.php?id=61571817887609" target="_blank"><i class="fab fa-facebook"></i></a>
                         <a href="#"><i class="fab fa-youtube"></i></a>
