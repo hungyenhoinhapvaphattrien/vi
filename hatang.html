@@ -31,24 +31,6 @@
             display: block;
         }
         
-        .btn {
-            display: inline-block;
-            background-color: var(--light-yellow);
-            color: var(--primary-red);
-            padding: 8px 20px;
-            border-radius: 4px;
-            text-decoration: none;
-            font-weight: bold;
-            transition: all 0.3s;
-            font-size: 0.9rem;
-        }
-        
-        .btn:hover {
-            background-color: white;
-            transform: translateY(-2px);
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
-        
         .container {
             max-width: 1200px;
             margin: 0 auto;
@@ -63,7 +45,7 @@
             text-align: center;
             color: var(--primary-red);
             margin-bottom: 20px;
-            font-size: 1.3rem;
+            font-size: 1.5rem;
         }
         
         .section-title:after {
@@ -79,35 +61,83 @@
             text-align: center;
             max-width: 800px;
             margin: 0 auto 20px;
-            font-size: 0.95rem;
+            font-size: 1rem;
+        }
+
+        /* Layout ảnh và nội dung */
+        .info-row {
+            display: flex;
+            align-items: center;
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .info-row img {
+            width: 40%;
+            object-fit: cover;
+            display: block;
+            aspect-ratio: 16/8;
+        }
+
+        .info-content {
+            padding: 15px;
+            flex: 1;
+        }
+
+        .info-content h3 {
+            color: var(--primary-red);
+            margin-top: 0;
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+            border-bottom: 1px solid var(--primary-red);
+            padding-bottom: 5px;
+        }
+
+        .info-content p {
+            margin-bottom: 5px;
+        }
+
+        @media (max-width: 768px) {
+            .info-row {
+                flex-direction: column;
+            }
+            
+            .info-row img {
+                width: 100%;
+                height: auto;
+            }
         }
         
-        .info-boxes {
+        .stats-container {
             display: flex;
             flex-wrap: wrap;
+            justify-content: center;
             gap: 15px;
             margin-top: 20px;
         }
         
-        .info-box {
-            flex: 1 1 300px;
+        .stat-item {
+            text-align: center;
             padding: 15px;
-            background-color: var(--light-yellow);
-            border-radius: 5px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            transition: transform 0.3s;
+            flex: 1 1 120px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
         }
         
-        .info-box:hover {
-            transform: translateY(-3px);
-        }
-        
-        .info-box h3 {
+        .stat-number {
+            font-size: 1.8rem;
+            font-weight: bold;
             color: var(--primary-red);
-            margin: 0 0 10px;
-            font-size: 1.1rem;
-            border-bottom: 1px solid var(--primary-red);
-            padding-bottom: 8px;
+            margin-bottom: 5px;
+        }
+        
+        .stat-label {
+            font-size: 0.9rem;
+            color: #555;
         }
         
         .gallery {
@@ -121,82 +151,23 @@
         .gallery-item {
             flex: 1 1 300px;
             max-width: 500px;
-            position: relative;
+            border-radius: 8px;
             overflow: hidden;
-            border-radius: 5px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
         }
         
         .gallery-item img {
             width: 100%;
-            height: 200px;
+            height: auto;
+            aspect-ratio: 16/8;
             object-fit: cover;
-            transition: transform 0.4s;
-        }
-        
-        .gallery-item:hover img {
-            transform: scale(1.03);
-        }
-        
-        .stats-container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 10px;
-            margin-top: 20px;
-        }
-        
-        .stat-item {
-            text-align: center;
-            padding: 10px;
-            flex: 1 1 120px;
-        }
-        
-        .stat-number {
-            font-size: 1.8rem;
-            font-weight: bold;
-            color: var(--primary-red);
-            margin-bottom: 5px;
-        }
-        
-        .stat-label {
-            font-size: 0.9rem;
-        }
-        
-        .vision-cards {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 15px;
-            margin-top: 20px;
-            justify-content: center;
-        }
-        
-        .vision-card {
-            flex: 1 1 300px;
-            background-color: white;
-            border-radius: 5px;
-            padding: 15px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            transition: transform 0.3s;
-        }
-        
-        .vision-card:hover {
-            transform: translateY(-5px);
-        }
-        
-        .vision-card h3 {
-            color: var(--primary-red);
-            margin: 0 0 10px;
-            font-size: 1.1rem;
-            border-bottom: 1px solid var(--light-yellow);
-            padding-bottom: 8px;
         }
 
         /* Footer styles */
         .footer-content {
             background-color: var(--primary-red);
             color: white;
-            padding: 20px 0;
+            padding: 30px 0 20px;
         }
         
         .footer-container {
@@ -235,8 +206,8 @@
         
         .rating-options {
             display: flex;
-            gap: 8px;
-            margin-bottom: 8px;
+            gap: 10px;
+            margin-bottom: 10px;
             flex-wrap: wrap;
         }
         
@@ -247,72 +218,56 @@
         }
         
         .rating-option input {
-            margin-right: 4px;
+            margin-right: 5px;
         }
         
         .submit-btn {
             background-color: white;
             color: var(--primary-red);
             border: none;
-            padding: 5px 12px;
-            border-radius: 3px;
+            padding: 5px 15px;
+            border-radius: 4px;
             cursor: pointer;
             font-size: 0.9rem;
             font-weight: bold;
-            margin-top: 5px;
         }
         
         .copyright {
             text-align: center;
-            padding: 10px 0;
-            background-color: var(--primary-red);
+            padding: 15px 0;
+            background-color: #b30000;
             color: white;
             font-size: 0.8rem;
         }
         
         .social-icons {
-            margin: 10px 0 5px;
+            margin: 15px 0 5px;
         }
         
         .social-icons a {
             color: white;
             font-size: 1.1rem;
-            margin: 0 6px;
-            transition: color 0.3s;
+            margin: 0 8px;
         }
         
-        .social-icons a:hover {
-            color: var(--light-yellow);
+        .iframe-layer {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 520px;
+            z-index: 9999;
+            pointer-events: none;
         }
-        
-        @media (max-width: 768px) {
-            section {
-                padding: 20px 0;
-            }
-            
-            .footer-section {
-                flex: 0 0 100%;
-            }
+
+        .iframe-layer iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            display: block;
+            pointer-events: auto;
         }
-    .iframe-layer {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 520px; /* chỉ phần trên cùng */
-        z-index: 9999;
-        pointer-events: none; /* cho phép click xuyên */
-    }
-
-    .iframe-layer iframe {
-        width: 100%;
-        height: 100%;
-        border: none;
-        display: block;
-        pointer-events: auto; /* vẫn click được bên trong iframe */
-    }
-
-</style>
+    </style>
 </head>
 <body>
 
@@ -335,29 +290,42 @@ window.addEventListener("resize", updatePadding);
     <section id="overview">
         <div class="container">
             <h2 class="section-title"><i class="fas fa-road"></i> HẠ TẦNG KINH TẾ HƯNG YÊN MỚI</h2>
-            <p class="intro-text">Hưng Yên mới - kết quả sáp nhập từ Hưng Yên và Thái Bình cũ - đang phát triển mạnh mẽ hệ thống hạ tầng kinh tế</p>
+            <p class="intro-text">Hưng Yên mới - kết quả sáp nhập từ Hưng Yên và Thái Bình - đang phát triển mạnh mẽ hệ thống hạ tầng kinh tế</p>
             
-            <div class="info-boxes">
-                <div class="info-box">
-                    <h3>Hệ thống giao thông</h3>
-                    <p>• <strong>60,9km</strong> cao tốc hiện đại</p>
-                    <p>• <strong>151km</strong> quốc lộ được nâng cấp</p>
-                    <p>• <strong>12-13</strong> cầu lớn qua sông</p>
-                </div>
-                
-                <div class="info-box">
-                    <h3>Hệ thống cảng</h3>
-                    <p>• <strong>10-11</strong> bến cảng lớn</p>
-                    <p>• Cảng container hiện đại</p>
-                    <p>• <strong>12-13</strong> cầu cảng phục vụ công nghiệp</p>
-                </div>
-                
-                <div class="info-box">
-                    <h3>Hạ tầng công nghiệp</h3>
-                    <p>• 5 khu công nghiệp tập trung</p>
-                    <p>• 12 cụm công nghiệp vừa và nhỏ</p>
-                    <p>• Khu công nghệ cao 500ha</p>
-                </div>
+            <!-- Hệ thống giao thông -->
+            <div class="info-row">
+                <img src="https://cdn.thuviennhadat.vn//upload/hinh-anh-bai-viet/NHL/thnag-07-2025/28-07-2025/tuyen-thai-binh-hung-yen.jpg" alt="Hệ thống giao thông">
+<div class="info-content">
+    <h3>Hệ thống giao thông</h3>
+    <p>• Hưng Yên có 60,9 km đường cao tốc hiện đại, kết nối với các tuyến giao thông quan trọng, giúp di chuyển nhanh giữa các trung tâm kinh tế và khu công nghiệp.</p>
+    <p>• 151 km quốc lộ trên địa bàn đã được nâng cấp, mở rộng, hỗ trợ vận chuyển hàng hóa, nông sản và thúc đẩy hoạt động thương mại trong tỉnh.</p>
+    <p>• 13 cầu lớn bắc qua sông đóng vai trò kết nối các khu vực trong và ngoài tỉnh.</p>
+</div>
+
+            </div>
+            
+            <!-- Hệ thống cảng -->
+            <div class="info-row">
+                <img src="https://i.ex-cdn.com/theleader.vn/files/f1/Upload_vn/nguyencanh/2021/8/25/cang%20can%20ICD%20minh%20hoa.jpg" alt="Hệ thống cảng">
+<div class="info-content">
+    <h3>Hệ thống cảng</h3>
+    <p>• Hưng Yên có 11 bến cảng lớn phục vụ vận tải hàng hóa đường thủy, góp phần giảm tải cho giao thông đường bộ và hỗ trợ lưu thông kinh tế vùng.</p>
+    <p>• Tỉnh sở hữu cảng container hiện đại, đáp ứng nhu cầu bốc dỡ và vận chuyển hàng hóa quy mô lớn, kết nối thuận tiện với các trung tâm logistics.</p>
+    <p>• 15 cầu cảng công nghiệp được xây dựng nhằm phục vụ hoạt động sản xuất, xuất nhập khẩu.</p>
+</div>
+
+            </div>
+            
+            <!-- Hạ tầng công nghiệp -->
+            <div class="info-row">
+                <img src="https://dulongip.vn/wp-content/uploads/2025/07/cac-khu-cong-nghiep-o-hung-yen.png" alt="Hạ tầng công nghiệp">
+<div class="info-content">
+    <h3>Hạ tầng công nghiệp</h3>
+    <p>• Hưng Yên hiện có 7 khu công nghiệp tập trung, được quy hoạch hiện đại, thu hút nhiều nhà đầu tư trong và ngoài nước, tạo động lực phát triển kinh tế địa phương.</p>
+    <p>• 15 cụm công nghiệp vừa và nhỏ được xây dựng khắp các huyện, hỗ trợ phát triển sản xuất.</p>
+    <p>• Tỉnh còn sở hữu khu công nghệ cao với diện tích 500 ha, hướng tới thu hút các dự án công nghệ tiên tiến và thúc đẩy chuyển đổi cơ cấu kinh tế theo hướng hiện đại.</p>
+</div>
+
             </div>
         </div>
     </section>
@@ -383,7 +351,7 @@ window.addEventListener("resize", updatePadding);
                 </div>
                 
                 <div class="stat-item">
-                    <div class="stat-number">13</div>
+                    <div class="stat-number">15</div>
                     <div class="stat-label">Cầu cảng</div>
                 </div>
             </div>
@@ -394,34 +362,40 @@ window.addEventListener("resize", updatePadding);
         <div class="container">
             <h2 class="section-title"><i class="fas fa-hard-hat"></i> DỰ ÁN TRỌNG ĐIỂM</h2>
             
-            <div class="vision-cards">
-                <div class="vision-card">
-                    <h3>1. Cao tốc Hưng Yên - Thái Bình</h3>
-                    <p>• Tổng chiều dài 45km, 6 làn xe</p>
-                    <p>• Kết nối với cao tốc Hà Nội - Hải Phòng</p>
-                    <p>• Đầu tư 12.000 tỷ đồng</p>
-                </div>
-                
-                <div class="vision-card">
-                    <h3>2. Cảng container Phố Nối</h3>
-                    <p>• Công suất 500.000 TEU/năm</p>
-                    <p>• Bến dài 450m, độ sâu 9m</p>
-                    <p>• Trang bị cầu cảng hiện đại</p>
-                </div>
-                
-                <div class="vision-card">
-                    <h3>3. Cầu Thái Hưng</h3>
-                    <p>• Vượt sông Hồng, dài 3,2km</p>
-                    <p>• Kết nối Hưng Yên với Thái Bình</p>
-                    <p>• Tổng mức đầu tư 3.500 tỷ đồng</p>
-                </div>
-                
-                <div class="vision-card">
-                    <h3>4. Khu công nghiệp sinh thái</h3>
-                    <p>• Diện tích 300ha tại Tiên Lữ</p>
-                    <p>• Ưu tiên công nghiệp sạch</p>
-                    <p>• Hệ thống xử lý nước thải tập trung</p>
-                </div>
+            <!-- Cao tốc Hưng Yên - Thái Bình -->
+            <div class="info-row">
+                <img src="https://cafebiz.cafebizcdn.vn/162123310254002176/2025/2/27/anh-thum-1740643641917-1740643642469753801483.jpg" alt="Cao tốc Hưng Yên - Thái Bình">
+<div class="info-content">
+    <h3>1. Cao tốc Hưng Yên - Thái Bình</h3>
+    <p>• Tuyến cao tốc Hưng Yên - Thái Bình có chiều dài khoảng 45 km với 6 làn xe, đảm bảo tiêu chuẩn kỹ thuật hiện đại cho lưu thông tốc độ cao.</p>
+    <p>• Tuyến đường này kết nối trực tiếp với cao tốc Hà Nội - Hải Phòng, giúp rút ngắn thời gian di chuyển và tăng cường giao thương trong khu vực đồng bằng sông Hồng.</p>
+    <p>• Dự án có tổng mức đầu tư 12.000 tỷ đồng, là một trong những công trình hạ tầng trọng điểm.</p>
+</div>
+
+            </div>
+            
+            <!-- Cầu Thái Hưng -->
+            <div class="info-row">
+                <img src="https://noichinh.vn/dataimages/202404/original/images732766_Hung_Yen.jpg" alt="Cầu Thái Hưng">
+<div class="info-content">
+    <h3>2. Cầu Thái Hưng</h3>
+    <p>• Cầu Thái Hưng bắc qua sông Hồng với chiều dài khoảng 3,2 km, thiết kế hiện đại đảm bảo lưu thông an toàn và thông suốt quanh năm.</p>
+    <p>• Công trình đóng vai trò quan trọng trong việc kết nối trực tiếp giữa Hưng Yên và Thái Bình, góp phần thúc đẩy giao thương và phát triển kinh tế vùng.</p>
+    <p>• Dự án có tổng mức đầu tư khoảng 3.500 tỷ đồng.</p>
+</div>
+
+            </div>
+            
+            <!-- Khu công nghiệp sinh thái -->
+            <div class="info-row">
+                <img src="https://media.tapchitaichinh.vn/w1480/images/upload/buituananh/08192021/xay-dung-ha-tang-khu-cong-nghiep-so-5-hung-yen-voi-tong-von-dau-tu-gan-2400-ty-dong-408-083425.jpg" alt="Khu công nghiệp sinh thái">
+<div class="info-content">
+    <h3>3. Khu công nghiệp sinh thái</h3>
+    <p>• Khu công nghiệp sinh thái với diện tích 300 ha tại Tiên Lữ được quy hoạch đồng bộ, tạo không gian phát triển sản xuất gắn với bảo vệ môi trường.</p>
+    <p>• Khu vực này ưu tiên thu hút các dự án công nghiệp sạch, công nghệ cao, hạn chế tác động tiêu cực đến hệ sinh thái địa phương.</p>
+    <p>• Hệ thống xử lý nước thải tập trung được xây dựng hiện đại, đảm bảo tiêu chuẩn an toàn.</p>
+</div>
+
             </div>
         </div>
     </section>
@@ -439,16 +413,18 @@ window.addEventListener("resize", updatePadding);
                 </div>
             </div>
             
-            <div class="info-box" style="margin-top: 20px;">
-                <h3>Các hoạt động chỉ đạo</h3>
-                <p>• Kiểm tra tiến độ cao tốc Hưng Yên - Thái Bình</p>
-                <p>• Làm việc với Bộ GTVT về quy hoạch cảng biển</p>
-                <p>• Thị sát các dự án giao thông trọng điểm</p>
+            <div class="info-row">
+                <img src="https://noichinh.vn/dataimages/202404/original/images732766_Hung_Yen.jpg" alt="Lãnh đạo tỉnh kiểm tra dự án">
+<div class="info-content">
+    <h3>Các hoạt động chỉ đạo</h3>
+    <p>• Thường xuyên tổ chức kiểm tra tiến độ thi công các tuyến cao tốc, đảm bảo chất lượng công trình và hoàn thành đúng kế hoạch đề ra.</p>
+    <p>• Tích cực phối hợp và làm việc với Bộ Giao thông Vận tải nhằm tháo gỡ vướng mắc, đẩy nhanh tiến độ các dự án hạ tầng quan trọng.</p>
+    <p>• Tiến hành thị sát thực tế tại các dự án trọng điểm.</p>
+</div>
             </div>
         </div>
     </section>
     
-    <!-- Footer from previous code -->
     <div class="footer-content">
         <div class="container">
             <div class="footer-container">
@@ -463,8 +439,8 @@ window.addEventListener("resize", updatePadding);
                         <span>Email: Dothoinn@gmail.com</span>
                     </div>
                     
-                    <div style="margin-top: 10px;">
-                        <div style="margin-bottom: 5px;">Đánh giá website:</div>
+                    <div style="margin-top: 15px;">
+                        <div style="margin-bottom: 8px;">Đánh giá website:</div>
                         <div class="rating-options">
                             <div class="rating-option">
                                 <input type="radio" id="good" name="rating" value="good" checked>
