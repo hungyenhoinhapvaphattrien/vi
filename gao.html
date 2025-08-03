@@ -259,7 +259,32 @@
             .journey-gallery {
                 grid-template-columns: 1fr;
             }
+            .info-row img, .video-container {
+                width: 100%;
+                height: auto;
+                padding-bottom: 56.25%; /* 16:9 aspect ratio for mobile */
+            }
         }
+        
+        .video-container {
+            width: 40%;
+            position: relative;
+            padding-bottom: 22.5%; /* 16:9 aspect ratio */
+            height: 0;
+            overflow: hidden;
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        
+        
     </style>
 </head>
 <body>
@@ -286,7 +311,9 @@ window.addEventListener("resize", updatePadding);
             
             <!-- Tiềm năng sản xuất -->
             <div class="info-row">
-                <img src="https://gaosaoque.vn/upload/elfinder/Tin%20T%E1%BB%A9c/Gao-BC-Thai-Binh-la-loai-gao-co-huong-vi-thom-ngon-dac-trung.jpg" alt="Tiềm năng sản xuất lúa Hưng Yên">
+                <div class="video-container">
+                    <iframe src="https://www.youtube.com/embed/uOrCj13MWMU?autoplay=0&rel=0" allowfullscreen></iframe>
+                </div>
 <div class="info-content">
     <h3>Tiềm năng sản xuất lúa Hưng Yên</h3>
     <p>Hưng Yên gieo cấy khoảng 145.000-155.000 ha lúa mỗi năm với năng suất 130-132 tạ/ha, sản lượng ổn định gần 1 triệu tấn, đáp ứng nhu cầu trong nước và xuất khẩu.</p>
