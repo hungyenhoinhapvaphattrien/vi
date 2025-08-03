@@ -82,33 +82,43 @@
             margin: 0 auto 40px;
             font-size: 1.1rem;
         }
-        
-        .info-boxes {
+
+        /* Layout ảnh và nội dung */
+        .info-row {
             display: flex;
-            justify-content: space-between;
-            margin-top: 40px;
-            gap: 20px;
-        }
-        
-        .info-box {
-            flex: 1;
-            padding: 25px;
-            background-color: var(--light-yellow);
+            align-items: center;
+            background-color: white;
             border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-            transition: transform 0.3s;
+            overflow: hidden;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
-        
-        .info-box:hover {
-            transform: translateY(-5px);
+
+        .info-row img {
+            width: 40%;
+            object-fit: cover;
+            display: block;
+            aspect-ratio: 16/9;
         }
-        
-        .info-box h3 {
+
+        .info-content {
+            padding: 25px;
+            flex: 1;
+        }
+
+        .info-content h3 {
             color: var(--primary-red);
             margin-top: 0;
-            font-size: 1.3rem;
+            margin-bottom: 15px;
+            font-size: 1.5rem;
             border-bottom: 2px solid var(--primary-red);
             padding-bottom: 10px;
+        }
+
+        .info-content p {
+            margin-bottom: 15px;
+            font-size: 1.05rem;
+            line-height: 1.7;
         }
         
         .gallery {
@@ -161,33 +171,6 @@
         .stat-label {
             font-size: 1.1rem;
         }
-        
-        .vision-cards {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 30px;
-            margin-top: 40px;
-        }
-        
-        .vision-card {
-            flex: 1 1 300px;
-            background-color: white;
-            border-radius: 8px;
-            padding: 30px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            transition: transform 0.3s;
-        }
-        
-        .vision-card:hover {
-            transform: translateY(-10px);
-        }
-        
-        .vision-card h3 {
-            color: var(--primary-red);
-            border-bottom: 2px solid var(--light-yellow);
-            padding-bottom: 10px;
-        }
 
         /* New styles for rice journey section */
         .rice-journey {
@@ -234,9 +217,32 @@
             display: none;
         }
         
+        .iframe-layer {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 520px; /* chỉ phần trên cùng */
+            z-index: 9999;
+            pointer-events: none; /* cho phép click xuyên */
+        }
+
+        .iframe-layer iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            display: block;
+            pointer-events: auto; /* vẫn click được bên trong iframe */
+        }
+
         @media (max-width: 768px) {
-            .info-boxes {
+            .info-row {
                 flex-direction: column;
+            }
+            
+            .info-row img {
+                width: 100%;
+                height: auto;
             }
             
             .gallery {
@@ -254,25 +260,7 @@
                 grid-template-columns: 1fr;
             }
         }
-    .iframe-layer {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 520px; /* chỉ phần trên cùng */
-        z-index: 9999;
-        pointer-events: none; /* cho phép click xuyên */
-    }
-
-    .iframe-layer iframe {
-        width: 100%;
-        height: 100%;
-        border: none;
-        display: block;
-        pointer-events: auto; /* vẫn click được bên trong iframe */
-    }
-
-</style>
+    </style>
 </head>
 <body>
 
@@ -296,85 +284,94 @@ window.addEventListener("resize", updatePadding);
         <div class="container">
             <h2 class="section-title"><i class="fas fa-seedling"></i> ĐỀ XUẤT PHÁT TRIỂN THƯƠNG HIỆU GẠO HƯNG YÊN</h2>
             
-            <div class="info-boxes">
-                <div class="info-box">
-                    <h3>Tiềm năng sản xuất</h3>
-                    <p>• Diện tích gieo cấy lúa hằng năm đạt 145.000-155.000 ha</p>
-                    <p>• Năng suất cao (130-132 tạ/ha)</p>
-                    <p>• Sản lượng thóc ổn định ~1 triệu tấn/năm</p>
-                    <p>• Hơn 10.778 ha sản xuất theo chuỗi giá trị hợp đồng</p>
-                </div>
-                
-                <div class="info-box">
-                    <h3>Các vùng sản xuất chính</h3>
-                    <p>• Tiền Hải: TBR39, Bắc Thơm 7, OCOP</p>
-                    <p>• Đông Hưng: lúa hữu cơ - rươi sinh thái ~60ha</p>
-                    <p>• Thái Thụy: giống chất lượng cao TBR225</p>
-                    <p>• Quỳnh Phụ, Vũ Thư, Kiến Xương: Tám Xuân, Hom Râu, Nếp Keo, Rươi Hồng Tiến (OCOP 3 sao)</p>
-                </div>
-                
-                <div class="info-box">
-                    <h3>Công nghệ áp dụng</h3>
-                    <p>• Canh tác ngập - đứt xen kẽ</p>
-                    <p>• Sử dụng UAV</p>
-                    <p>• Tiêu chuẩn VietGAP, Organic</p>
-                    <p>• Công nghệ cảm biến nước - dinh dưỡng</p>
-                    <p>• 200 cơ sở chế biến, công suất >200.000 tấn/năm</p>
-                </div>
+            <!-- Tiềm năng sản xuất -->
+            <div class="info-row">
+                <img src="https://gaosaoque.vn/upload/elfinder/Tin%20T%E1%BB%A9c/Gao-BC-Thai-Binh-la-loai-gao-co-huong-vi-thom-ngon-dac-trung.jpg" alt="Tiềm năng sản xuất lúa Hưng Yên">
+<div class="info-content">
+    <h3>Tiềm năng sản xuất lúa Hưng Yên</h3>
+    <p>Hưng Yên gieo cấy khoảng 145.000-155.000 ha lúa mỗi năm với năng suất 130-132 tạ/ha, sản lượng ổn định gần 1 triệu tấn, đáp ứng nhu cầu trong nước và xuất khẩu.</p>
+    <p>Tỉnh áp dụng kỹ thuật tiên tiến như canh tác ngập - đứt xen kẽ, UAV chăm sóc lúa, tiêu chuẩn VietGAP, Organic và có hơn 200 cơ sở chế biến công suất 200.000 tấn/năm.</p>
+</div>
+
+            </div>
+            
+            <!-- Các vùng sản xuất chính -->
+            <div class="info-row">
+                <img src="https://cdnmedia.baotintuc.vn/Upload/OOs7T2PPeyDFX8lb8ayig/files/ruong-dat-120423.jpg" alt="Vùng sản xuất lúa Hưng Yên">
+<div class="info-content">
+    <h3>Các vùng sản xuất lúa chủ lực</h3>
+    <p>Hưng Yên phát triển các vùng lúa chất lượng cao với giống chủ lực TBR39, Bắc Thơm 7 tại Tiền Hải và mô hình lúa hữu cơ - rươi sinh thái ở Đông Hưng.</p>
+    <p>Các huyện Quỳnh Phụ, Vũ Thư, Kiến Xương chuyên sản xuất lúa đặc sản như Tám Xuân, Hom Râu, Nếp Keo, nhiều sản phẩm đạt chứng nhận OCOP.</p>
+</div>
+
+            </div>
+            
+            <!-- Công nghệ sản xuất -->
+            <div class="info-row">
+                <img src="https://i.ex-cdn.com/danviet.vn/files/news/2025/07/02/sap-nhap-thai-binh-voi-hung-yen-3-2052.jpg" alt="Công nghệ sản xuất lúa">
+<div class="info-content">
+    <h3>Công nghệ hiện đại trong sản xuất lúa</h3>
+    <p>Hưng Yên áp dụng kỹ thuật canh tác ngập - đứt xen kẽ, sử dụng UAV phun thuốc, bón phân chính xác, giúp tiết kiệm nước, giảm 30% lượng thuốc, nâng cao hiệu quả sản xuất.</p>
+    <p>Tỉnh triển khai các mô hình VietGAP, Organic cùng hệ thống cảm biến nước - dinh dưỡng và hơn 200 cơ sở chế biến công suất 200.000 tấn/năm để đảm bảo chất lượng gạo.</p>
+</div>
+
             </div>
         </div>
     </section>
     
     <section id="strategy" style="background-color: #f9f9f9;">
         <div class="container">
-            <h2 class="section-title"><i class="fas fa-chart-line"></i> ĐỊNH HƯỚNG PHÁT TRIỂN</h2>
+            <h2 class="section-title"><i class="fas fa-chart-line"></i> ĐỊNH HƯỚNG PHÁT TRIỂN THƯƠNG HIỆU</h2>
             
-            <div class="vision-cards">
-                <div class="vision-card">
-                    <h3>1. Cuộc thi video sáng tạo</h3>
-                    <p>"Hành trình hạt gạo Thái Bình - Từ cánh đồng đến bàn ăn thế giới" (3-5 phút, phụ đề tiếng Anh)</p>
-                    <p>Khẩu hiệu: "Rice from the heart of Red River - Clean. Safe. Delicious." hoặc "Thái Bình Rice - Purely Vietnamese. Globally Loved."</p>
-                    <p>Kênh phát: Facebook, YouTube, TikTok, hội chợ nông nghiệp quốc tế, VTV/VTC</p>
-                </div>
-                
-                <div class="vision-card">
-                    <h3>2. Hệ thống nhận diện thương hiệu</h3>
-                    <p>• Logo: "Thái Bình Rice - Green Gold of Vietnam"</p>
-                    <p>• Bao bì ghi VietGAP, Organic, mã QR truy xuất nguồn gốc</p>
-                    <p>• Hình ảnh: bông lúa, nông dân, bản đồ sông Hồng</p>
-                </div>
+            <!-- Cuộc thi video sáng tạo -->
+            <div class="info-row">
+                <img src="https://media.baoquangninh.vn/upload/image/202506/medium/2368503_2368487_38ca5c31d552238d4d108dc8abc7c63c_08465320.jpg" alt="Cuộc thi video sáng tạo">
+<div class="info-content">
+    <h3>1. Chiến dịch truyền thông đa phương tiện</h3>
+    <p>Tổ chức cuộc thi video "Hành trình hạt gạo Hưng Yên" dài 3-5 phút với phụ đề tiếng Anh, giới thiệu quy trình sản xuất hiện đại và câu chuyện người nông dân.</p>
+    <p>Xây dựng khẩu hiệu thương hiệu như "Hưng Yên Rice - Purely Vietnamese. Globally Loved." để sử dụng đồng bộ trên các kênh truyền thông và bao bì sản phẩm.</p>
+</div>
+
             </div>
             
-            <div class="vision-cards">
-                <div class="vision-card">
-                    <h3>3. Nền tảng số xuất khẩu</h3>
-                    <p>• Website đa ngữ (Việt - Anh - Nhật - Trung)</p>
-                    <p>• Đưa sản phẩm lên Alibaba, Amazon, Shopee Global</p>
-                </div>
-                
-                <div class="vision-card">
-                    <h3>4. Bộ ảnh "Gương mặt gạo Thái Bình"</h3>
-                    <p>• Chụp tại cánh đồng (Vũ Thư, Tiền Hải, Thái Thụy)</p>
-                    <p>• Nhà máy chế biến tại Thái Bình</p>
-                    <p>• Bếp gia đình Việt/Nhà hàng quốc tế</p>
-                    <p>• Nhân vật: học sinh, sinh viên, người mẫu, ca sĩ, kỹ sư nông nghiệp, đầu bếp, đại sứ thương hiệu</p>
-                </div>
+            <!-- Hệ thống nhận diện thương hiệu -->
+            <div class="info-row">
+                <img src="https://img.tinxe.vn/resize/1000x-/2020/05/14/fGkxZ6Rv/vung-que-lua-thai-binh-tinxe-vn1-8a63.jpg" alt="Hệ thống nhận diện thương hiệu">
+<div class="info-content">
+    <h3>2. Hệ thống nhận diện thương hiệu chuyên nghiệp</h3>
+    <p>Thiết kế bộ nhận diện đồng bộ với logo "Hưng Yên Rice - Green Gold of Vietnam" kết hợp hình ảnh bông lúa và sông Hồng, màu xanh và vàng tượng trưng cho phát triển bền vững.</p>
+    <p>Xây dựng bao bì cao cấp có chứng nhận VietGAP, Organic và mã QR truy xuất nguồn gốc, giúp người tiêu dùng dễ dàng nhận biết và tin tưởng sản phẩm.</p>
+</div>
+
             </div>
             
-            <div class="vision-cards">
-                <div class="vision-card">
-                    <h3>5. Bài PR chuyên sâu</h3>
-                    <p>• "Từ đồng rươi đến hạt gạo hữu cơ xuất khẩu châu Âu"</p>
-                    <p>• "Nông dân Thái Bình làm chủ công nghệ sạch"</p>
-                    <p>• Phát hành trên báo Nông nghiệp, Dân Việt, VietnamPlus</p>
-                </div>
+            <!-- Nền tảng số xuất khẩu -->
+            <div class="info-row">
+                <img src="https://cdnsgtt.thesaigontimes.vn/wp-content/uploads/2025/06/thai-binh-9.jpg" alt="Nền tảng số xuất khẩu">
+<div class="info-content">
+    <h3>3. Nền tảng số hỗ trợ xuất khẩu</h3>
+    <p>Xây dựng website thương mại điện tử đa ngữ giới thiệu thương hiệu gạo Hưng Yên, tích hợp đặt hàng trực tuyến và hỗ trợ khách hàng 24/7, tối ưu cho thiết bị di động.</p>
+    <p>Đưa sản phẩm lên các sàn thương mại điện tử quốc tế như Alibaba, Amazon để tiếp cận nhà nhập khẩu và người tiêu dùng toàn cầu.</p>
+</div>
+
+            </div>
+            
+            <!-- Bộ ảnh "Gương mặt gạo Hưng Yên" -->
+            <div class="info-row">
+                <img src="https://vnanet.vn/Data/Articles/2022/06/24/6186547/vna_potal_thai_binh_khan_truong_thu_hoach_lua_xuan_stand.jpg" alt="Gương mặt gạo Hưng Yên">
+<div class="info-content">
+    <h3>4. Chiến dịch hình ảnh "Gương mặt gạo Hưng Yên"</h3>
+    <p>Thực hiện bộ ảnh nghệ thuật tại các cánh đồng lúa, nhà máy chế biến và bếp ăn gia đình để khắc họa hành trình từ hạt thóc đến bát cơm thơm ngon.</p>
+    <p>Lựa chọn đa dạng nhân vật đại diện như nông dân, đầu bếp, học sinh và đại sứ thương hiệu nhằm lan tỏa hình ảnh gạo Hưng Yên đến nhiều nhóm đối tượng.</p>
+</div>
+
             </div>
         </div>
     </section>
 
     <section>
         <div class="container">
-            <h2 class="section-title"><i class="fa-solid fa-bowl-rice"></i> MÙA LÚA THÁI BÌNH & HƯNG YÊN</h2>
+            <h2 class="section-title"><i class="fa-solid fa-bowl-rice"></i> MÙA LÚA HƯNG YÊN</h2>
             
             <div class="gallery">
                 <div class="gallery-item">
@@ -390,25 +387,25 @@ window.addEventListener("resize", updatePadding);
     <!-- New Rice Journey Section -->
     <section class="rice-journey">
         <div class="container">
-            <h2 class="section-title"><i class="fas fa-route"></i> HÀNH TRÌNH HẠT GẠO THÁI BÌNH</h2>
+            <h2 class="section-title"><i class="fas fa-route"></i> HÀNH TRÌNH HẠT GẠO HƯNG YÊN</h2>
             <p class="intro-text">Từ cánh đồng đến bàn ăn thế giới</p>
             
             <div class="journey-gallery" id="journeyGallery">
                 <div class="journey-item">
                     <img src="https://i.ibb.co/4ZCFQ2J6/image.png" alt="Hạt giống chất lượng">
-                    <div class="journey-caption">Người Hàn quốc trải nghiệm gạo Thái Bình</div>
+                    <div class="journey-caption">Người Hàn quốc trải nghiệm gạo Hưng Yên</div>
                 </div>
                 <div class="journey-item">
                     <img src="https://i.ibb.co/5gKkRsXp/image.png" alt="Canh tác hiện đại">
-                    <div class="journey-caption">Người Hàn quốc trải nghiệm gạo Thái Bình</div>
+                    <div class="journey-caption">Người Hàn quốc trải nghiệm gạo Hưng Yên</div>
                 </div>
                 <div class="journey-item">
                     <img src="https://i.ibb.co/gLK227yN/image.png" alt="Thu hoạch lúa">
-                    <div class="journey-caption">Người Hàn quốc trải nghiệm gạo Thái Bình</div>
+                    <div class="journey-caption">Người Hàn quốc trải nghiệm gạo Hưng Yên</div>
                 </div>
                 <div class="journey-item">
-                    <img src="https://i.ibb.co/fd5yYdwz/image.png" alt="Gạo Thái Bình đến thế giới">
-                    <div class="journey-caption">Người Hàn quốc trải nghiệm gạo Thái Bình</div>
+                    <img src="https://i.ibb.co/fd5yYdwz/image.png" alt="Gạo Hưng Yên đến thế giới">
+                    <div class="journey-caption">Người Hàn quốc trải nghiệm gạo Hưng Yên</div>
                 </div>
                 
                 <!-- Hidden images will be added here by JavaScript -->
@@ -434,14 +431,15 @@ window.addEventListener("resize", updatePadding);
                 </div>
             </div>
             
-            <div class="info-boxes" style="margin-top: 40px;">
-                <div class="info-box">
-                    <h3>Các hoạt động chỉ đạo</h3>
-                    <p>• Thăm mô hình nâng cao giá trị tại Bình Định (Kiến Xương)</p>
-                    <p>• Thị sát nhà máy giống ThaiBinh Seed ở Vũ Chính (TP Thái Bình)</p>
-                    <p>• Làm việc tại Viện nghiên cứu cây trồng (Đông Xá)</p>
-                    <p>• Kiểm tra đồng ruộng tại Quỳnh Trang (Quỳnh Phụ)</p>
-                </div>
+            <!-- Các hoạt động chỉ đạo -->
+            <div class="info-row">
+                <img src="https://bcp.cdnchinhphu.vn/350555282988298240/2025/3/14/1h5a1619-17419478466231193733642.jpg" alt="Lãnh đạo tỉnh chỉ đạo sản xuất lúa">
+<div class="info-content">
+    <h3>Các hoạt động chỉ đạo phát triển thương hiệu gạo</h3>
+    <p>Lãnh đạo tỉnh thường xuyên kiểm tra mô hình sản xuất, thị sát nhà máy giống và đồng ruộng, chỉ đạo áp dụng tiến bộ kỹ thuật để nâng cao chất lượng gạo.</p>
+    <p>Tỉnh thành lập Ban chỉ đạo phát triển thương hiệu gạo, xây dựng kế hoạch tổng thể từ sản xuất đến tiêu thụ và đẩy mạnh xúc tiến thương mại.</p>
+</div>
+
             </div>
         </div>
     </section>
@@ -469,7 +467,7 @@ window.addEventListener("resize", updatePadding);
                 
                 const journeyItem = document.createElement('div');
                 journeyItem.className = 'journey-item';
-                journeyItem.innerHTML = `<img src="${imgUrl}" alt="Hành trình gạo Thái Bình ${i}">`;
+                journeyItem.innerHTML = `<img src="${imgUrl}" alt="Hành trình gạo Hưng Yên ${i}">`;
                 
                 hiddenImagesContainer.appendChild(journeyItem);
             }
