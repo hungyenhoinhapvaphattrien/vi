@@ -17,13 +17,14 @@
             margin: 0;
             padding: 0;
             color: #333;
-            line-height: 1.5;
+            line-height: 1.6;
             background-color: #f5f5f5;
         }
         
         .banner-container {
             width: 100%;
             overflow: hidden;
+            position: relative;
         }
         
         .banner-container img {
@@ -36,249 +37,258 @@
             display: inline-block;
             background-color: var(--light-yellow);
             color: var(--primary-red);
-            padding: 8px 20px;
-            border-radius: 4px;
+            padding: 12px 30px;
+            border-radius: 5px;
             text-decoration: none;
             font-weight: bold;
             transition: all 0.3s;
-            font-size: 0.9rem;
+            border: none;
+            cursor: pointer;
         }
         
         .btn:hover {
             background-color: white;
-            transform: translateY(-2px);
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            transform: translateY(-3px);
         }
         
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 15px;
+            padding: 0 20px;
         }
         
         section {
-            padding: 20px 0;
+            padding: 60px 0;
         }
         
         .section-title {
             text-align: center;
             color: var(--primary-red);
-            margin-bottom: 15px;
-            font-size: 1.3rem;
+            margin-bottom: 40px;
+            position: relative;
         }
         
         .section-title:after {
             content: "";
             display: block;
-            width: 60px;
-            height: 2px;
+            width: 80px;
+            height: 3px;
             background-color: var(--primary-red);
-            margin: 10px auto;
+            margin: 15px auto;
         }
         
         .intro-text {
             text-align: center;
             max-width: 800px;
-            margin: 0 auto 15px;
-            font-size: 0.95rem;
-        }
-        
-        .info-boxes {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 15px;
-            margin-top: 15px;
-        }
-        
-        .info-box {
-            flex: 1 1 300px;
-            padding: 15px;
-            background-color: var(--light-yellow);
-            border-radius: 5px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            transition: transform 0.3s;
-        }
-        
-        .info-box:hover {
-            transform: translateY(-3px);
-        }
-        
-        .info-box h3 {
-            color: var(--primary-red);
-            margin: 0 0 10px;
+            margin: 0 auto 40px;
             font-size: 1.1rem;
-            border-bottom: 1px solid var(--primary-red);
-            padding-bottom: 8px;
+        }
+
+        /* Layout ảnh và nội dung */
+        .info-row {
+            display: flex;
+            align-items: center;
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .info-row img {
+            width: 40%;
+            object-fit: cover;
+            display: block;
+            aspect-ratio: 16/9;
+        }
+
+        .info-content {
+            padding: 25px;
+            flex: 1;
+        }
+
+        .info-content h3 {
+            color: var(--primary-red);
+            margin-top: 0;
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+            border-bottom: 2px solid var(--primary-red);
+            padding-bottom: 10px;
+        }
+
+        .info-content p {
+            margin-bottom: 15px;
+            font-size: 1.05rem;
+            line-height: 1.7;
         }
         
         .gallery {
             display: flex;
-            flex-wrap: wrap;
-            gap: 15px;
-            margin-top: 15px;
             justify-content: center;
+            gap: 30px;
+            margin-top: 40px;
         }
         
         .gallery-item {
-            flex: 1 1 300px;
+            flex: 0 1 calc(50% - 15px);
             max-width: 500px;
             position: relative;
             overflow: hidden;
             border-radius: 5px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
         
         .gallery-item img {
             width: 100%;
-            height: 200px;
+            height: 300px;
             object-fit: cover;
-            transition: transform 0.4s;
+            transition: transform 0.5s;
         }
         
         .gallery-item:hover img {
-            transform: scale(1.03);
+            transform: scale(1.05);
         }
         
         .stats-container {
             display: flex;
             flex-wrap: wrap;
-            justify-content: center;
-            gap: 10px;
-            margin-top: 15px;
+            justify-content: space-around;
+            margin-top: 40px;
         }
         
         .stat-item {
             text-align: center;
-            padding: 10px;
-            flex: 1 1 120px;
+            margin: 20px;
+            flex: 1 1 200px;
         }
         
         .stat-number {
-            font-size: 1.8rem;
+            font-size: 3rem;
             font-weight: bold;
             color: var(--primary-red);
-            margin-bottom: 5px;
+            margin-bottom: 10px;
         }
         
         .stat-label {
-            font-size: 0.9rem;
+            font-size: 1.1rem;
         }
-        
+
         .vision-cards {
             display: flex;
             flex-wrap: wrap;
-            gap: 15px;
-            margin-top: 15px;
+            gap: 30px;
+            margin-top: 40px;
             justify-content: center;
         }
         
         .vision-card {
             flex: 1 1 300px;
             background-color: white;
-            border-radius: 5px;
-            padding: 15px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            border-radius: 8px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
             transition: transform 0.3s;
         }
         
         .vision-card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-10px);
         }
         
         .vision-card h3 {
             color: var(--primary-red);
-            margin: 0 0 10px;
-            font-size: 1.1rem;
-            border-bottom: 1px solid var(--light-yellow);
-            padding-bottom: 8px;
+            border-bottom: 2px solid var(--light-yellow);
+            padding-bottom: 10px;
         }
 
         /* Footer styles */
         .footer-content {
             background-color: var(--primary-red);
             color: white;
-            padding: 20px 0;
+            padding: 30px 0;
         }
         
         .footer-container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 15px;
+            padding: 0 20px;
             display: flex;
             flex-wrap: wrap;
-            gap: 20px;
+            gap: 30px;
         }
         
         .footer-section {
             flex: 1;
-            min-width: 200px;
+            min-width: 250px;
         }
         
         .footer-section h3 {
             color: var(--light-yellow);
-            margin: 0 0 10px;
-            font-size: 1.1rem;
+            margin: 0 0 15px;
+            font-size: 1.2rem;
             border-bottom: 1px solid var(--light-yellow);
-            padding-bottom: 8px;
+            padding-bottom: 10px;
         }
         
         .footer-contact-item {
-            margin-bottom: 8px;
+            margin-bottom: 10px;
             display: flex;
             align-items: center;
-            font-size: 0.9rem;
+            font-size: 1rem;
         }
         
         .footer-contact-item i {
-            margin-right: 6px;
+            margin-right: 8px;
             color: var(--light-yellow);
         }
         
         .rating-options {
             display: flex;
-            gap: 8px;
-            margin-bottom: 8px;
-            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 15px;
         }
         
         .rating-option {
             display: flex;
             align-items: center;
-            font-size: 0.9rem;
+            font-size: 1rem;
         }
         
         .rating-option input {
-            margin-right: 4px;
+            margin-right: 5px;
         }
         
         .submit-btn {
             background-color: white;
             color: var(--primary-red);
             border: none;
-            padding: 5px 12px;
-            border-radius: 3px;
+            padding: 8px 20px;
+            border-radius: 5px;
             cursor: pointer;
-            font-size: 0.9rem;
+            font-size: 1rem;
             font-weight: bold;
-            margin-top: 5px;
+            transition: all 0.3s;
+        }
+        
+        .submit-btn:hover {
+            background-color: #f0f0f0;
         }
         
         .copyright {
             text-align: center;
-            padding: 10px 0;
-            background-color: var(--primary-red);
+            padding: 20px 0;
+            background-color: #b30000;
             color: white;
-            font-size: 0.8rem;
+            font-size: 0.9rem;
         }
         
         .social-icons {
-            margin: 10px 0 5px;
+            margin: 20px 0 10px;
         }
         
         .social-icons a {
             color: white;
-            font-size: 1.1rem;
-            margin: 0 6px;
+            font-size: 1.3rem;
+            margin: 0 10px;
             transition: color 0.3s;
         }
         
@@ -286,34 +296,50 @@
             color: var(--light-yellow);
         }
         
+        .iframe-layer {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 520px;
+            z-index: 9999;
+            pointer-events: none;
+        }
+
+        .iframe-layer iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            display: block;
+            pointer-events: auto;
+        }
+
         @media (max-width: 768px) {
-            section {
-                padding: 15px 0;
+            .info-row {
+                flex-direction: column;
             }
             
+            .info-row img {
+                width: 100%;
+                height: auto;
+            }
+            
+            .gallery {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .gallery-item {
+                flex: 0 1 auto;
+                max-width: 100%;
+                width: 100%;
+            }
+
             .footer-section {
                 flex: 0 0 100%;
             }
         }
-    .iframe-layer {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 520px; /* chỉ phần trên cùng */
-        z-index: 9999;
-        pointer-events: none; /* cho phép click xuyên */
-    }
-
-    .iframe-layer iframe {
-        width: 100%;
-        height: 100%;
-        border: none;
-        display: block;
-        pointer-events: auto; /* vẫn click được bên trong iframe */
-    }
-
-</style>
+    </style>
 </head>
 <body>
 
@@ -326,7 +352,7 @@
 function updatePadding() {
   const screenWidth = window.innerWidth; 
   const padding = screenWidth * 0.2; 
-  document.body.style.paddingTop = 50 + padding + "px";
+  document.body.style.paddingTop = padding + "px";
 }
 
 window.addEventListener("load", updatePadding);
@@ -338,33 +364,37 @@ window.addEventListener("resize", updatePadding);
             <h2 class="section-title"><i class="fas fa-chart-line"></i> ĐẦU TƯ & NGÀNH NGHỀ HƯNG YÊN MỚI</h2>
             <p class="intro-text">Hưng Yên mới - kết quả sáp nhập từ Hưng Yên và Thái Bình cũ - mang đến cơ hội đầu tư đa dạng với thế mạnh về nông nghiệp công nghệ cao, công nghiệp chế biến và dịch vụ logistics.</p>
             
-            <div class="info-boxes">
-                <div class="info-box">
-                    <h3>Ngành nghề thế mạnh</h3>
-                    <p>• Nông nghiệp công nghệ cao (lúa gạo, thủy sản)</p>
-                    <p>• Chế biến nông thủy sản xuất khẩu</p>
-                    <p>• Công nghiệp phụ trợ, cơ khí chế tạo</p>
-                    <p>• Dệt may, da giày chất lượng cao</p>
-                    <p>• Logistics và dịch vụ cảng biển</p>
-                </div>
-                
-                <div class="info-box">
-                    <h3>Khu công nghiệp trọng điểm</h3>
-                    <p>• KCN Phố Nối A (500ha)</p>
-                    <p>• KCN Thăng Long II (334ha)</p>
-                    <p>• KCN Đồng Văn (200ha)</p>
-                    <p>• KCN Tiền Hải (150ha)</p>
-                    <p>• KCN sinh thái Tiên Lữ (300ha)</p>
-                </div>
-                
-                <div class="info-box">
-                    <h3>Ưu đãi đầu tư</h3>
-                    <p>• Miễn giảm thuế thu nhập doanh nghiệp</p>
-                    <p>• Hỗ trợ xây dựng hạ tầng</p>
-                    <p>• Thủ tục đầu tư một cửa</p>
-                    <p>• Đào tạo nhân lực theo nhu cầu</p>
-                    <p>• Kết nối chuỗi cung ứng</p>
-                </div>
+            <!-- Ngành nghề thế mạnh -->
+            <div class="info-row">
+                <img src="https://lh6.googleusercontent.com/proxy/n8qEOeEd68KtO_QqswdExZVgPdoXkR-5aG4E9BltCGP3tog5SUfIPqGE5C0TRzePngroCdQMJuWzKRSx5R_uDw" alt="Ngành nghề thế mạnh Hưng Yên">
+<div class="info-content">
+    <h3>Ngành nghề thế mạnh của Hưng Yên mới</h3>
+    <p>Hưng Yên mới có lợi thế về nông nghiệp công nghệ cao với lúa gạo, thủy sản và rau quả an toàn, áp dụng công nghệ 4.0 đáp ứng tiêu chuẩn xuất khẩu.</p>
+    <p>Công nghiệp chế biến nông thủy sản và cơ khí phụ trợ phát triển mạnh, tạo chuỗi cung ứng từ nguyên liệu đến thành phẩm cho khu công nghiệp trong vùng.</p>
+</div>
+
+            </div>
+            
+            <!-- Khu công nghiệp trọng điểm -->
+            <div class="info-row">
+                <img src="https://media.vietnamplus.vn/images/7255a701687d11cb8c6bbc58a6c8078596da2a719f0acb59c5c73d78ee3f60518bfcbb18005a707216da5fdba198ef7e93dbd269dad4ec7a7facf2ecd94fe1c8/thai_binh_han_quoc_2.jpg" alt="Khu công nghiệp Hưng Yên">
+<div class="info-content">
+    <h3>Hệ thống khu công nghiệp trọng điểm</h3>
+    <p>Khu công nghiệp Phố Nối A (500ha) là trung tâm lớn của Hưng Yên mới, tập trung công nghiệp chế biến, chế tạo và logistics với hạ tầng đồng bộ.</p>
+    <p>Thăng Long II (334ha) và Đồng Văn (200ha) chuyên về dệt may, da giày, thu hút nhiều nhà đầu tư Nhật Bản, Hàn Quốc, tạo việc làm cho hàng chục nghìn lao động.</p>
+</div>
+
+            </div>
+            
+            <!-- Ưu đãi đầu tư -->
+            <div class="info-row">
+                <img src="https://noichinh.vn/dataimages/202404/original/images732766_Hung_Yen.jpg" alt="Ưu đãi đầu tư Hưng Yên">
+                <div class="info-content">
+    <h3>Chính sách ưu đãi đầu tư hấp dẫn</h3>
+    <p>Hưng Yên mới miễn thuế TNDN 4 năm và giảm 50% trong 9 năm tiếp theo cho các dự án ưu tiên, đồng thời hỗ trợ 30% chi phí hạ tầng công nghệ cao.</p>
+    <p>Áp dụng cơ chế "một cửa" rút ngắn thời gian cấp phép xuống 15 ngày, cùng Trung tâm Hỗ trợ Doanh nghiệp tư vấn toàn diện từ đăng ký đến triển khai dự án.</p>
+</div>
+
             </div>
         </div>
     </section>
@@ -404,31 +434,30 @@ window.addEventListener("resize", updatePadding);
             <div class="vision-cards">
                 <div class="vision-card">
                     <h3>1. Trung tâm logistics đa phương thức</h3>
-                    <p>• Vị trí: Cạnh cảng Phố Nối</p>
-                    <p>• Diện tích: 100ha</p>
-                    <p>• Tổng vốn: 300 triệu USD</p>
-                    <p>• Tiềm năng: Kết nối đường bộ, đường thủy nội địa</p>
+                    <p>Vị trí chiến lược cạnh cảng Phố Nối với diện tích 100ha và tổng vốn đầu tư 300 triệu USD, dự án hứa hẹn trở thành trung tâm phân phối hàng hóa lớn nhất khu vực đồng bằng sông Hồng. Trung tâm sẽ kết nối hiệu quả hệ thống đường bộ cao tốc, đường thủy nội địa và đường biển quốc tế, giảm chi phí logistics cho doanh nghiệp.</p>
+                    <p>Dự án được hưởng ưu đãi đặc biệt về thuế nhập khẩu thiết bị và miễn giảm thuế thu nhập doanh nghiệp trong thời gian dài. Tỉnh cam kết hỗ trợ tối đa về thủ tục phê duyệt và cung cấp nguồn nhân lực chất lượng cao được đào tạo bài bản về quản lý chuỗi cung ứng hiện đại.</p>
+                    <p>Trung tâm sẽ bao gồm khu kho bãi thông minh, trung tâm phân phối lạnh cho nông sản, khu vực đóng gói và gia công hàng hóa xuất khẩu. Đây là cơ hội vàng cho các nhà đầu tư trong lĩnh vực vận tải, kho vận và dịch vụ logistics muốn mở rộng hoạt động tại thị trường miền Bắc Việt Nam.</p>
                 </div>
                 
                 <div class="vision-card">
                     <h3>2. Khu nông nghiệp công nghệ cao</h3>
-                    <p>• Quy mô: 200ha tại Tiền Hải</p>
-                    <p>• Ưu tiên: Công nghệ sinh học, tưới tiết kiệm</p>
-                    <p>• Hỗ trợ: 30% chi phí hạ tầng</p>
+                    <p>Với quy mô 200ha tại Tiền Hải, khu nông nghiệp công nghệ cao tập trung vào ứng dụng các giải pháp công nghệ sinh học, hệ thống tưới tiết kiệm thông minh và canh tác hữu cơ. Dự án nhận được hỗ trợ 30% chi phí đầu tư hạ tầng từ ngân sách tỉnh cùng nhiều ưu đãi về thuế và đất đai.</p>
+                    <p>Khu vực này sẽ là nơi thử nghiệm và nhân rộng các giống cây trồng mới có năng suất, chất lượng cao, phù hợp với biến đổi khí hậu. Các doanh nghiệp tham gia được tiếp cận nguồn vốn ưu đãi từ Quỹ phát triển nông nghiệp công nghệ cao và được hỗ trợ kết nối với thị trường tiêu thụ ổn định.</p>
+                    <p>Dự án hướng tới xây dựng chuỗi giá trị khép kín từ sản xuất đến chế biến và tiêu thụ, áp dụng công nghệ blockchain trong truy xuất nguồn gốc. Đây là mô hình kiểu mẫu về nông nghiệp thông minh, bền vững, mang lại hiệu quả kinh tế cao gấp 3-5 lần so với canh tác truyền thống.</p>
                 </div>
                 
                 <div class="vision-card">
                     <h3>3. Nhà máy chế biến thủy sản</h3>
-                    <p>• Công suất: 50.000 tấn/năm</p>
-                    <p>• Vốn đầu tư: 50 triệu USD</p>
-                    <p>• Thị trường: EU, Nhật Bản, Hàn Quốc</p>
+                    <p>Nhà máy chế biến thủy sản công suất 50.000 tấn/năm với tổng vốn đầu tư 50 triệu USD hướng tới các thị trường cao cấp như EU, Nhật Bản và Hàn Quốc. Dự án được hưởng lợi từ nguồn nguyên liệu dồi dào tại chỗ với chất lượng cao, đápứng các tiêu chuẩn an toàn thực phẩm khắt khe nhất.</p>
+                    <p>Nhà máy sẽ ứng dụng công nghệ chế biến hiện đại theo tiêu chuẩn HACCP, ISO 22000 với hệ thống dây chuyền tự động hóa cao. Tỉnh cam kết hỗ trợ doanh nghiệp trong việc xúc tiến thương mại, kết nối với các đối tác nhập khẩu uy tín và tham gia các hội chợ quốc tế chuyên ngành.</p>
+                    <p>Dự án tạo ra khoảng 1.500 việc làm trực tiếp và hàng nghìn việc làm gián tiếp cho ngư dân địa phương. Đây là cơ hội đầu tư hấp dẫn trong bối cảnh nhu cầu thủy sản chất lượng cao trên thế giới ngày càng tăng, đặc biệt từ các thị trường có hiệp định thương mại tự do với Việt Nam.</p>
                 </div>
                 
                 <div class="vision-card">
                     <h3>4. Khu đô thị thông minh</h3>
-                    <p>• Vị trí: TP Hưng Yên mới</p>
-                    <p>• Diện tích: 150ha</p>
-                    <p>• Tiện ích: Trung tâm hành chính, giáo dục, y tế</p>
+                    <p>Khu đô thị thông minh rộng 150ha tại TP Hưng Yên mới là dự án trọng điểm về phát triển đô thị bền vững, tích hợp các tiện ích hiện đại như trung tâm hành chính, giáo dục quốc tế và bệnh viện đa khoa tiêu chuẩn quốc tế. Dự án áp dụng các giải pháp công nghệ 4.0 trong quản lý đô thị và cung cấp dịch vụ công.</p>
+                    <p>Khu đô thị được quy hoạch đồng bộ với hệ thống hạ tầng kỹ thuật thông minh, không gian xanh chiếm 40% diện tích và các tiêu chuẩn về tiết kiệm năng lượng. Đây sẽ là nơi sinh sống và làm việc lý tưởng cho cộng đồng chuyên gia, nhà đầu tư nước ngoài và tầng lớp trung lưu đang phát triển mạnh tại khu vực.</p>
+                    <p>Dự án được hưởng nhiều ưu đãi về phí và lệ phí, thủ tục phê duyệt nhanh chóng với cơ chế đặc thù. Đây là cơ hội đầu tư dài hạn hấp dẫn trong bối cảnh nhu cầu về nhà ở và không gian làm việc chất lượng cao tại Hưng Yên đang tăng trưởng mạnh mẽ.</p>
                 </div>
             </div>
         </div>
@@ -440,25 +469,25 @@ window.addEventListener("resize", updatePadding);
             
             <div class="gallery">
                 <div class="gallery-item">
-                    <img src="https://lh6.googleusercontent.com/proxy/n8qEOeEd68KtO_QqswdExZVgPdoXkR-5aG4E9BltCGP3tog5SUfIPqGE5C0TRzePngroCdQMJuWzKRSx5R_uDw" alt="ABC">
+                    <img src="https://bcp.cdnchinhphu.vn/350555282988298240/2025/3/14/1h5a1619-17419478466231193733642.jpg" alt="Lãnh đạo tỉnh làm việc với nhà đầu tư">
                 </div>
                 <div class="gallery-item">
-                    <img src="https://media.vietnamplus.vn/images/7255a701687d11cb8c6bbc58a6c8078596da2a719f0acb59c5c73d78ee3f60518bfcbb18005a707216da5fdba198ef7e93dbd269dad4ec7a7facf2ecd94fe1c8/thai_binh_han_quoc_2.jpg" alt="Ký kết hợp tác đầu tư">
+                    <img src="https://mediabhy.mediatech.vn/upload/image/202308/medium/57491_cac_dai_bieu_du_phien_hop_tai_diem_cau_hung_yen_14535602.jpg" alt="Ký kết hợp tác đầu tư">
                 </div>
             </div>
             
-            <div class="info-box" style="margin-top: 15px;">
-                <h3>Dịch vụ hỗ trợ nhà đầu tư</h3>
-                <p>• Tư vấn pháp lý, thủ tục đầu tư</p>
-                <p>• Kết nối đối tác địa phương</p>
-                <p>• Hỗ trợ xin giấy phép con</p>
-                <p>• Giải quyết nhanh vướng mắc</p>
-                <p>• Cung cấp thông tin thị trường</p>
+            <!-- Dịch vụ hỗ trợ nhà đầu tư -->
+            <div class="info-row">
+                <img src="https://noichinh.vn/dataimages/202404/original/images732766_Hung_Yen.jpg" alt="Hỗ trợ nhà đầu tư">
+                <div class="info-content">
+                    <h3>Dịch vụ hỗ trợ toàn diện cho nhà đầu tư</h3>
+                    <p>Hưng Yên mới thành lập Trung tâm Hỗ trợ Doanh nghiệp với đội ngũ chuyên gia giàu kinh nghiệm, cung cấp dịch vụ tư vấn pháp lý toàn diện từ khâu đăng ký đầu tư.</p>
+                    <p>Tỉnh triển khai cơ chế "một cửa liên thông" trong giải quyết thủ tục hành chính với thời gian rút ngắn 50% so với quy định chung.</p>
+                </div>
             </div>
         </div>
     </section>
     
-    <!-- Footer from code 1 -->
     <div class="footer-content">
         <div class="container">
             <div class="footer-container">
@@ -473,8 +502,8 @@ window.addEventListener("resize", updatePadding);
                         <span>Email: Dothoinn@gmail.com</span>
                     </div>
                     
-                    <div style="margin-top: 10px;">
-                        <div style="margin-bottom: 5px;">Đánh giá website:</div>
+                    <div style="margin-top: 15px;">
+                        <div style="margin-bottom: 10px;">Đánh giá website:</div>
                         <div class="rating-options">
                             <div class="rating-option">
                                 <input type="radio" id="good" name="rating" value="good" checked>
