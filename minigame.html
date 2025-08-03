@@ -6,6 +6,11 @@
     <title>Mini Game - Kiến Thức Hưng Yên Mới</title>
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-firestore-compat.js"></script>
+    <!-- Pháo hoa -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
     <style>
         :root {
             --primary-red: #d70202;
@@ -79,6 +84,8 @@
             padding: 30px;
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
             margin: 20px auto;
+            position: relative;
+            z-index: 1;
         }
         
         .start-screen, .game-screen, .result-screen {
@@ -149,15 +156,15 @@
         }
         
         .bronze {
-            color: #cd7f32; /* Màu đồng */
+            color: #cd7f32;
         }
         
         .silver {
-            color: #c0c0c0; /* Màu bạc */
+            color: #c0c0c0;
         }
         
         .gold {
-            color: #ffd700; /* Màu vàng */
+            color: #ffd700;
         }
         
         .result-message {
@@ -172,6 +179,59 @@
             margin-bottom: 20px;
         }
         
+        /* Prize Form Styles */
+        .prize-form-container {
+            display: none;
+            margin-top: 30px;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .prize-form-container h2 {
+            text-align: center;
+            color: var(--primary-red);
+            margin-bottom: 20px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+        
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+        
+        .prize-option {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        
+        .prize-option.selected {
+            border-color: var(--primary-red);
+            background-color: #fff3b6;
+        }
+        
+        .prize-option input {
+            margin-right: 10px;
+        }
+        
         @media (max-width: 768px) {
             .game-container {
                 padding: 20px;
@@ -181,43 +241,46 @@
                 font-size: 1.1rem;
             }
         }
-    .iframe-layer {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 520px; /* chỉ phần trên cùng */
-        z-index: 9999;
-        pointer-events: none; /* cho phép click xuyên */
-    }
+        
+        .iframe-layer {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 520px;
+            z-index: 9999;
+            pointer-events: none;
+        }
 
-    .iframe-layer iframe {
-        width: 100%;
-        height: 100%;
-        border: none;
-        display: block;
-        pointer-events: auto; /* vẫn click được bên trong iframe */
-    }
-
-</style>
+        .iframe-layer iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            display: block;
+            pointer-events: auto;
+        }
+        
+        /* Pháo hoa */
+        .fireworks {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 999;
+        }
+    </style>
 </head>
 <body>
-
     <!-- Iframe trên cùng -->
     <div class="iframe-layer">
         <iframe src="https://hungyenhoinhapvaphattrien.github.io/vi/top"></iframe>
     </div>
-        
-<script>
-function updatePadding() {
-  const screenWidth = window.innerWidth; 
-  const padding = screenWidth * 0.2; 
-  document.body.style.paddingTop = 50 + padding + "px";
-}
 
-window.addEventListener("load", updatePadding);
-window.addEventListener("resize", updatePadding);
-</script>
+    <!-- Pháo hoa -->
+    <canvas id="fireworks" class="fireworks"></canvas>
+
     <div class="container">
         <h2 class="section-title"><i class="fas fa-gamepad"></i> MINI GAME: KIẾN THỨC HƯNG YÊN MỚI</h2>
         <p class="intro-text">Thử thách kiến thức của bạn về tỉnh Hưng Yên sau khi sát nhập với Thái Bình</p>
@@ -227,7 +290,7 @@ window.addEventListener("resize", updatePadding);
             <div class="start-screen">
                 <h3>Luật chơi:</h3>
                 <p>- Bạn có 15 giây để trả lời mỗi câu hỏi</p>
-                <p>- Tổng cộng có 10 câu hỏi trắc nghiệm</p>
+                <p>- Tổng cộng có 15 câu hỏi trắc nghiệm</p>
                 <p>- Kết quả sẽ được đánh giá dựa trên số câu trả lời đúng</p>
                 <button id="start-btn" class="btn">Bắt đầu chơi</button>
             </div>
@@ -237,7 +300,7 @@ window.addEventListener("resize", updatePadding);
                 <div class="timer-container">
                     <div class="timer-bar" id="timer-bar"></div>
                 </div>
-                <div class="progress" id="progress">Câu 1/10</div>
+                <div class="progress" id="progress">Câu 1/15</div>
                 <div class="question" id="question"></div>
                 <div class="options" id="options"></div>
                 <button id="next-btn" class="btn">Câu tiếp theo</button>
@@ -251,12 +314,72 @@ window.addEventListener("resize", updatePadding);
                 <div class="score" id="score"></div>
                 <div class="result-message" id="result-message"></div>
                 <button id="restart-btn" class="btn">Chơi lại</button>
+                <button id="leaderboard-btn" class="btn" style="margin-top: 15px;">Xem bảng xếp hạng</button>
+                
+                <!-- Prize Form (shown only for perfect score) -->
+                <div class="prize-form-container" id="prize-form-container">
+                    <h2>Chúc mừng bạn đã đạt điểm tuyệt đối!</h2>
+                    <p>Vui lòng điền thông tin để nhận thưởng:</p>
+                    <form id="prize-form">
+                        <div class="form-group">
+                            <label for="name">Họ và tên:</label>
+                            <input type="text" id="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="class">Lớp (hoặc địa chỉ):</label>
+                            <input type="text" id="class" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Số điện thoại:</label>
+                            <input type="tel" id="phone" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Chọn giải thưởng:</label>
+                            <div class="prize-option">
+                                <input type="radio" id="voucher" name="prize" value="Voucher giảm giá 10% tại Dong Yang hoặc Holla" required>
+                                <label for="voucher" style="font-weight: normal;">Voucher giảm giá 10% tại các quán trà sữa, tào phớ Dong Yang hoặc Holla</label>
+                            </div>
+                            <div class="prize-option">
+                                <input type="radio" id="history-point" name="prize" value="1 điểm thưởng môn Lịch Sử">
+                                <label for="history-point" style="font-weight: normal;">1 điểm thưởng trong môn Lịch Sử</label>
+                            </div>
+                            <div class="prize-option">
+                                <input type="radio" id="geography-point" name="prize" value="1 điểm thưởng môn Địa Lý">
+                                <label for="geography-point" style="font-weight: normal;">1 điểm thưởng trong môn Địa Lý</label>
+                            </div>
+                            <div class="prize-option">
+                                <input type="radio" id="ethics-point" name="prize" value="1 điểm thưởng môn TNHN">
+                                <label for="ethics-point" style="font-weight: normal;">1 điểm thưởng trong môn TNHN</label>
+                            </div>
+                            <div class="prize-option">
+                                <input type="radio" id="union-point" name="prize" value="1 điểm thưởng bên Đoàn">
+                                <label for="union-point" style="font-weight: normal;">1 điểm thưởng bên Đoàn</label>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn">Xác nhận nhận thưởng</button>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
     
     <script>
-        // Tất cả các câu hỏi có sẵn
+        // Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyC4Hgbp2c--ABVd0X2O2L4Pz5ib2FTER98",
+            authDomain: "giaithuong-fc29e.firebaseapp.com",
+            projectId: "giaithuong-fc29e",
+            storageBucket: "giaithuong-fc29e.appspot.com",
+            messagingSenderId: "517275944502",
+            appId: "1:517275944502:web:99a66ffa1235287feaba97",
+            measurementId: "G-K2VLGT750W"
+        };
+        
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        const db = firebase.firestore();
+        
+        // All available questions
         const allQuestions = [
             {
                 question: "Tỉnh Hưng Yên mới được sát nhập với tỉnh nào?",
@@ -309,114 +432,114 @@ window.addEventListener("resize", updatePadding);
                 answer: 0
             },
             {
-                question: "Tỉnh Hưng Yên nằm ở khu vực nào của đồng bằng sông Hồng?",
-                options: ["Trung tâm đồng bằng sông Hồng", "Ven biển", "Miền núi phía Bắc", "Tây Bắc"],
-                answer: 0
+                question: "Đặc sản nào sau đây không phải của Hưng Yên?",
+                options: ["Vải trứng", "Nem nắm", "Chả gà Tiểu Quan", "Tương bần"],
+                answer: 1
             },
             {
-                question: "Nhãn lồng – đặc sản nổi tiếng của tỉnh Hưng Yên – thường thu hoạch vào tháng mấy?",
-                options: ["Tháng 4 – 5", "Tháng 6 – 7", "Tháng 8 – 9", "Tháng 10 – 11"],
+                question: "Trong lịch sử, Hưng Yên (mới) có tất cả bao nhiêu trạng nguyên?",
+                options: ["8", "9", "10", "11"],
                 answer: 2
             },
             {
-                question: "Hưng Yên có di tích Phố Hiến nổi tiếng, từng được mệnh danh là gì trong lịch sử?",
-                options: ["Kinh đô của Bắc Bộ", "Tiểu Tràng An", "Phố cổ của sông Hồng", "Phố cảng thứ hai của Việt Nam"],
+                question: "Phố Hiến từng là thương cảng lớn nhất nước ta vào thời kì nào?",
+                options: ["Thế kỉ XIV - XV", "Thế kỉ XV – XVI", "Thế kỉ XVI – XVII", "Thế kỉ XVII – XVIII"],
+                answer: 2
+            },
+            {
+                question: "Phố Hiến từng là nơi giao thương với quốc gia nào sau đây?",
+                options: ["Nhật Bản", "Ai Cập", "Mexico", "Canada"],
+                answer: 0
+            },
+            {
+                question: "Nhân vật lịch sử nào được mệnh danh là 'Trạng nguyên đất Nhãn'?",
+                options: ["Trần Quốc Tuấn", "Mạc Đĩnh Chi", "Nguyễn Thiện Thuật", "Nguyễn Trãi"],
+                answer: 2
+            },
+            {
+                question: "Đền Mẫu Phố Hiến thờ vị thần nào?",
+                options: ["Bà Chúa Xứ", "Dương Quý Phi", "Thánh Gióng", "Thánh Mẫu Cửu Thiên"],
+                answer: 1
+            },
+            {
+                question: "Hưng Yên (mới) có bao nhiêu di tích quốc gia?",
+                options: ["5", "6", "7", "8"],
+                answer: 1
+            },
+            {
+                question: "Hưng Yên thuộc vùng kinh tế nào của Việt Nam?",
+                options: ["Tây Bắc", "Bắc Trung Bộ", "Đồng bằng sông Hồng", "Đông Nam Bộ"],
+                answer: 2
+            },
+            {
+                question: "Làng nghề truyền thống nổi tiếng với nghề làm hương ở Hưng Yên là?",
+                options: ["Làng Cao Thôn", "Làng Chuông", "Làng Vạn Phúc", "Làng Nủ"],
+                answer: 0
+            },
+            {
+                question: "Tỉnh Hưng Yên mới có bao nhiêu đơn vị hành chính cấp xã, phường?",
+                options: ["81", "93", "104", "201"],
+                answer: 2
+            },
+            {
+                question: "Diện tích tự nhiên của Hưng Yên là?",
+                options: ["2515 km^2", "2618 km^2", "2451 km^2", "2648 km^2"],
+                answer: 0
+            },
+            {
+                question: "Quê quán của Tổng Bí Thư Tô Lâm là?",
+                options: ["Xã Tiền Phong, Huyện Ân Thi, Tỉnh Hưng Yên", "Xã Phùng Hưng, Huyện Khoái Châu, Tỉnh Hưng Yên", "Huyện Văn Lâm, Tỉnh Hưng Yên", "Xã Nghĩa Trụ, Huyện Văn Giang, Tỉnh Hưng Yên"],
                 answer: 3
             },
             {
-                question: "Ai là vị nữ tướng nổi tiếng quê ở Hưng Yên đã tham gia khởi nghĩa Hai Bà Trưng?",
-                options: ["Lê Chân", "Bát Nàn", "Thiều Hoa", "Trưng Trắc"],
+                question: "Tỉnh lỵ của Hưng Yên mới là thành phố nào?",
+                options: ["Huyện Văn Giang", "Thành Phố Hưng Yên", "Huyện Khoái Châu", "Huyện Yên Mỹ"],
                 answer: 1
             },
             {
-                question: "Đền Đa Hòa ở Hưng Yên thờ nhân vật lịch sử nào?",
-                options: ["Chử Đồng Tử", "Lý Thường Kiệt", "Trần Hưng Đạo", "Phạm Ngũ Lão"],
-                answer: 0
-            },
-            {
-                question: "Con sông nào chảy qua trung tâm tỉnh Hưng Yên?",
-                options: ["Sông Hồng", "Sông Đuống", "Sông Luộc", "Sông Cầu"],
-                answer: 0
-            },
-            {
-                question: "Lễ hội Chử Đồng Tử – Tiên Dung thường được tổ chức ở huyện nào của Hưng Yên?",
-                options: ["Văn Lâm", "Khoái Châu", "Yên Mỹ", "Ân Thi"],
+                question: "Loại gạo nào của Hưng Yên mới được vinh danh quốc tế?",
+                options: ["ST25", "TBR39", "Bắc Hương", "IR64"],
                 answer: 1
             },
             {
-                question: "Món bánh nào sau đây là đặc sản truyền thống nổi tiếng của Hưng Yên?",
-                options: ["Bánh chưng Tranh Khúc", "Bánh cuốn Phủ Lý", "Bánh răng bừa Thổ Hoàng", "Bánh gai Tứ Trụ"],
-                answer: 2
-            },
-            {
-                question: "Đặc sản nào sau đây của Hưng Yên không phải là sản phẩm làng nghề truyền thống?",
-                options: ["Tương Bần", "Nhãn lồng", "Chả mực", "Hương trầm"],
-                answer: 2
-            },
-            {
-                question: "Hưng Yên có tuyến quốc lộ nào chạy qua nối liền Hà Nội với Hải Phòng?",
-                options: ["Quốc lộ 1A", "Quốc lộ 5", "Quốc lộ 18", "Quốc lộ 21"],
+                question: "Khu công nghiệp lớn nhất ở Hưng Yên là gì?",
+                options: ["VSIP", "Thăng Long II", "Đại An", "Phố Nối A"],
                 answer: 1
             },
             {
-                question: "Thái Bình được mệnh danh là quê hương của loại hình nghệ thuật truyền thống nào?",
-                options: ["Quan họ", "Chèo", "Cải lương", "Tuồng"],
+                question: "Hưng Yên mới có chủ trương phát triển đô thị gắn với:",
+                options: ["Du lịch tâm linh", "Nghề đánh bắt cá", "Đào tạo nghề nông", "Công nghiệp cơ khí"],
+                answer: 0
+            },
+            {
+                question: "Tuyến giao thông quan trọng kết nối Hưng Yên với các tỉnh khác là?",
+                options: ["Quốc lộ 1A", "Đường cao tốc Hà Nội – Hải Phòng", "Quốc lộ 14", "Tuyến sắt Bắc Nam"],
                 answer: 1
             },
             {
-                question: "Con sông lớn nào tạo thành ranh giới tự nhiên giữa Thái Bình và Nam Định?",
-                options: ["Sông Đáy", "Sông Luộc", "Sông Trà Lý", "Sông Hồng"],
-                answer: 3
-            },
-            {
-                question: "Nghề làm muối truyền thống nổi tiếng ở xã nào thuộc huyện Thái Thụy, Thái Bình?",
-                options: ["Diêm Điền", "Thụy Hải", "Thụy Xuân", "Thụy Tân"],
-                answer: 0
-            },
-            {
-                question: "Lễ hội đền Đồng Bằng ở Thái Bình thờ vị thần nào?",
-                options: ["Đức Thánh Trần", "Vua Đinh Tiên Hoàng", "Đức Vua Cha Bát Hải Động Đình", "Lý Nam Đế"],
+                question: "Hưng Yên có bao nhiêu khu công nghiệp đang hoạt động?",
+                options: ["5", "7", "8", "12"],
                 answer: 2
             },
             {
-                question: "Chùa Keo – một di tích nổi tiếng của Thái Bình – có niên đại xây dựng từ thế kỷ nào?",
-                options: ["Thế kỷ XI", "Thế kỷ XII", "Thế kỷ XVII", "Thế kỷ XIX"],
+                question: "Hưng Yên được mệnh danh là:",
+                options: ["Thủ phủ chè", "Xứ nhãn lồng", "Thành phố bên sông", "Vùng đất tổ"],
+                answer: 1
+            },
+            {
+                question: "Tên gọi 'Phố Hiến' phản ánh đặc điểm lịch sử và văn hóa nào của Hưng Yên trong quá khứ?",
+                options: ["Vai trò quân sự của vùng đất trong thời kỳ nhà Lê", "Truyền thống khoa bảng và thờ cúng các danh nhân", "Nơi tụ hội các thương nhân, là thương cảng lớn nhất của triều đình", "Tên thuyền buôn của một thương nhân trong lịch sử"],
                 answer: 2
-            },
-            {
-                question: "Thái Bình là quê hương của vị vua nào triều Trần?",
-                options: ["Trần Thái Tông", "Trần Nhân Tông", "Trần Cảnh", "Trần Hưng Đạo"],
-                answer: 2
-            },
-            {
-                question: "Biển Thái Bình nổi tiếng với khu du lịch biển nào?",
-                options: ["Biển Đồng Châu", "Biển Cửa Lò", "Biển Hải Tiến", "Biển Sầm Sơn"],
-                answer: 0
-            },
-            {
-                question: "Thái Bình có đặc sản nổi tiếng là cây dược liệu gì được trồng nhiều ở huyện Quỳnh Phụ?",
-                options: ["Hoa cúc", "Hoa nhài", "Cây nghệ", "Cây thìa canh"],
-                answer: 3
-            },
-            {
-                question: "Ngôi làng nghề nào của Thái Bình nổi tiếng với sản phẩm chiếu cói truyền thống?",
-                options: ["Làng Hới", "Làng Vạn Phúc", "Làng Ninh Hiệp", "Làng Đông Hồ"],
-                answer: 0
-            },
-            {
-                question: "Địa hình chủ yếu của Thái Bình là gì?",
-                options: ["Đồng bằng ven biển", "Trung du", "Đồi núi thấp", "Cao nguyên"],
-                answer: 0
             }
         ];
         
-        // Biến game
+        // Game variables
         let currentQuestion = 0;
         let score = 0;
         let timer;
         let timeLeft = 15;
         let selectedOption = null;
-        let questions = []; // Mảng chứa 10 câu hỏi ngẫu nhiên
+        let questions = [];
         
         // DOM Elements
         const startScreen = document.querySelector('.start-screen');
@@ -425,6 +548,7 @@ window.addEventListener("resize", updatePadding);
         const startBtn = document.getElementById('start-btn');
         const nextBtn = document.getElementById('next-btn');
         const restartBtn = document.getElementById('restart-btn');
+        const leaderboardBtn = document.getElementById('leaderboard-btn');
         const questionEl = document.getElementById('question');
         const optionsEl = document.getElementById('options');
         const progressEl = document.getElementById('progress');
@@ -432,26 +556,75 @@ window.addEventListener("resize", updatePadding);
         const scoreEl = document.getElementById('score');
         const resultMessageEl = document.getElementById('result-message');
         const resultIconEl = document.getElementById('result-icon');
+        const prizeFormContainer = document.getElementById('prize-form-container');
+        const prizeForm = document.getElementById('prize-form');
         
-        // Bắt đầu game
+        // Start game
         startBtn.addEventListener('click', startGame);
         nextBtn.addEventListener('click', nextQuestion);
         restartBtn.addEventListener('click', restartGame);
+        leaderboardBtn.addEventListener('click', () => {
+            window.location.href = "https://hungyenhoinhapvaphattrien.github.io/vi/bxh.html";
+        });
+        
+        // Prize form submission
+        prizeForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            try {
+                const name = document.getElementById('name').value;
+                const className = document.getElementById('class').value;
+                const phone = document.getElementById('phone').value;
+                const prize = document.querySelector('input[name="prize"]:checked').value;
+                const timestamp = firebase.firestore.FieldValue.serverTimestamp();
+                const language = 'Vietnamese';
+                
+                // Save to Firestore
+                await db.collection("winners").add({
+                    name: name,
+                    class: className,
+                    phone: phone,
+                    prize: prize,
+                    score: 15,
+                    timestamp: timestamp,
+                    language: language
+                });
+                
+                // Show fireworks
+                fireConfetti();
+                
+                alert("Thông tin của bạn đã được ghi nhận. Chúc mừng bạn đã nhận được giải thưởng!");
+                prizeForm.reset();
+            } catch (error) {
+                console.error("Error adding document: ", error);
+                alert("Có lỗi xảy ra khi lưu thông tin. Vui lòng thử lại!");
+            }
+        });
+        
+        // Prize option selection
+        const prizeOptions = document.querySelectorAll('.prize-option');
+        prizeOptions.forEach(option => {
+            option.addEventListener('click', () => {
+                const radio = option.querySelector('input[type="radio"]');
+                radio.checked = true;
+                prizeOptions.forEach(opt => opt.classList.remove('selected'));
+                option.classList.add('selected');
+            });
+        });
         
         function startGame() {
-            // Chọn ngẫu nhiên 10 câu hỏi từ danh sách
-            questions = getRandomQuestions(10);
+            // Select random 15 questions
+            questions = getRandomQuestions(15);
             
             startScreen.style.display = 'none';
             gameScreen.style.display = 'block';
             currentQuestion = 0;
             score = 0;
+            prizeFormContainer.style.display = 'none';
             loadQuestion();
         }
         
-        // Hàm chọn ngẫu nhiên n câu hỏi từ danh sách
         function getRandomQuestions(n) {
-            // Tạo bản sao của mảng allQuestions để không ảnh hưởng đến mảng gốc
             const shuffled = [...allQuestions].sort(() => 0.5 - Math.random());
             return shuffled.slice(0, n);
         }
@@ -481,24 +654,22 @@ window.addEventListener("resize", updatePadding);
         function selectOption(e) {
             const selectedIndex = parseInt(e.target.dataset.index);
             
-            // Bỏ chọn option trước đó nếu có
             if (selectedOption !== null) {
                 optionsEl.children[selectedOption].classList.remove('selected');
             }
             
-            // Chọn option mới
             e.target.classList.add('selected');
             selectedOption = selectedIndex;
             nextBtn.disabled = false;
         }
         
         function nextQuestion() {
-            // Kiểm tra đáp án
+            // Check answer
             if (selectedOption === questions[currentQuestion].answer) {
                 score++;
             }
             
-            // Chuyển sang câu hỏi tiếp theo hoặc kết thúc game
+            // Move to next question or end game
             currentQuestion++;
             if (currentQuestion < questions.length) {
                 loadQuestion();
@@ -512,19 +683,27 @@ window.addEventListener("resize", updatePadding);
             gameScreen.style.display = 'none';
             resultScreen.style.display = 'block';
             
-            // Hiển thị kết quả
+            // Show result
             scoreEl.textContent = `Bạn đã trả lời đúng ${score}/${questions.length} câu`;
             
-            // Đánh giá kết quả
-            if (score < 5) {
+            // Evaluate result
+            if (score < 8) {
                 resultMessageEl.textContent = "Kiến thức của bạn chưa vững về Hưng Yên mới";
                 resultIconEl.innerHTML = '<i class="fas fa-medal bronze"></i>';
-            } else if (score < 10) {
+            } else if (score < 15) {
                 resultMessageEl.textContent = "Bạn đã có kiến thức khá ổn về Hưng Yên mới";
                 resultIconEl.innerHTML = '<i class="fas fa-medal silver"></i>';
             } else {
                 resultMessageEl.textContent = "Thật tuyệt vời! Bạn rất am hiểu về Hưng Yên mới";
                 resultIconEl.innerHTML = '<i class="fas fa-medal gold"></i>';
+                // Show prize form for perfect score
+                prizeFormContainer.style.display = 'block';
+                fireConfetti();
+                
+                // Scroll to the prize form
+                setTimeout(() => {
+                    prizeFormContainer.scrollIntoView({ behavior: 'smooth' });
+                }, 500);
             }
         }
         
@@ -558,13 +737,48 @@ window.addEventListener("resize", updatePadding);
             const percentage = (timeLeft / 15) * 100;
             timerBar.style.width = `${percentage}%`;
             
-            // Đổi màu khi thời gian sắp hết
             if (timeLeft <= 5) {
                 timerBar.style.backgroundColor = '#ff0000';
             } else {
                 timerBar.style.backgroundColor = 'var(--primary-red)';
             }
         }
+        
+        // Fireworks effect
+        function fireConfetti() {
+            confetti({
+                particleCount: 150,
+                spread: 70,
+                origin: { y: 0.6 }
+            });
+            
+            setTimeout(() => {
+                confetti({
+                    particleCount: 100,
+                    angle: 60,
+                    spread: 55,
+                    origin: { x: 0 }
+                });
+                
+                confetti({
+                    particleCount: 100,
+                    angle: 120,
+                    spread: 55,
+                    origin: { x: 1 }
+                });
+            }, 250);
+        }
+    </script>
+    
+    <script>
+        function updatePadding() {
+            const screenWidth = window.innerWidth; 
+            const padding = screenWidth * 0.2; 
+            document.body.style.paddingTop = 50 + padding + "px";
+        }
+
+        window.addEventListener("load", updatePadding);
+        window.addEventListener("resize", updatePadding);
     </script>
 </body>
 </html>
