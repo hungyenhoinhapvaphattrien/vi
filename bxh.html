@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bảng Xếp Hạng - Mini Game Hưng Yên</title>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-firestore-compat.js"></script>
+    <style>
+        :root {
+            --primary-red: #d70202;
+            --light-yellow: #fff3b6;
+        }
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            line-height: 1.6;
+            background-color: #f5f5f5;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .section-title {
+            text-align: center;
+            color: var(--primary-red);
+            margin-bottom: 20px;
+            position: relative;
+        }
+        
+        .section-title:after {
+            content: "";
+            display: block;
+            width: 80px;
+            height: 3px;
+            background-color: var(--primary-red);
+            margin: 15px auto;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--light-yellow);
+            color: var(--primary-red);
+            padding: 12px 30px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s;
+            cursor: pointer;
+            border: none;
+            font-size: 1rem;
+            margin-bottom: 20px;
+        }
+        
+        .btn:hover {
+            background-color: white;
+            transform: translateY(-3px);
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background-color: white;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        th {
+            background-color: var(--primary-red);
+            color: white;
+            font-weight: bold;
+        }
+        
+        tr:hover {
+            background-color: #f5f5f5;
+        }
+        
+        .gold {
+            background-color: rgba(255, 215, 0, 0.1);
+        }
+        
+        .silver {
+            background-color: rgba(192, 192, 192, 0.1);
+        }
+        
+        .bronze {
+            background-color: rgba(205, 127, 50, 0.1);
+        }
+        
+        .badge {
+            display: inline-block;
+            padding: 3px 8px;
+            border-radius: 3px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            margin-left: 5px;
+        }
+        
+        .gold-badge {
+            background-color: gold;
+            color: #333;
+        }
+        
+        .silver-badge {
+            background-color: silver;
+            color: #333;
+        }
+        
+        .bronze-badge {
+            background-color: #cd7f32;
+            color: white;
+        }
+        
+        .language-tag {
+            display: inline-block;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-size: 0.7rem;
+            background-color: #e0e0e0;
+            margin-left: 5px;
+        }
+        
+        .vietnamese {
+            background-color: #4CAF50;
+            color: white;
+        }
+        
+        .english {
+            background-color: #2196F3;
+            color: white;
+        }
+        
+        @media (max-width: 768px) {
+            table {
+                display: block;
+                overflow-x: auto;
+            }
+            
+            th, td {
+                padding: 8px 10px;
+            }
+        }
+        
+        .iframe-layer {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 520px;
+            z-index: 9999;
+            pointer-events: none;
+        }
+
+        .iframe-layer iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            display: block;
+            pointer-events: auto;
+        }
+    </style>
+</head>
+<body>
+    <!-- Iframe trên cùng -->
+    <div class="iframe-layer">
+        <iframe src="https://hungyenhoinhapvaphattrien.github.io/vi/top"></iframe>
+    </div>
+<script>
+function updatePadding() {
+  const screenWidth = window.innerWidth; 
+  const padding = screenWidth * 0.2; 
+  document.body.style.paddingTop = 50 + padding + "px";
+}
+
+window.addEventListener("load", updatePadding);
+window.addEventListener("resize", updatePadding);
+</script>
+    <div class="container">
+        <h2 class="section-title"><i class="fas fa-trophy"></i> BẢNG XẾP HẠNG NGƯỜI CHƠI</h2>
+        
+        <a href="index.html" class="btn"><i class="fas fa-arrow-left"></i> Quay lại game</a>
+        
+        <table id="leaderboard">
+            <thead>
+                <tr>
+                    <th>STT</th>
+                    <th>Họ và tên</th>
+                    <th>Lớp (địa chỉ)</th>
+                    <th>SĐT</th>
+                    <th>Điểm</th>
+                    <th>Giải thưởng</th>
+                    <th>Thời gian</th>
+                </tr>
+            </thead>
+            <tbody id="leaderboard-body">
+                <!-- Data will be loaded here -->
+            </tbody>
+        </table>
+    </div>
+    
+    <script>
+        // Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyC4Hgbp2c--ABVd0X2O2L4Pz5ib2FTER98",
+            authDomain: "giaithuong-fc29e.firebaseapp.com",
+            projectId: "giaithuong-fc29e",
+            storageBucket: "giaithuong-fc29e.appspot.com",
+            messagingSenderId: "517275944502",
+            appId: "1:517275944502:web:99a66ffa1235287feaba97",
+            measurementId: "G-K2VLGT750W"
+        };
+        
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        const db = firebase.firestore();
+        
+        // Load leaderboard data
+        function loadLeaderboard() {
+            const leaderboardBody = document.getElementById('leaderboard-body');
+            
+            db.collection("winners")
+                .orderBy("timestamp", "desc")
+                .get()
+                .then((querySnapshot) => {
+                    let index = 1;
+                    leaderboardBody.innerHTML = '';
+                    
+                    querySnapshot.forEach((doc) => {
+                        const data = doc.data();
+                        const row = document.createElement('tr');
+                        
+                        // Add class based on score
+                        if (data.score === 15) {
+                            row.classList.add('gold');
+                        } else if (data.score >= 10) {
+                            row.classList.add('silver');
+                        } else if (data.score >= 5) {
+                            row.classList.add('bronze');
+                        }
+                        
+                        // Format timestamp
+                        const timestamp = data.timestamp.toDate();
+                        const formattedDate = timestamp.toLocaleString('vi-VN');
+                        
+                        // Create language tag
+                        let languageTag = '';
+                        if (data.language === 'Vietnamese') {
+                            languageTag = '<span class="language-tag vietnamese">VI</span>';
+                        } else if (data.language === 'English') {
+                            languageTag = '<span class="language-tag english">EN</span>';
+                        }
+                        
+                        // Create badge for perfect score
+                        let badge = '';
+                        if (data.score === 15) {
+                            badge = '<span class="badge gold-badge">15/15</span>';
+                        }
+                        
+                        row.innerHTML = `
+                            <td>${index}</td>
+                            <td>${data.name} ${badge} ${languageTag}</td>
+                            <td>${data.class}</td>
+                            <td>${data.phone}</td>
+                            <td>${data.score}/15</td>
+                            <td>${data.prize}</td>
+                            <td>${formattedDate}</td>
+                        `;
+                        
+                        leaderboardBody.appendChild(row);
+                        index++;
+                    });
+                    
+                    if (index === 1) {
+                        leaderboardBody.innerHTML = '<tr><td colspan="7" style="text-align: center;">Chưa có dữ liệu</td></tr>';
+                    }
+                })
+                .catch((error) => {
+                    console.error("Error getting documents: ", error);
+                    leaderboardBody.innerHTML = '<tr><td colspan="7" style="text-align: center;">Có lỗi xảy ra khi tải dữ liệu</td></tr>';
+                });
+        }
+        
+        // Load leaderboard when page loads
+        window.addEventListener('load', loadLeaderboard);
+    </script>
+</body>
+</html>
