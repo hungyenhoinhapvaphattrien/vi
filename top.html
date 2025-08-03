@@ -335,6 +335,18 @@
     setInterval(sendHeight, 100);
     window.addEventListener('resize', sendHeight);
     window.addEventListener('load', sendHeight);
+
+
+
+  // Click cờ VN -> mở ở tab mới
+  document.querySelector('.flags img[alt="VN"]').addEventListener('click', () => {
+    window.open("https://hungyenhoinhapvaphattrien.github.io/vi/home", "_blank");
+  });
+
+  // Click cờ EN -> mở ở tab mới
+  document.querySelector('.flags img[alt="EN"]').addEventListener('click', () => {
+    window.open("https://hungyenhoinhapvaphattrien.github.io/en/home", "_blank");
+  });
 </script>
 
 </body>
