@@ -434,6 +434,62 @@
             margin-top: 15px;
         }
         
+        /* Video Gallery */
+        .video-gallery {
+            margin: 30px 0;
+        }
+        
+        .video-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        
+        .video-wrapper {
+            flex: 1 1 45%;
+            min-width: 300px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        
+        .video-wrapper:hover {
+            transform: translateY(-5px);
+        }
+        
+        .video-wrapper iframe {
+            width: 100%;
+            height: 250px;
+            border: none;
+            border-radius: 10px;
+        }
+        
+        .load-more-btn {
+            display: block;
+            margin: 20px auto;
+            padding: 10px 25px;
+            background-color: var(--primary-red);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+        
+        .load-more-btn:hover {
+            background-color: #b00000;
+            transform: translateY(-2px);
+            box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+        }
+        
+        .hidden {
+            display: none;
+        }
+        
         @media (max-width: 768px) {
             .tour-card, .tip-card {
                 flex: 1 1 100%;
@@ -463,6 +519,10 @@
             
             .contact-grid {
                 grid-template-columns: 1fr;
+            }
+            
+            .video-wrapper {
+                flex: 1 1 100%;
             }
         }
         
@@ -508,6 +568,143 @@ window.addEventListener("resize", updatePadding);
         <div class="container">
             <h2 class="section-title"><i class="fas fa-water"></i> GIỚI THIỆU TUYẾN DU LỊCH</h2>
             <p class="intro-text">Tuyến du lịch tâm linh Sông Hồng là hành trình văn hóa - tín ngưỡng liên vùng, kết nối những vùng đất "địa linh nhân kiệt" dọc theo dòng sông mẹ của nền văn minh lúa nước</p>
+            
+            <!-- Video Gallery -->
+            <div class="video-gallery">
+                <div class="video-container">
+                    <div class="video-wrapper">
+                        <iframe src="https://drive.google.com/file/d/1ATSG9nkYUQcndWXUM7esive4B_3sx6l8/preview" allowfullscreen></iframe>
+                    </div>
+                    <div class="video-wrapper">
+                        <iframe src="https://drive.google.com/file/d/19ITl5g1XrGWm_dFScTvKZ-OGiqQlYqKN/preview" allowfullscreen></iframe>
+                    </div>
+                </div>
+                
+                <div class="video-container hidden" id="moreVideos1">
+                    <div class="video-wrapper">
+                        <iframe src="https://drive.google.com/file/d/1i47UscQrqe082YRbhVP6GV2SDUEnIoLD/preview" allowfullscreen></iframe>
+                    </div>
+                    <div class="video-wrapper">
+                        <iframe src="https://drive.google.com/file/d/1WD09sVeb_R29okN3MAfY2Bk8CCAOl0io/preview" allowfullscreen></iframe>
+                    </div>
+                </div>
+                
+                <div class="video-container hidden" id="moreVideos2">
+                    <div class="video-wrapper">
+                        <iframe src="https://drive.google.com/file/d/1brqgZW1U0kVtTV74s2O04P1tU7AsySv6/preview" allowfullscreen></iframe>
+                    </div>
+                    <div class="video-wrapper">
+                        <iframe src="https://drive.google.com/file/d/1lhSFg2NdysbgLSm8HZkjlHoCTSvaagaK/preview" allowfullscreen></iframe>
+                    </div>
+                </div>
+                
+                <div class="video-container hidden" id="moreVideos3">
+                    <div class="video-wrapper">
+                        <iframe src="https://drive.google.com/file/d/14biri8cdaXsSJzc1CiindWtYQd6GfGvb/preview" allowfullscreen></iframe>
+                    </div>
+                    <div class="video-wrapper">
+                        <iframe src="https://drive.google.com/file/d/1GzrZWwJQyq0xtaoji9-zexiRfmk6v9EA/preview" allowfullscreen></iframe>
+                    </div>
+                </div>
+                
+                <div class="video-container hidden" id="moreVideos4">
+                    <div class="video-wrapper">
+                        <iframe src="https://drive.google.com/file/d/1doMrkJOb0xziO0n3arVu0FfoxaDc4vmf/preview" allowfullscreen></iframe>
+                    </div>
+                    <div class="video-wrapper">
+                        <iframe src="https://drive.google.com/file/d/1S0C2-oCWkzjImY3MnP4QDraDr1Tu1zjh/preview" allowfullscreen></iframe>
+                    </div>
+                </div>
+                
+                <div class="video-container hidden" id="moreVideos5">
+                    <div class="video-wrapper">
+                        <iframe src="https://drive.google.com/file/d/1U9r46y9qGDZsGxOtPZ5qMTqc0f0E5-su/preview" allowfullscreen></iframe>
+                    </div>
+                    <div class="video-wrapper">
+                        <iframe src="https://drive.google.com/file/d/14QSX9VspTeIP8X-IxvKooHtRtu7xwlnT/preview" allowfullscreen></iframe>
+                    </div>
+                </div>
+                
+                <div class="video-container hidden" id="moreVideos6">
+                    <div class="video-wrapper">
+                        <iframe src="https://drive.google.com/file/d/18nJLBJvzhF__YHPydYoA49Nv-32HYaTA/preview" allowfullscreen></iframe>
+                    </div>
+                    <div class="video-wrapper">
+                        <iframe src="https://drive.google.com/file/d/1A-ZiipYJ5Y-Ii4QaTUZVpMo47O35POVA/preview" allowfullscreen></iframe>
+                    </div>
+                </div>
+                
+                <div class="video-container hidden" id="moreVideos7">
+                    <div class="video-wrapper">
+                        <iframe src="https://drive.google.com/file/d/1Kefye5L8ketO38CpXl-xRX6T1Hg5YeJc/preview" allowfullscreen></iframe>
+                    </div>
+                    <div class="video-wrapper">
+                        <iframe src="https://drive.google.com/file/d/1JXIRGU0v8w18nrd1cNQ2uVVixL1mAfNS/preview" allowfullscreen></iframe>
+                    </div>
+                </div>
+                
+                <div class="video-container hidden" id="moreVideos8">
+                    <div class="video-wrapper">
+                        <iframe src="https://drive.google.com/file/d/1Xk5-yr0_yah7f2yc7GAah7HevLeTr2Vu/preview" allowfullscreen></iframe>
+                    </div>
+                    <div class="video-wrapper">
+                        <iframe src="https://drive.google.com/file/d/12APnPuHZ99vqFOWXp3E6vUjRUcoBLv4Q/preview" allowfullscreen></iframe>
+                    </div>
+                </div>
+                
+                <div class="video-container hidden" id="moreVideos9">
+                    <div class="video-wrapper">
+                        <iframe src="https://drive.google.com/file/d/1ASCS8Wau0INiiLM24B7bfZTxoQCiTOjj/preview" allowfullscreen></iframe>
+                    </div>
+                    <div class="video-wrapper">
+                        <iframe src="https://drive.google.com/file/d/1GblhW5Eu4EAmcvK3_DsjTxYTxXo7F30K/preview" allowfullscreen></iframe>
+                    </div>
+                </div>
+                
+                <div class="video-container hidden" id="moreVideos10">
+                    <div class="video-wrapper">
+                        <iframe src="https://drive.google.com/file/d/1cFdfFnGehP1jd6TcOEkP9G9oL4RPB254/preview" allowfullscreen></iframe>
+                    </div>
+                    <div class="video-wrapper">
+                        <iframe src="https://drive.google.com/file/d/19xBBgIsQUsQQpCNWrgikKm1m_nRJ_oej/preview" allowfullscreen></iframe>
+                    </div>
+                </div>
+                
+                <div class="video-container hidden" id="moreVideos11">
+                    <div class="video-wrapper">
+                        <iframe src="https://drive.google.com/file/d/15fMuCvXAe09RXmKNHzyR5QnmqIbhNrKI/preview" allowfullscreen></iframe>
+                    </div>
+                    <div class="video-wrapper">
+                        <iframe src="https://drive.google.com/file/d/11_qx_mkxAwYYAFBu4A1RHmSVfFDwCcDH/preview" allowfullscreen></iframe>
+                    </div>
+                </div>
+                
+                <div class="video-container hidden" id="moreVideos12">
+                    <div class="video-wrapper">
+                        <iframe src="https://drive.google.com/file/d/1e7XlH2iSNVynnrffZ4Z00M0W3Z24vib5/preview" allowfullscreen></iframe>
+                    </div>
+                    <div class="video-wrapper">
+                        <iframe src="https://drive.google.com/file/d/12x27qJ_v-5RXsrlJOcf6Uaa3f5ndsDxR/preview" allowfullscreen></iframe>
+                    </div>
+                </div>
+                
+                <div class="video-container hidden" id="moreVideos13">
+                    <div class="video-wrapper">
+                        <iframe src="https://drive.google.com/file/d/1C3rXHWnkzMkDcytPIlOtmwDvSpczzL-e/preview" allowfullscreen></iframe>
+                    </div>
+                    <div class="video-wrapper">
+                        <iframe src="https://drive.google.com/file/d/1iWkzwNOzwmYLNnG97dSRyUZR_GQzpUQF/preview" allowfullscreen></iframe>
+                    </div>
+                </div>
+                
+                <div class="video-container hidden" id="moreVideos14">
+                    <div class="video-wrapper">
+                        <iframe src="https://drive.google.com/file/d/1sUcwA1_T2SaxIBH_PMp-irnmfFqG19lj/preview" allowfullscreen></iframe>
+                    </div>
+                </div>
+                
+                <button class="load-more-btn" onclick="loadMoreVideos()">Xem thêm video</button>
+            </div>
             
             <div class="info-row">
                 <img src="https://bvhttdl.mediacdn.vn/291773308735864832/2024/7/10/71478quanthekhudothivinhomesoceanparkvangiangdiemdenmoicuadulichhungyen17081009-1720576595779-1720576597601122730186.jpeg" alt="Ý nghĩa văn hóa">
@@ -605,6 +802,74 @@ window.addEventListener("resize", updatePadding);
                             <li>Khám phá ẩm thực đặc sắc 3 vùng miền</li>
                         </ul>
                         <div class="tour-price">Giá: 5.800.000 VNĐ/khách</div>
+                        <a href="https://www.facebook.com/profile.php?id=61571817887609" target="_blank" class="btn btn-tour">Đặt tour ngay</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Tour Cồn Vành -->
+            <div class="tour-container" style="margin-top: 30px;">
+                <div class="tour-card">
+                    <img src="https://www.vietnamairlines.com/~/media/SEO-images/2025%20SEO/Traffic%20TV/khu-du-lich-bien-con-vanh/con-vanh-la-mot-trong-nhung-bai-tam-duoc-yeu-thich.jpg?la=vi-VN" alt="Tour Cồn Vành" class="tour-image">
+                    <div class="tour-content">
+                        <h3 class="tour-title">CHƯƠNG TRÌNH TOUR DU LỊCH BIỂN CỒN VÀNH (2N1Đ)</h3>
+                        <span class="tour-duration"><i class="fas fa-clock"></i> 2 ngày 1 đêm</span>
+                        <h4 style="margin: 10px 0 5px; color: var(--dark-brown);">NGÀY 1: KHÁM PHÁ CỒN VÀNH – TRẢI NGHIỆM BIỂN CẢ</h4>
+                        <ul class="tour-highlights">
+                            <li>07h00: Khởi hành từ Hà Nội / Hưng Yên</li>
+                            <li>11h00: Đến Khu du lịch sinh thái biển Cồn Vành</li>
+                            <li>11h30: Nhận phòng nghỉ (homestay/nhà sàn/resort ven biển)</li>
+                            <li>12h00: Ăn trưa với các món đặc sản biển</li>
+                            <li>14h00: Tự do tắm biển, tham quan rừng ngập mặn Bàng</li>
+                            <li>17h30: Ngắm hoàng hôn trên biển</li>
+                            <li>18h30: Dùng tiệc BBQ hải sản ngoài bãi biển</li>
+                            <li>20h00: Đốt lửa trại, giao lưu văn nghệ</li>
+                        </ul>
+                        
+                        <h4 style="margin: 10px 0 5px; color: var(--dark-brown);">NGÀY 2: TRẢI NGHIỆM NGHỀ BIỂN – MUA SẮM ĐẶC SẢN</h4>
+                        <ul class="tour-highlights">
+                            <li>05h30: Ngắm bình minh, tản bộ trên bãi biển</li>
+                            <li>06h00: Trải nghiệm "Một ngày làm ngư dân"</li>
+                            <li>08h00: Ăn sáng đặc sản cháo ngao hoặc bún cá</li>
+                            <li>09h30: Tham quan chợ hải sản ven biển</li>
+                            <li>11h00: Trả phòng, ăn trưa nhẹ</li>
+                            <li>13h00: Khởi hành về Hà Nội / Hưng Yên</li>
+                            <li>17h00: Kết thúc hành trình</li>
+                        </ul>
+                        
+                        <div class="tour-price">Gói A: 1 ngày (đi - về) - 650.000đ/người</div>
+                        <div class="tour-price">Gói B: 2N1Đ - 1.290.000đ/người (bao gồm ăn, nghỉ, trải nghiệm)</div>
+                        <a href="https://www.facebook.com/profile.php?id=61571817887609" target="_blank" class="btn btn-tour">Đặt tour ngay</a>
+                    </div>
+                </div>
+                
+                <div class="tour-card">
+                    <img src="https://www.dulichvtv.vn/wp-content/uploads/khu-du-lich-sinh-thai-luu-gia-trang-Tour-du-lich-nam-dinh-1-ngay-600x400.jpg" alt="Tour Nam Định" class="tour-image">
+                    <div class="tour-content">
+                        <h3 class="tour-title">TOUR DU LỊCH NAM ĐỊNH 1 NGÀY</h3>
+                        <span class="tour-duration"><i class="fas fa-clock"></i> 1 ngày</span>
+                        <h4 style="margin: 10px 0 5px; color: var(--dark-brown);">LỊCH TRÌNH TOUR CHI TIẾT</h4>
+                        <ul class="tour-highlights">
+                            <li>06h00: Khởi hành từ Hà Nội</li>
+                            <li>08h30: Tham quan khu di tích Đền Trần</li>
+                            <li>10h30: Ghé thăm Chùa Phổ Minh</li>
+                            <li>12h00: Ăn trưa tại nhà hàng địa phương</li>
+                            <li>13h30: Tham quan Phủ Giầy</li>
+                            <li>15h00: Tự do mua đặc sản Nam Định</li>
+                            <li>16h00: Khởi hành về Hà Nội</li>
+                            <li>18h30: Về đến Hà Nội - Kết thúc tour</li>
+                        </ul>
+                        
+                        <div class="tour-price">Bao gồm:</div>
+                        <ul class="tour-highlights">
+                            <li>Xe du lịch đời mới đưa đón</li>
+                            <li>Hướng dẫn viên chuyên nghiệp</li>
+                            <li>01 bữa trưa tiêu chuẩn</li>
+                            <li>Vé tham quan theo chương trình</li>
+                            <li>Bảo hiểm du lịch, nước uống</li>
+                        </ul>
+                        
+                        <div class="tour-price">Giá tour: 650.000 VNĐ/khách (đoàn từ 20 người)</div>
                         <a href="https://www.facebook.com/profile.php?id=61571817887609" target="_blank" class="btn btn-tour">Đặt tour ngay</a>
                     </div>
                 </div>
@@ -720,8 +985,7 @@ window.addEventListener("resize", updatePadding);
                             </div>
                             <div>
                                 <strong>Điện thoại</strong>
-                                <p>0977 893 086 (24/7)</p>
-                                <p>Hotline: 1900 1234</p>
+                                <p>0393 100 508 (24/7)</p>
                             </div>
                         </div>
                         
@@ -756,19 +1020,7 @@ window.addEventListener("resize", updatePadding);
                             </div>
                             <div>
                                 <strong>Zalo</strong>
-                                <p>0977 893 086</p>
-                                <p>Nhóm Zalo cộng đồng: 500+ thành viên</p>
-                            </div>
-                        </div>
-                        
-                        <div class="contact-item">
-                            <div class="contact-icon">
-                                <i class="fas fa-map-marker-alt"></i>
-                            </div>
-                            <div>
-                                <strong>Văn phòng</strong>
-                                <p>Số 123, đường Trưng Trắc, TP. Hưng Yên</p>
-                                <p>Giờ làm việc: 8h00 - 18h00 hàng ngày</p>
+                                <p>0393 100 508</p>
                             </div>
                         </div>
                     </div>
@@ -878,7 +1130,7 @@ window.addEventListener("resize", updatePadding);
                     <h3>THÔNG TIN LIÊN HỆ & ĐÁNH GIÁ</h3>
                     <div class="contact-item">
                         <i class="fas fa-phone"></i>
-                        <span>Hotline: 0977893086</span>
+                        <span>Hotline: 0393100508</span>
                     </div>
                     <div class="contact-item">
                         <i class="fas fa-envelope"></i>
@@ -935,6 +1187,25 @@ window.addEventListener("resize", updatePadding);
                 case 'average': return 'Bình thường';
                 case 'poor': return 'Không tốt';
                 default: return '';
+            }
+        }
+        
+        // Video gallery functionality
+        let currentVideoSet = 1;
+        const totalVideoSets = 7;
+        
+        function loadMoreVideos() {
+            if (currentVideoSet <= totalVideoSets) {
+                const nextSet = document.getElementById(`moreVideos${currentVideoSet}`);
+                if (nextSet) {
+                    nextSet.classList.remove('hidden');
+                    currentVideoSet++;
+                    
+                    // Hide button if all videos are loaded
+                    if (currentVideoSet > totalVideoSets) {
+                        document.querySelector('.load-more-btn').style.display = 'none';
+                    }
+                }
             }
         }
     </script>
