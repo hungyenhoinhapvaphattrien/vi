@@ -1,65 +1,293 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>360 Degree Image Viewer</title>
-    <!-- Include Pannellum CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.css">
-    <!-- Include Pannellum JS -->
-    <script src="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.js"></script>
-    <style>
-        #panorama {
-            width: 100%;
-            height: 100vh;
-        }
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Gallery 360 — 36→1</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.css">
+  <style>
+    :root {
+      --popup-z: 2147483647; /* đảm bảo luôn cao nhất */
+      --primary-red: #d70202;
+    }
+
+    html,body {
+      height: 100%;
+      margin: 0;
+      font-family: sans-serif;
+    }
+
+    body {
+      padding-top: 200px; /* sẽ cập nhật bằng JS */
+      transition: padding 0.25s ease;
+    }
+
+    /* Iframe trên cùng (giữ thấp) */
     .iframe-layer {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 520px; /* chỉ phần trên cùng */
-        z-index: 9999;
-        pointer-events: none; /* cho phép click xuyên */
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 520px;
+      z-index: 1; /* thấp */
+      pointer-events: none;
     }
-
     .iframe-layer iframe {
-        width: 100%;
-        height: 100%;
-        border: none;
-        display: block;
-        pointer-events: auto; /* vẫn click được bên trong iframe */
+      width: 100%;
+      height: 100%;
+      border: 0;
+      pointer-events: auto; /* vẫn tương tác bên trong iframe */
     }
 
-</style>
+    /* Gallery (không đặt z-index cao) */
+    .gallery {
+      display: grid;
+      gap: 10px;
+      padding: 20px;
+      box-sizing: border-box;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      position: relative;
+      z-index: 0;
+    }
+
+    @media (min-width:900px) { .gallery { grid-template-columns: repeat(3, 1fr); } }
+
+    .gallery-item {
+      position: relative;
+      overflow: hidden;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      background: #eee;
+    }
+    .gallery-item img {
+      width: 100%;
+      aspect-ratio: 10/4;
+      object-fit: cover;
+      display: block;
+      pointer-events: none; /* để click vào nút play dễ */
+    }
+
+    .play-button {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%,-50%);
+      background: rgba(0,0,0,0.6);
+      color: #fff;
+      border-radius: 50%;
+      padding: 10px 14px;
+      font-size: 28px;
+      line-height: 1;
+      cursor: pointer;
+      opacity: 0;
+      transition: opacity .18s ease, transform .18s ease;
+      pointer-events: auto;
+    }
+    .gallery-item:hover .play-button {
+      opacity: 1;
+      transform: translate(-50%,-50%) scale(1.03);
+    }
+
+    /* Popup: luôn fixed và cao nhất */
+    .popup {
+      display: none; /* bật bằng JS */
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.75);
+      z-index: var(--popup-z);
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .popup-content {
+      width: 90vw;
+      height: 90vh;
+      max-width: 1600px;
+      max-height: 1000px;
+      background: #000;
+      border-radius: 10px;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.6);
+    }
+
+    /* vùng viewer 360 */
+    #panorama {
+      width: 100%;
+      height: 100%;
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 8px;
+      right: 12px;
+      font-size: 30px;
+      color: #fff;
+      cursor: pointer;
+      z-index: 5;
+      background: rgba(0,0,0,0.25);
+      width: 44px;
+      height: 44px;
+      line-height: 44px;
+      text-align: center;
+      border-radius: 6px;
+    }
+        .section-title {
+            text-align: center;
+            color: var(--primary-red);
+            margin: 20px 0;
+            font-size: 1.8rem;
+            position: relative;
+            padding-bottom: 150px;
+        }
+    /* Khi popup bật, ẩn scroll background */
+    body.no-scroll { overflow: hidden; }
+  </style>
 </head>
 <body>
 
-    <!-- Iframe trên cùng -->
-    <div class="iframe-layer">
-        <iframe src="https://hungyenhoinhapvaphattrien.github.io/vi/top"></iframe>
-    </div>
-        
-<script>
-function updatePadding() {
-  const screenWidth = window.innerWidth; 
-  const padding = screenWidth * 0.2; 
-  document.body.style.paddingTop = 50 + padding + "px";
-}
+  <!-- Iframe -->
+  <div class="iframe-layer">
+    <iframe src="https://hungyenhoinhapvaphattrien.github.io/vi/top" title="Top"></iframe>
+  </div>
+            <h2 class="section-title"><i class="fa-solid fa-globe"></i> 360 ĐỘ</h2>
+  <!-- Gallery -->
+  <div class="gallery" id="gallery"></div>
 
-window.addEventListener("load", updatePadding);
-window.addEventListener("resize", updatePadding);
-</script>
-    <div id="panorama"></div>
-    <script>
-        // Initialize Pannellum viewer
-        pannellum.viewer('panorama', {
-            "type": "equirectangular",
-            "panorama": "https://hmtuan002.github.io/suctrethanhnien/1.jpg",
-            "autoLoad": true,
-            "autoRotate": -2, // Optional: Auto-rotate the view
-            "showControls": true // Show navigation controls
+  <!-- Popup (đặt sau gallery để luôn lên trên trong DOM) -->
+  <div class="popup" id="popup" aria-hidden="true">
+    <div class="popup-content" role="dialog" aria-modal="true">
+      <div class="close-btn" id="closeBtn" title="Đóng">&times;</div>
+      <div id="panorama"></div>
+    </div>
+  </div>
+
+  <!-- Pannellum -->
+  <script src="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.js"></script>
+
+  <script>
+    (function(){
+      const gallery = document.getElementById('gallery');
+      const popup = document.getElementById('popup');
+      const panorama = document.getElementById('panorama');
+      const closeBtn = document.getElementById('closeBtn');
+      let viewer = null;
+
+      // Tính padding-top tránh iframe bị che ảnh
+      function updatePadding() {
+        const screenWidth = window.innerWidth;
+        const padding = screenWidth * 0.2;
+        document.body.style.paddingTop = (150 + padding) + 'px';
+      }
+      window.addEventListener('load', updatePadding);
+      window.addEventListener('resize', updatePadding);
+
+      // Tạo gallery: đảo từ 36 -> 1
+      for (let i = 36; i >= 1; i--) {
+        const item = document.createElement('div');
+        item.className = 'gallery-item';
+
+        const img = document.createElement('img');
+        img.src = `https://hungyenhoinhapvaphattrien.github.io/database/${i}.jpg`;
+        img.alt = `Ảnh ${i}`;
+
+        const play = document.createElement('button');
+        play.type = 'button';
+        play.className = 'play-button';
+        play.innerHTML = '&#9658;'; // ▶
+        play.title = `Mở 360 - ${i}`;
+
+        // khi bấm show popup và khởi tạo pannellum
+        play.addEventListener('click', (ev) => {
+          ev.stopPropagation();
+          open360(i);
         });
-    </script>
+
+        item.appendChild(img);
+        item.appendChild(play);
+        gallery.appendChild(item);
+      }
+
+      function open360(index) {
+        const url = `https://hungyenhoinhapvaphattrien.github.io/database/${index}.jpg`;
+
+        // Hiện popup
+        popup.style.display = 'flex';
+        popup.setAttribute('aria-hidden','false');
+        document.body.classList.add('no-scroll');
+
+        // Xóa panorama trước (nếu còn)
+        panorama.innerHTML = '';
+
+        // Tạo container rỗng cho pannellum
+        const inner = document.createElement('div');
+        inner.id = 'panorama_inner';
+        inner.style.width = '100%';
+        inner.style.height = '100%';
+        panorama.appendChild(inner);
+
+        // Hơi delay để CSS layout xong -> viewer không bị tính sai kích thước
+        setTimeout(() => {
+          // destroy viewer nếu có
+          try { if (viewer && typeof viewer.destroy === 'function') { viewer.destroy(); } } catch(e){/*ignore*/}
+
+          // Tạo pannellum mới
+          try {
+            viewer = pannellum.viewer('panorama_inner', {
+              type: "equirectangular",
+              panorama: url,
+              autoLoad: true,
+              autoRotate: -2,
+              showControls: true,
+              showFullscreenCtrl: true,
+              hotSpotDebug: false
+            });
+
+            // Đảm bảo resize đúng nếu cần
+            setTimeout(() => { try { viewer.resize(); } catch(e){} }, 120);
+          } catch (err) {
+            console.error('Lỗi khi tạo viewer:', err);
+            // Hiện ảnh lớn thay vì 360 nếu pannellum lỗi
+            panorama.innerHTML = `<img src="${url}" style="width:100%;height:100%;object-fit:contain" alt="Ảnh ${index}">`;
+            viewer = null;
+          }
+        }, 60);
+      }
+
+      // Đóng popup
+      function closePopup() {
+        popup.style.display = 'none';
+        popup.setAttribute('aria-hidden','true');
+        document.body.classList.remove('no-scroll');
+
+        // destroy viewer nếu có
+        try {
+          if (viewer && typeof viewer.destroy === 'function') {
+            viewer.destroy();
+            viewer = null;
+          }
+        } catch(e){ console.warn(e); }
+
+        // xóa nội dung panorama
+        panorama.innerHTML = '';
+      }
+
+      closeBtn.addEventListener('click', closePopup);
+
+      // đóng khi click nền tối (không đóng nếu click vùng viewer)
+      popup.addEventListener('click', (ev) => {
+        if (ev.target === popup) closePopup();
+      });
+
+      // phím ESC đóng
+      document.addEventListener('keydown', (ev) => {
+        if (ev.key === 'Escape' && popup.style.display === 'flex') closePopup();
+      });
+
+    })();
+  </script>
 </body>
 </html>
