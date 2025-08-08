@@ -49,6 +49,19 @@
             transform: translateY(-3px);
         }
         
+        .btn-start {
+            background-color: var(--primary-red);
+            color: white;
+            font-size: 1.2rem;
+            padding: 15px 40px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        
+        .btn-start:hover {
+            background-color: #b30000;
+            transform: translateY(-3px);
+        }
+        
         .container {
             max-width: 800px;
             margin: 0 auto;
@@ -88,11 +101,11 @@
             z-index: 1;
         }
         
-        .start-screen, .game-screen, .result-screen {
+        .start-screen, .game-screen, .result-screen, .info-screen {
             text-align: center;
         }
         
-        .game-screen, .result-screen {
+        .game-screen, .result-screen, .info-screen {
             display: none;
         }
         
@@ -179,9 +192,8 @@
             margin-bottom: 20px;
         }
         
-        /* Prize Form Styles */
-        .prize-form-container {
-            display: none;
+        /* Info Form Styles */
+        .info-form-container {
             margin-top: 30px;
             padding: 20px;
             background-color: #f9f9f9;
@@ -189,7 +201,7 @@
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
         
-        .prize-form-container h2 {
+        .info-form-container h2 {
             text-align: center;
             color: var(--primary-red);
             margin-bottom: 20px;
@@ -211,6 +223,22 @@
             border: 1px solid #ddd;
             border-radius: 4px;
             font-size: 1rem;
+        }
+        
+        /* Prize Form Styles */
+        .prize-form-container {
+            margin-top: 30px;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            display: none;
+        }
+        
+        .prize-form-container h2 {
+            text-align: center;
+            color: var(--primary-red);
+            margin-bottom: 20px;
         }
         
         .prize-option {
@@ -295,7 +323,29 @@
                 <p>- Bạn có 15 giây để trả lời mỗi câu hỏi</p>
                 <p>- Tổng cộng có 15 câu hỏi trắc nghiệm</p>
                 <p>- Kết quả sẽ được đánh giá dựa trên số câu trả lời đúng</p>
-                <button id="start-btn" class="btn">Bắt đầu chơi</button>
+                <button id="start-btn" class="btn btn-start">Bắt đầu thi</button>
+            </div>
+            
+            <!-- Info Screen -->
+            <div class="info-screen">
+                <h3>Vui lòng nhập thông tin của bạn</h3>
+                <div class="info-form-container">
+                    <form id="info-form">
+                        <div class="form-group">
+                            <label for="name">Họ và tên:</label>
+                            <input type="text" id="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="class">Lớp (hoặc địa chỉ):</label>
+                            <input type="text" id="class" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Số điện thoại:</label>
+                            <input type="tel" id="phone" required>
+                        </div>
+                        <button type="submit" class="btn">Bắt đầu thi</button>
+                    </form>
+                </div>
             </div>
             
             <!-- Game Screen -->
@@ -316,26 +366,12 @@
                 </div>
                 <div class="score" id="score"></div>
                 <div class="result-message" id="result-message"></div>
-                <button id="restart-btn" class="btn">Chơi lại</button>
-                <button id="leaderboard-btn" class="btn" style="margin-top: 15px;">Xem bảng xếp hạng</button>
                 
-                <!-- Prize Form (shown only for perfect score) -->
+                <!-- Prize Form (chỉ hiển thị khi đạt 15/15 điểm) -->
                 <div class="prize-form-container" id="prize-form-container">
                     <h2>Chúc mừng bạn đã đạt điểm tuyệt đối!</h2>
-                    <p>Vui lòng điền thông tin để nhận thưởng:</p>
+                    <p>Vui lòng chọn giải thưởng của bạn:</p>
                     <form id="prize-form">
-                        <div class="form-group">
-                            <label for="name">Họ và tên:</label>
-                            <input type="text" id="name" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="class">Lớp (hoặc địa chỉ):</label>
-                            <input type="text" id="class" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="phone">Số điện thoại:</label>
-                            <input type="tel" id="phone" required>
-                        </div>
                         <div class="form-group">
                             <label>Chọn giải thưởng:</label>
                             <div class="prize-option">
@@ -362,6 +398,9 @@
                         <button type="submit" class="btn">Xác nhận nhận thưởng</button>
                     </form>
                 </div>
+                
+                <button id="restart-btn" class="btn">Chơi lại</button>
+                <button id="leaderboard-btn" class="btn" style="margin-top: 15px;">Xem bảng xếp hạng</button>
             </div>
         </div>
     </div>
@@ -458,81 +497,6 @@
                 question: "Nhân vật lịch sử nào được mệnh danh là 'Trạng nguyên đất Nhãn'?",
                 options: ["Trần Quốc Tuấn", "Mạc Đĩnh Chi", "Nguyễn Thiện Thuật", "Nguyễn Trãi"],
                 answer: 2
-            },
-            {
-                question: "Đền Mẫu Phố Hiến thờ vị thần nào?",
-                options: ["Bà Chúa Xứ", "Dương Quý Phi", "Thánh Gióng", "Thánh Mẫu Cửu Thiên"],
-                answer: 1
-            },
-            {
-                question: "Hưng Yên (mới) có bao nhiêu di tích quốc gia?",
-                options: ["5", "6", "7", "8"],
-                answer: 1
-            },
-            {
-                question: "Hưng Yên thuộc vùng kinh tế nào của Việt Nam?",
-                options: ["Tây Bắc", "Bắc Trung Bộ", "Đồng bằng sông Hồng", "Đông Nam Bộ"],
-                answer: 2
-            },
-            {
-                question: "Làng nghề truyền thống nổi tiếng với nghề làm hương ở Hưng Yên là?",
-                options: ["Làng Cao Thôn", "Làng Chuông", "Làng Vạn Phúc", "Làng Nủ"],
-                answer: 0
-            },
-            {
-                question: "Tỉnh Hưng Yên mới có bao nhiêu đơn vị hành chính cấp xã, phường?",
-                options: ["81", "93", "104", "201"],
-                answer: 2
-            },
-            {
-                question: "Diện tích tự nhiên của Hưng Yên là?",
-                options: ["2515 km^2", "2618 km^2", "2451 km^2", "2648 km^2"],
-                answer: 0
-            },
-            {
-                question: "Quê quán của Tổng Bí Thư Tô Lâm là?",
-                options: ["Xã Tiền Phong, Huyện Ân Thi, Tỉnh Hưng Yên", "Xã Phùng Hưng, Huyện Khoái Châu, Tỉnh Hưng Yên", "Huyện Văn Lâm, Tỉnh Hưng Yên", "Xã Nghĩa Trụ, Huyện Văn Giang, Tỉnh Hưng Yên"],
-                answer: 3
-            },
-            {
-                question: "Tỉnh lỵ của Hưng Yên mới là thành phố nào?",
-                options: ["Huyện Văn Giang", "Thành Phố Hưng Yên", "Huyện Khoái Châu", "Huyện Yên Mỹ"],
-                answer: 1
-            },
-            {
-                question: "Loại gạo nào của Hưng Yên mới được vinh danh quốc tế?",
-                options: ["ST25", "TBR39", "Bắc Hương", "IR64"],
-                answer: 1
-            },
-            {
-                question: "Khu công nghiệp lớn nhất ở Hưng Yên là gì?",
-                options: ["VSIP", "Thăng Long II", "Đại An", "Phố Nối A"],
-                answer: 1
-            },
-            {
-                question: "Hưng Yên mới có chủ trương phát triển đô thị gắn với:",
-                options: ["Du lịch tâm linh", "Nghề đánh bắt cá", "Đào tạo nghề nông", "Công nghiệp cơ khí"],
-                answer: 0
-            },
-            {
-                question: "Tuyến giao thông quan trọng kết nối Hưng Yên với các tỉnh khác là?",
-                options: ["Quốc lộ 1A", "Đường cao tốc Hà Nội – Hải Phòng", "Quốc lộ 14", "Tuyến sắt Bắc Nam"],
-                answer: 1
-            },
-            {
-                question: "Hưng Yên có bao nhiêu khu công nghiệp đang hoạt động?",
-                options: ["5", "7", "8", "12"],
-                answer: 2
-            },
-            {
-                question: "Hưng Yên được mệnh danh là:",
-                options: ["Thủ phủ chè", "Xứ nhãn lồng", "Thành phố bên sông", "Vùng đất tổ"],
-                answer: 1
-            },
-            {
-                question: "Tên gọi 'Phố Hiến' phản ánh đặc điểm lịch sử và văn hóa nào của Hưng Yên trong quá khứ?",
-                options: ["Vai trò quân sự của vùng đất trong thời kỳ nhà Lê", "Truyền thống khoa bảng và thờ cúng các danh nhân", "Nơi tụ hội các thương nhân, là thương cảng lớn nhất của triều đình", "Tên thuyền buôn của một thương nhân trong lịch sử"],
-                answer: 2
             }
         ];
         
@@ -543,11 +507,13 @@
         let timeLeft = 15;
         let selectedOption = null;
         let questions = [];
+        let playerInfo = {};
         
         // DOM Elements
         const startScreen = document.querySelector('.start-screen');
         const gameScreen = document.querySelector('.game-screen');
         const resultScreen = document.querySelector('.result-screen');
+        const infoScreen = document.querySelector('.info-screen');
         const startBtn = document.getElementById('start-btn');
         const nextBtn = document.getElementById('next-btn');
         const restartBtn = document.getElementById('restart-btn');
@@ -561,9 +527,29 @@
         const resultIconEl = document.getElementById('result-icon');
         const prizeFormContainer = document.getElementById('prize-form-container');
         const prizeForm = document.getElementById('prize-form');
+        const infoForm = document.getElementById('info-form');
         
         // Start game
-        startBtn.addEventListener('click', startGame);
+        startBtn.addEventListener('click', () => {
+            startScreen.style.display = 'none';
+            infoScreen.style.display = 'block';
+        });
+        
+        // Info form submission
+        infoForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            playerInfo = {
+                name: document.getElementById('name').value,
+                class: document.getElementById('class').value,
+                phone: document.getElementById('phone').value,
+                prize: "Không có giải thưởng", // Mặc định không có giải thưởng
+                score: 0
+            };
+            
+            startGame();
+        });
+        
         nextBtn.addEventListener('click', nextQuestion);
         restartBtn.addEventListener('click', restartGame);
         leaderboardBtn.addEventListener('click', () => {
@@ -575,27 +561,20 @@
             e.preventDefault();
             
             try {
-                const name = document.getElementById('name').value;
-                const className = document.getElementById('class').value;
-                const phone = document.getElementById('phone').value;
                 const prize = document.querySelector('input[name="prize"]:checked').value;
+                playerInfo.prize = prize; // Cập nhật giải thưởng
+                
                 const timestamp = firebase.firestore.FieldValue.serverTimestamp();
                 const language = 'Vietnamese';
                 
                 // Save to Firestore
-                await db.collection("winners").add({
-                    name: name,
-                    class: className,
-                    phone: phone,
-                    prize: prize,
-                    score: 15,
+                await db.collection("players").add({
+                    ...playerInfo,
                     timestamp: timestamp,
                     language: language
                 });
                 
-                // Show fireworks
                 fireConfetti();
-                
                 alert("Thông tin của bạn đã được ghi nhận. Chúc mừng bạn đã nhận được giải thưởng!");
                 prizeForm.reset();
             } catch (error) {
@@ -619,11 +598,10 @@
             // Select random 15 questions
             questions = getRandomQuestions(15);
             
-            startScreen.style.display = 'none';
+            infoScreen.style.display = 'none';
             gameScreen.style.display = 'block';
             currentQuestion = 0;
             score = 0;
-            prizeFormContainer.style.display = 'none';
             loadQuestion();
         }
         
@@ -686,6 +664,9 @@
             gameScreen.style.display = 'none';
             resultScreen.style.display = 'block';
             
+            // Cập nhật điểm số vào thông tin người chơi
+            playerInfo.score = score;
+            
             // Show result
             scoreEl.textContent = `Bạn đã trả lời đúng ${score}/${questions.length} câu`;
             
@@ -699,7 +680,7 @@
             } else {
                 resultMessageEl.textContent = "Thật tuyệt vời! Bạn rất am hiểu về Hưng Yên mới";
                 resultIconEl.innerHTML = '<i class="fas fa-medal gold"></i>';
-                // Show prize form for perfect score
+                // Hiển thị form chọn giải thưởng khi đạt 15/15 điểm
                 prizeFormContainer.style.display = 'block';
                 fireConfetti();
                 
@@ -708,11 +689,32 @@
                     prizeFormContainer.scrollIntoView({ behavior: 'smooth' });
                 }, 500);
             }
+            
+            // Lưu kết quả vào Firebase (trừ khi đạt 15 điểm sẽ lưu sau khi chọn giải thưởng)
+            if (score < 15) {
+                saveToFirebase();
+            }
+        }
+        
+        async function saveToFirebase() {
+            try {
+                const timestamp = firebase.firestore.FieldValue.serverTimestamp();
+                const language = 'Vietnamese';
+                
+                await db.collection("players").add({
+                    ...playerInfo,
+                    timestamp: timestamp,
+                    language: language
+                });
+            } catch (error) {
+                console.error("Error adding document: ", error);
+            }
         }
         
         function restartGame() {
             resultScreen.style.display = 'none';
-            startGame();
+            startScreen.style.display = 'block';
+            prizeFormContainer.style.display = 'none';
         }
         
         function startTimer() {
@@ -777,14 +779,11 @@
         function updatePadding() {
             const screenWidth = window.innerWidth; 
             const padding = screenWidth * 0.2; 
-            document.body.style.paddingTop = 50 + padding + "px";
+            document.body.style.paddingTop = 100 + padding + "px";
         }
 
         window.addEventListener("load", updatePadding);
         window.addEventListener("resize", updatePadding);
     </script>
-    
-    
-    
 </body>
 </html>
