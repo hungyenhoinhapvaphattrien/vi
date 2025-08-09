@@ -7,8 +7,8 @@
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Firebase -->
-    <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-app-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
     <style>
         :root {
             --primary-red: #d70202;
@@ -156,42 +156,41 @@
             }
         }
         
-        .iframe-layer {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 520px;
-            z-index: 9999;
-            pointer-events: none;
+        .loading {
+            text-align: center;
+            padding: 20px;
+            font-style: italic;
+            color: #666;
         }
-
-        .iframe-layer iframe {
-            width: 100%;
-            height: 100%;
-            border: none;
-            display: block;
-            pointer-events: auto;
+        
+        .error-message {
+            color: red;
+            text-align: center;
+            padding: 20px;
+            font-weight: bold;
         }
     </style>
 </head>
 <body>
-    <!-- Iframe trên cùng -->
-    <div class="container"> 
+    <div class="container">
+        <h1 class="section-title">BẢNG XẾP HẠNG</h1>
+        <div id="status-message"></div>
         <table id="leaderboard">
             <thead>
                 <tr>
-<th style="width: 50px;">STT</th>
-<th style="width: 200px;">Họ và tên</th>
-<th style="width: 150px;">Lớp (địa chỉ)</th>
-<th style="width: 120px;">SĐT</th>
-<th style="width: 80px;">Điểm</th>
-<th style="width: 120px;">Giải thưởng</th>
-<th style="width: 150px;">Thời gian</th>
+                    <th style="width: 50px;">STT</th>
+                    <th style="width: 200px;">Họ và tên</th>
+                    <th style="width: 150px;">Lớp (địa chỉ)</th>
+                    <th style="width: 120px;">SĐT</th>
+                    <th style="width: 80px;">Điểm</th>
+                    <th style="width: 120px;">Giải thưởng</th>
+                    <th style="width: 150px;">Thời gian</th>
                 </tr>
             </thead>
             <tbody id="leaderboard-body">
-                <!-- Data will be loaded here -->
+                <tr>
+                    <td colspan="7" class="loading">Đang tải dữ liệu...</td>
+                </tr>
             </tbody>
         </table>
     </div>
@@ -208,78 +207,120 @@
             measurementId: "G-K2VLGT750W"
         };
         
-        // Initialize Firebase
-        firebase.initializeApp(firebaseConfig);
-        const db = firebase.firestore();
-        
-        // Load leaderboard data
-        function loadLeaderboard() {
-            const leaderboardBody = document.getElementById('leaderboard-body');
+        try {
+            // Initialize Firebase
+            const app = firebase.initializeApp(firebaseConfig);
+            const db = firebase.firestore();
             
-            db.collection("winners")
-                .orderBy("timestamp", "desc")
-                .get()
-                .then((querySnapshot) => {
-                    let index = 1;
-                    leaderboardBody.innerHTML = '';
-                    
-                    querySnapshot.forEach((doc) => {
-                        const data = doc.data();
-                        const row = document.createElement('tr');
+            // Enable offline persistence (optional)
+            db.enablePersistence()
+              .catch((err) => {
+                  console.warn("Firebase offline persistence not enabled:", err);
+              });
+            
+            // Load leaderboard data
+            function loadLeaderboard() {
+                const leaderboardBody = document.getElementById('leaderboard-body');
+                const statusMessage = document.getElementById('status-message');
+                
+                // Sửa lại collection từ "winners" thành "players"
+                db.collection("players")
+                    .orderBy("timestamp", "desc")
+                    .get()
+                    .then((querySnapshot) => {
+                        console.log("Nhận được dữ liệu:", querySnapshot.size, "bản ghi");
                         
-                        // Add class based on score
-                        if (data.score === 15) {
-                            row.classList.add('gold');
-                        } else if (data.score >= 10) {
-                            row.classList.add('silver');
-                        } else if (data.score >= 5) {
-                            row.classList.add('bronze');
+                        if (querySnapshot.empty) {
+                            leaderboardBody.innerHTML = '<tr><td colspan="7" style="text-align: center;">Chưa có dữ liệu</td></tr>';
+                            return;
                         }
                         
-                        // Format timestamp
-                        const timestamp = data.timestamp.toDate();
-                        const formattedDate = timestamp.toLocaleString('vi-VN');
+                        let index = 1;
+                        leaderboardBody.innerHTML = '';
                         
-                        // Create language tag
-                        let languageTag = '';
-                        if (data.language === 'Vietnamese') {
-                            languageTag = '<span class="language-tag vietnamese">VI</span>';
-                        } else if (data.language === 'English') {
-                            languageTag = '<span class="language-tag english">EN</span>';
-                        }
-                        
-                        // Create badge for perfect score
-                        let badge = '';
-                        if (data.score === 15) {
-                            badge = '<span class="badge gold-badge">15/15</span>';
-                        }
-                        
-                        row.innerHTML = `
-                            <td>${index}</td>
-                            <td>${data.name} ${badge} ${languageTag}</td>
-                            <td>${data.class}</td>
-                            <td>${data.phone}</td>
-                            <td>${data.score}/15</td>
-                            <td>${data.prize}</td>
-                            <td>${formattedDate}</td>
+                        querySnapshot.forEach((doc) => {
+                            const data = doc.data();
+                            console.log("Document data:", data);
+                            
+                            // Add class based on score
+                            const row = document.createElement('tr');
+                            if (data.score === 15) {
+                                row.classList.add('gold');
+                            } else if (data.score >= 10) {
+                                row.classList.add('silver');
+                            } else if (data.score >= 5) {
+                                row.classList.add('bronze');
+                            }
+                            
+                            // Format timestamp
+                            const timestamp = data.timestamp ? data.timestamp.toDate() : new Date();
+                            const formattedDate = timestamp.toLocaleString('vi-VN');
+                            
+                            // Create language tag
+                            let languageTag = '';
+                            if (data.language === 'Vietnamese') {
+                                languageTag = '<span class="language-tag vietnamese">VI</span>';
+                            } else if (data.language === 'English') {
+                                languageTag = '<span class="language-tag english">EN</span>';
+                            }
+                            
+                            // Create badge for perfect score
+                            let badge = '';
+                            if (data.score === 15) {
+                                badge = '<span class="badge gold-badge">15/15</span>';
+                            }
+                            
+                            row.innerHTML = `
+                                <td>${index}</td>
+                                <td>${data.name || 'N/A'} ${badge} ${languageTag}</td>
+                                <td>${data.class || 'N/A'}</td>
+                                <td>${data.phone || 'N/A'}</td>
+                                <td>${data.score || 0}/15</td>
+                                <td>${data.prize || 'N/A'}</td>
+                                <td>${formattedDate}</td>
+                            `;
+                            
+                            leaderboardBody.appendChild(row);
+                            index++;
+                        });
+                    })
+                    .catch((error) => {
+                        console.error("Lỗi khi lấy dữ liệu:", error);
+                        leaderboardBody.innerHTML = `
+                            <tr>
+                                <td colspan="7" class="error-message">
+                                    Lỗi khi tải dữ liệu: ${error.message}<br>
+                                    Vui lòng tải lại trang hoặc kiểm tra kết nối mạng
+                                </td>
+                            </tr>
                         `;
-                        
-                        leaderboardBody.appendChild(row);
-                        index++;
                     });
-                    
-                    if (index === 1) {
-                        leaderboardBody.innerHTML = '<tr><td colspan="7" style="text-align: center;">Chưa có dữ liệu</td></tr>';
-                    }
-                })
-                .catch((error) => {
-                    console.error("Error getting documents: ", error);
-                    leaderboardBody.innerHTML = '<tr><td colspan="7" style="text-align: center;">Có lỗi xảy ra khi tải dữ liệu</td></tr>';
-                });
+            }
+            
+            // Load leaderboard when page loads
+            document.addEventListener('DOMContentLoaded', () => {
+                loadLeaderboard();
+                
+                // Optional: Refresh button
+                const refreshBtn = document.createElement('button');
+                refreshBtn.className = 'btn';
+                refreshBtn.innerHTML = '<i class="fas fa-sync-alt"></i> Làm mới';
+                refreshBtn.onclick = loadLeaderboard;
+                
+                document.getElementById('status-message').appendChild(refreshBtn);
+            });
+            
+        } catch (error) {
+            console.error("Lỗi khởi tạo Firebase:", error);
+            document.getElementById('leaderboard-body').innerHTML = `
+                <tr>
+                    <td colspan="7" class="error-message">
+                        Lỗi khởi tạo hệ thống: ${error.message}<br>
+                        Vui lòng liên hệ quản trị viên
+                    </td>
+                </tr>
+            `;
         }
-        
-        // Load leaderboard when page loads
-        window.addEventListener('load', loadLeaderboard);
     </script>
 </body>
 </html>
