@@ -302,12 +302,7 @@
                 loadLeaderboard();
                 
                 // Optional: Refresh button
-                const refreshBtn = document.createElement('button');
-                refreshBtn.className = 'btn';
-                refreshBtn.innerHTML = '<i class="fas fa-sync-alt"></i> Làm mới';
-                refreshBtn.onclick = loadLeaderboard;
-                
-                document.getElementById('status-message').appendChild(refreshBtn);
+
             });
             
         } catch (error) {
