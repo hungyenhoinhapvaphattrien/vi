@@ -3,8 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <img src="https://github.com/hungyengenzso/vi/blob/a8fe07902476b460a060fd058b377c427ea4394e/nhom.jpg" alt="Nhóm">
-  <title>Cổng thông tin điện tử tỉnh Hưng Yên</title>
+  <title>Cổng thông tin điện tử Tỉnh Hưng Yên</title>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
@@ -38,6 +37,7 @@
       align-items: center;
       padding: 0 15px;
       position: relative;
+      font-weight: bold !important;
     }
     nav ul {
       list-style: none;
@@ -60,7 +60,7 @@
       background: #004c99;
     }
 
-    /* Menu con */
+    /* Submenu */
     nav ul li ul {
       display: none;
       position: absolute;
@@ -79,14 +79,14 @@
       padding: 10px 15px;
     }
 
-    /* Góc phải */
+    /* Right section */
     .right-section {
       display: flex;
       align-items: center;
       gap: 10px;
     }
 
-    /* Ô tìm kiếm ẩn */
+    /* Thanh tìm kiếm ẩn */
     .search-box {
       position: relative;
       display: none;
@@ -167,15 +167,16 @@
     }
   </style>
 <script>
-    // Gửi chiều cao trang thực tế cho trang cha
+    // Gửi chiều cao thực tế của trang về trang cha
     function sendHeightToParent() {
         const height = document.body.scrollHeight;
         window.parent.postMessage({ height: height }, '*');
     }
 
+    // Gửi chiều cao ngay khi trang tải xong
     window.addEventListener('load', sendHeightToParent);
 
-    // Theo dõi thay đổi chiều cao (cho trang động)
+    // Theo dõi thay đổi chiều cao (nếu trang động)
     let lastHeight = 0;
     function checkHeightChange() {
         const currentHeight = document.body.scrollHeight;
@@ -190,11 +191,11 @@
 </head>
 <body>
 
-  <!-- Banner đầu trang (slider không cắt ảnh) -->
+  <!-- Bìa trên cùng (slider không cắt ảnh) -->
   <div class="header">
-    <img src="https://hungyengenzso.github.io/en/DU%20L%E1%BB%8ACH%20V%C3%80%20DI%20S%E1%BA%A2N%20(10).png" class="active">
-    <img src="https://hungyengenzso.github.io/en/DU%20L%E1%BB%8ACH%20V%C3%80%20DI%20S%E1%BA%A2N%20(11).png">
-    <img src="https://hungyengenzso.github.io/en/DU%20L%E1%BB%8ACH%20V%C3%80%20DI%20S%E1%BA%A2N%20(12).png">
+    <img src="https://hungyengenzso.github.io/vi/DU%20L%E1%BB%8ACH%20V%C3%80%20DI%20S%E1%BA%A2N%20(10).png" class="active">
+    <img src="https://hungyengenzso.github.io/vi/DU%20L%E1%BB%8ACH%20V%C3%80%20DI%20S%E1%BA%A2N%20(11).png">
+    <img src="https://hungyengenzso.github.io/vi/DU%20L%E1%BB%8ACH%20V%C3%80%20DI%20S%E1%BA%A2N%20(12).png">
   </div>
 
   <!-- Menu -->
@@ -203,10 +204,10 @@
     <ul>
       <li><a href="https://hungyengenzso.github.io/vi/home" target="_blank"><i class="fa fa-home"></i></a></li>
       <li>
-        <a href="javascript:void(0)">Tổng quan</a>
+        <a href="javascript:void(0)">Tổng quát</a>
         <ul>
           <li><a href="https://hungyengenzso.github.io/vi/gioithieu" target="_blank">Giới thiệu</a></li>
-          <li><a href="https://hungyengenzso.github.io/vi/nhanvat" target="_blank">Lãnh đạo cấp cao Hưng Yên</a></li>
+          <li><a href="https://hungyengenzso.github.io/vi/nhanvat" target="_blank">Các lãnh đạo cấp cao của Hưng Yên</a></li>
           <li><a href="https://hungyengenzso.github.io/vi/thuvienmedia" target="_blank">Thư viện Media</a></li>
         </ul>
       </li>
@@ -214,7 +215,7 @@
       <li><a href="https://hungyengenzso.github.io/vi/dulich" target="_blank">Du lịch</a></li>
       <li><a href="https://hungyengenzso.github.io/vi/dsvls" target="_blank">Di sản & Lịch sử</a></li>
       <li><a href="https://hungyengenzso.github.io/vi/atvln" target="_blank">Ẩm thực & Làng nghề</a></li>
-      <li><a href="https://hungyengenzso.github.io/vi/minigame" target="_blank">Mini game</a></li>
+      <li><a href="https://hungyengenzso.github.io/vi/Mini game" target="_blank">Mini game</a></li>
       <li><a href="https://hungyengenzso.github.io/vi/amnhac" target="_blank">Âm nhạc</a></li>
       <li><a href="https://hungyengenzso.github.io/vi/lienhe" target="_blank">Liên hệ</a></li>
     </ul>
@@ -226,8 +227,8 @@
         <div id="suggestions" class="suggestions"></div>
       </div>
       <div class="flags">
-        <img src="https://hungyengenzso.github.io/en/vn.png" alt="VN">
-        <img src="https://hungyengenzso.github.io/en/en.png" alt="EN">
+        <img src="https://hungyengenzso.github.io/vi/vn.png" alt="VN">
+        <img src="https://hungyengenzso.github.io/vi/en.png" alt="EN">
       </div>
     </div>
   </nav>
@@ -235,14 +236,14 @@
   <!-- Banner dưới -->
   <div class="banner">
   <a href="https://hungyengenzso.github.io/dangbai/post.html" target="_blank">
-    <img src="https://hungyengenzso.github.io/en/BAONEW.png" alt="Banner tin tức">
+    <img src="https://hungyengenzso.github.io/vi/BAONEW.png" alt="Banner">
   </a>
   </div>
 
   <!-- Font Awesome -->
   <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 
-  <!-- JS xoay ảnh banner -->
+  <!-- JS đổi ảnh bìa -->
   <script>
     const images = document.querySelectorAll('.header img');
     let current = 0;
@@ -252,14 +253,14 @@
       images[current].classList.add('active');
     }, 5000);
 
-    // Menu responsive
+    // Responsive menu toggle
     const menuToggle = document.querySelector('.menu-toggle');
     const menu = document.querySelector('nav ul');
     menuToggle.addEventListener('click', () => {
       menu.classList.toggle('show');
     });
 
-    // Hiện/ẩn thanh tìm kiếm
+    // Ẩn/hiện thanh tìm kiếm
     const searchIcon = document.getElementById('search-icon');
     const searchBox = document.getElementById('search-box');
     searchIcon.addEventListener('click', () => {
@@ -278,18 +279,18 @@
       { name: "Trang chủ", link: "https://hungyengenzso.github.io/vi/home" },
       { name: "Giới thiệu", link: "https://hungyengenzso.github.io/vi/gioithieu" },
       { name: "Lãnh đạo", link: "https://hungyengenzso.github.io/vi/lanhdao" },
-      { name: "Lãnh đạo cấp cao Hưng Yên", link: "https://hungyengenzso.github.io/vi/nhanvat" },
-      { name: "Kinh tế", link: "https://hungyengenzso.github.io/vi/kinhte" },
+      { name: "Các lãnh đạo cấp cao của Hưng Yên", link: "https://hungyengenzso.github.io/vi/nhanvat" },
+      { name: "Kinh tế", link: "#" },
       { name: "Du lịch", link: "https://hungyengenzso.github.io/vi/dulich" },
       { name: "Di sản & Lịch sử", link: "https://hungyengenzso.github.io/vi/dsvls" },
       { name: "Ẩm thực & Làng nghề", link: "https://hungyengenzso.github.io/vi/atvln" },
-      { name: "Mini game", link: "https://hungyengenzso.github.io/vi/minigame" },
+      { name: "Mini game", link: "https://hungyengenzso.github.io/vi/Mini game" },
       { name: "Âm nhạc", link: "https://hungyengenzso.github.io/vi/amnhac" },
       { name: "Thư viện Media", link: "https://hungyengenzso.github.io/vi/thuvienmedia" },
       { name: "Liên hệ", link: "https://hungyengenzso.github.io/vi/lienhe" },
     ];
 
-    // Gợi ý khi gõ
+    // Hiển thị gợi ý khi gõ
     searchInput.addEventListener('input', () => {
       const keyword = searchInput.value.toLowerCase().trim();
       suggestionsBox.innerHTML = '';
@@ -328,16 +329,17 @@
         parent.postMessage({ iframeHeight: height }, "*");
     }
 
+    // Gửi mỗi 0.1s hoặc khi resize
     setInterval(sendHeight, 100);
     window.addEventListener('resize', sendHeight);
     window.addEventListener('load', sendHeight);
 
-  // Click cờ VN -> mở tab tiếng Việt
+  // Click cờ VN -> mở ở tab mới
   document.querySelector('.flags img[alt="VN"]').addEventListener('click', () => {
     window.open("https://hungyengenzso.github.io/vi/home", "_blank");
   });
 
-  // Click cờ EN -> mở tab tiếng Anh
+  // Click cờ EN -> mở ở tab mới
   document.querySelector('.flags img[alt="EN"]').addEventListener('click', () => {
     window.open("https://hungyengenzso.github.io/en/home", "_blank");
   });
