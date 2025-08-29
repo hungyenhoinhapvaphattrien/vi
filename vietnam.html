@@ -168,6 +168,10 @@
             margin-top: 30px;
         }
 
+        .hidden-videos {
+            display: none;
+        }
+
         @media (max-width: 768px) {
             .videos-grid {
                 grid-template-columns: 1fr;
@@ -503,7 +507,7 @@ window.addEventListener("resize", updatePadding);
 
             <!-- Lịch sử -->
             <div class="info-row">
-                <img src="https://upload.wikimedia.org/wikipedia/vi/thumb/5/5f/Ho_Chi_Minh_declaring_independence.jpg/800px-Ho_Chi_Minh_declaring_independence.jpg" alt="Bác Hồ đọc Tuyên ngôn Độc lập">
+                <img src="https://file3.qdnd.vn/data/images/0/2022/09/01/tvkimgiang/bac%20ho%20doc%20tuyen%20ngon.jpg?dpi=150&quality=100&w=870" alt="Bác Hồ đọc Tuyên ngôn Độc lập">
                 <div class="info-content">
                     <h3>LỊCH SỬ NGÀY QUỐC KHÁNH</h3>
                     <p>Ngày 2 tháng 9 năm 1945, tại Quảng trường Ba Đình lịch sử, Chủ tịch Hồ Chí Minh đã đọc bản Tuyên ngôn Độc lập, khai sinh ra nước Việt Nam Dân chủ Cộng hòa. Sự kiện này đánh dấu sự kết thúc của hơn 80 năm dưới ách đô hộ thực dân Pháp và sự xâm lược của phát xít Nhật, mở ra một kỷ nguyên mới - kỷ nguyên độc lập dân tộc và chủ nghĩa xã hội.</p>
@@ -512,7 +516,7 @@ window.addEventListener("resize", updatePadding);
 
             <!-- Ý nghĩa -->
             <div class="info-row">
-                <img src="https://cdn.baodautu.vn/Images/ngocanh/2022/09/02/Quoc-khanh-2-9-1.jpg" alt="Lễ kỷ niệm Quốc khánh">
+                <img src="https://bcp.cdnchinhphu.vn/334894974524682240/2024/9/2/thuong-co-02092024-04-17252398819351031945895.jpg" alt="Lễ kỷ niệm Quốc khánh">
                 <div class="info-content">
                     <h3>Ý NGHĨA LỊCH SỬ</h3>
                     <p>Quốc khánh 2/9 không chỉ là ngày lễ trọng đại của dân tộc mà còn là biểu tượng của khát vọng độc lập, tự do, thể hiện ý chí kiên cường và tinh thần đoàn kết của toàn dân tộc Việt Nam. Đây là dịp để chúng ta ôn lại truyền thống đấu tranh anh dũng của cha ông, giáo dục thế hệ trẻ về lòng yêu nước và niềm tự hào dân tộc.</p>
@@ -588,32 +592,50 @@ window.addEventListener("resize", updatePadding);
             
             <div class="videos-grid">
                 <div class="video-container">
-                    <iframe src="https://www.youtube.com/embed/1j3X2e9xV8E" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <iframe src="https://www.youtube.com/embed/rCa6tvokJdo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>
                 
                 <div class="video-container">
-                    <iframe src="https://www.youtube.com/embed/tyi9pCDXaGQ" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <iframe src="https://www.youtube.com/embed/navPFbEmzKA" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>
                 
                 <div class="video-container">
-                    <iframe src="https://www.youtube.com/embed/IberzHiE1xc" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <iframe src="https://www.youtube.com/embed/VZ1F3PqUFMk" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>
                 
                 <div class="video-container">
-                    <iframe src="https://www.youtube.com/embed/qZ2sHbZtCIo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <iframe src="https://www.youtube.com/embed/GqZfTATLQhI" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>
                 
                 <div class="video-container">
-                    <iframe src="https://www.youtube.com/embed/6BvJAncC-6k" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <iframe src="https://www.youtube.com/embed/cK9c4tXG3EU" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>
                 
                 <div class="video-container">
-                    <iframe src="https://www.youtube.com/embed/5vA7v5f2L_c" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <iframe src="https://www.youtube.com/embed/LszdYHvikbU" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+                
+                <div class="hidden-videos">
+                    <div class="video-container">
+                        <iframe src="https://www.youtube.com/embed/8dbVuW5GrTY" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                    
+                    <div class="video-container">
+                        <iframe src="https://www.youtube.com/embed/6pVUFVq8ujg" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                    
+                    <div class="video-container">
+                        <iframe src="https://www.youtube.com/embed/TpxqINBIhpc" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                    
+                    <div class="video-container">
+                        <iframe src="https://www.youtube.com/embed/l7UpQS_8lYo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
                 </div>
             </div>
-            
-            <div class="view-more" style="margin-top: 20px;">
-                <a href="https://hungyengenzso.github.io/vi/quockhanh" class="btn"><i class="fas fa-film"></i> Xem thêm video tư liệu</a>
+
+            <div class="view-more">
+                <a href="#" class="btn" id="view-more-videos">Xem thêm video</a>
             </div>
         </div>
     </section>
@@ -621,13 +643,12 @@ window.addEventListener("resize", updatePadding);
     <!-- HOẠT ĐỘNG KỶ NIỆM -->
     <section id="activities" style="background-color: #f9f9f9;">
         <div class="container">
-            <h2 class="section-title"><i class="fas fa-calendar-alt"></i> HOẠT ĐỘNG KỶ NIỆM</h2>
-            <p class="intro-text">Các hoạt động kỷ niệm 80 năm Quốc khánh trên cả nước</p>
+            <h2 class="section-title"><i class="fas fa-calendar-alt"></i> LỄ DIỄU BINH, DIỄU HÀNH: Kỷ niệm 80 NĂM QUỐC KHÁNH 2/9/2025</h2>
             
             <div class="news-container">
                 <div class="news-item">
                     <div class="news-img">
-                        <img src="https://cdn.tuoitre.vn/thumb_w/730/471584752817336320/2024/8/29/le-tuong-niem-17249087779131237447113.jpg" alt="Lễ diễu hành">
+                        <img src="https://cdn.thuvienphapluat.vn/uploads/tintuc/2025/04/21/dieu-binh-2-9.jpg" alt="Lễ diễu hành">
                     </div>
                     <div class="news-content">
                         <div class="news-date"><i class="far fa-calendar-alt"></i> 2/9/2025</div>
@@ -642,10 +663,15 @@ window.addEventListener("resize", updatePadding);
     <!-- GIÁO DỤC TRUYỀN THỐNG -->
     <section id="education" class="education-section">
         <div class="education-content">
-            <h2><i class="fas fa-graduation-cap"></i> GIÁO DỤC TRUYỀN THỐNG CHO THẾ HỆ TRẺ</h2>
-            <p>Kỷ niệm 80 năm Quốc khánh là dịp quan trọng để giáo dục thế hệ trẻ về lịch sử hào hùng của dân tộc, về truyền thống yêu nước, ý chí độc lập tự do và tinh thần đoàn kết toàn dân tộc. Các hoạt động kỷ niệm không chỉ mang tính chất tưởng niệm mà còn là bài học sinh động về lòng yêu nước, niềm tự hào dân tộc.</p>
-            <p>Trong dịp này, các trường học trên cả nước tổ chức nhiều hoạt động ý nghĩa như: thi tìm hiểu lịch sử, tham quan di tích lịch sử, gặp gỡ nhân chứng lịch sử, tổ chức cuộc thi vẽ tranh, viết văn với chủ đề "Tự hào Việt Nam". Qua đó, thế hệ trẻ hiểu rõ hơn giá trị của độc lập, tự do, thêm trân trọng những hy sinh của thế hệ cha anh để từ đó phấn đấu học tập, rèn luyện, góp phần xây dựng đất nước ngày càng phát triển.</p>
-            <p style="text-align: center; font-weight: bold; font-style: italic;">"Dân ta phải biết sử ta, cho tường gốc tích nước nhà Việt Nam" - Hồ Chí Minh</p>
+            <h2><i class="fas fa-graduation-cap"></i> Tuổi trẻ Việt Nam và hào khí Quốc khánh 2-9</h2>
+            <p>Mỗi khi tháng Chín về, khắp phố phường lại rợp sắc cờ đỏ sao vàng, lòng người Việt Nam lại hân hoan hướng về ngày Quốc khánh 2/9 – ngày Bác Hồ đọc bản Tuyên ngôn Độc lập tại Quảng trường Ba Đình lịch sử, khai sinh ra nước Việt Nam Dân chủ Cộng hòa, nay là nước Cộng hòa Xã hội Chủ nghĩa Việt Nam. Đây không chỉ là ngày lễ trọng đại của dân tộc, mà còn là dịp để thế hệ trẻ hôm nay thêm tự hào, thêm ý thức về trách nhiệm dựng xây và bảo vệ Tổ quốc.</p>
+            <p>Với thế hệ trẻ, Quốc khánh 2/9 không chỉ gợi nhắc về trang sử vàng hào hùng của cha ông, mà còn tiếp thêm ngọn lửa nhiệt huyết để học tập, sáng tạo, cống hiến cho đất nước. Hào khí độc lập năm xưa nay được thắp sáng trong khát vọng chinh phục tri thức, trong tinh thần dấn thân vì cộng đồng, trong ý chí đưa Việt Nam vươn tầm cao mới.</p>
+            <p>Hòa chung không khí cả nước, chúng ta – những người trẻ tuổi – cảm nhận rất rõ một nguồn năng lượng đặc biệt. Đó là niềm tự hào khi được sống trong một đất nước độc lập, tự do và phát triển. Thế hệ chúng ta chưa từng trải qua những năm tháng bom đạn khói lửa, chưa từng phải đổ máu để giành lấy độc lập. Nhưng chúng ta luôn khắc ghi công ơn của các thế hệ cha anh đã hy sinh xương máu để xây dựng nên một Việt Nam hòa bình, thống nhất.</p>
+            <p>Hào khí 2-9 đối với thế hệ GenZ không chỉ thể hiện ở việc trang hoàng nhà cửa, hòa mình vào dòng người đi chơi lễ hay khoác lên mình chiếc áo cờ đỏ sao vàng. Hào khí ấy còn nằm ở sự trách nhiệm, ở tinh thần tiên phong, ở khát vọng được cống hiến.</p>
+            <p>Trong bối cảnh hội nhập toàn cầu, tuổi trẻ Việt Nam đang đứng trước nhiều cơ hội và thách thức. Chúng ta có thể dễ dàng tiếp cận với tri thức nhân loại, giao lưu văn hóa, và mở rộng tầm nhìn. Tuy nhiên, cũng cần phải tỉnh táo để giữ vững bản sắc, không đánh mất giá trị cốt lõi. Tinh thần độc lập, tự cường của dân tộc ta đã được tôi luyện qua hàng ngàn năm lịch sử. Đó là kim chỉ nam để chúng ta vững bước tiến lên phía trước.</p>
+            <p>Tuổi trẻ hôm nay – thế hệ của thời kỳ hội nhập – chính là lực lượng nòng cốt, là niềm tin và kỳ vọng của Tổ quốc. Mỗi công trình nghiên cứu, mỗi ý tưởng khởi nghiệp, mỗi hành động thiện nguyện… đều là minh chứng cho tình yêu nước được thể hiện bằng hành động thiết thực.</p>
+            <p>Trong niềm chờ đón Quốc khánh 2/9, tuổi trẻ Việt Nam tự hào ngẩng cao đầu, hứa sẽ sống đẹp, sống có ích và mang trong tim ngọn lửa yêu nước để góp phần xây dựng một Việt Nam giàu mạnh, văn minh, hạnh phúc.</p>
+            <p style="text-align: center; font-weight: bold; font-style: italic;">Quốc khánh – ngày hội non sông. Quốc khánh – ngày tuổi trẻ nhắc nhở nhau sống xứng đáng với truyền thống anh hùng của dân tộc.</p>
         </div>
     </section>
 
@@ -718,6 +744,32 @@ window.addEventListener("resize", updatePadding);
                 default: return '';
             }
         }
+
+        // Xử lý nút "Xem thêm video"
+        document.addEventListener('DOMContentLoaded', function() {
+            const viewMoreBtn = document.getElementById('view-more-videos');
+            const hiddenVideos = document.querySelectorAll('.hidden-videos .video-container');
+            
+            // Ẩn các video bổ sung ban đầu
+            hiddenVideos.forEach(video => {
+                video.style.display = 'none';
+            });
+            
+            viewMoreBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                // Hiển thị các video ẩn
+                hiddenVideos.forEach(video => {
+                    video.style.display = 'block';
+                });
+                
+                // Ẩn nút "Xem thêm" sau khi nhấp
+                viewMoreBtn.style.display = 'none';
+                
+                // Cuộn đến phần video
+                document.getElementById('video').scrollIntoView({ behavior: 'smooth' });
+            });
+        });
     </script>
 </body>
 </html>
