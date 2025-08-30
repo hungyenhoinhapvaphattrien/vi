@@ -129,6 +129,15 @@
     /* Banner dưới */
     .banner {
       width: 100%;
+      position: relative;
+      overflow: hidden;
+    }
+    .banner a {
+      display: none;
+      width: 100%;
+    }
+    .banner a.active {
+      display: block;
     }
     .banner img {
       width: 100%;
@@ -234,10 +243,13 @@
   </nav>
 
   <!-- Banner dưới -->
-  <div class="banner">
-  <a href="https://hungyengenzso.github.io/dangbai/post.html" target="_blank">
-    <img src="https://hungyengenzso.github.io/vi/BAONEW.png" alt="Banner">
-  </a>
+  <div class="banner" id="bottom-banner">
+    <a href="https://hungyengenzso.github.io/dangbai/post.html" target="_blank" class="active">
+      <img src="https://hungyengenzso.github.io/vi/BAONEW.png" alt="Banner 1">
+    </a>
+    <a href="https://hungyengenzso.github.io/vi/vietnam" target="_blank">
+      <img src="https://hungyengenzso.github.io/vi/BAONEW2.png" alt="Banner 2">
+    </a>
   </div>
 
   <!-- Font Awesome -->
@@ -245,12 +257,22 @@
 
   <!-- JS đổi ảnh bìa -->
   <script>
-    const images = document.querySelectorAll('.header img');
-    let current = 0;
+    // Slider ảnh bìa trên
+    const headerImages = document.querySelectorAll('.header img');
+    let currentHeader = 0;
     setInterval(() => {
-      images[current].classList.remove('active');
-      current = (current + 1) % images.length;
-      images[current].classList.add('active');
+      headerImages[currentHeader].classList.remove('active');
+      currentHeader = (currentHeader + 1) % headerImages.length;
+      headerImages[currentHeader].classList.add('active');
+    }, 5000);
+
+    // Slider banner dưới
+    const bannerLinks = document.querySelectorAll('#bottom-banner a');
+    let currentBanner = 0;
+    setInterval(() => {
+      bannerLinks[currentBanner].classList.remove('active');
+      currentBanner = (currentBanner + 1) % bannerLinks.length;
+      bannerLinks[currentBanner].classList.add('active');
     }, 5000);
 
     // Responsive menu toggle
