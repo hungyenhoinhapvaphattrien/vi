@@ -441,6 +441,12 @@
             padding: 20px;
         }
         
+        .timeline-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+        
         .timeline-item {
             padding: 15px;
             margin-bottom: 20px;
@@ -469,6 +475,10 @@
         @media (max-width: 768px) {
             .national-title {
                 font-size: 2rem;
+            }
+            
+            .timeline-grid {
+                grid-template-columns: 1fr;
             }
         }
 
@@ -532,44 +542,46 @@ window.addEventListener("resize", updatePadding);
             <p class="intro-text">Những mốc son lịch sử quan trọng của đất nước từ ngày độc lập đến nay</p>
             
             <div class="timeline">
-                <div class="timeline-item">
-                    <div class="timeline-date">2/9/1945</div>
-                    <p>Chủ tịch Hồ Chí Minh đọc Tuyên ngôn Độc lập, khai sinh nước Việt Nam Dân chủ Cộng hòa</p>
-                </div>
-                
-                <div class="timeline-item">
-                    <div class="timeline-date">1946</div>
-                    <p>Cuộc Tổng tuyển cử đầu tiên bầu Quốc hội Việt Nam</p>
-                </div>
-                
-                <div class="timeline-item">
-                    <div class="timeline-date">1954</div>
-                    <p>Chiến thắng Điện Biên Phủ, kết thúc thời kỳ kháng chiến chống Pháp</p>
-                </div>
-                
-                <div class="timeline-item">
-                    <div class="timeline-date">1975</div>
-                    <p>Giải phóng miền Nam, thống nhất đất nước</p>
-                </div>
-                
-                <div class="timeline-item">
-                    <div class="timeline-date">1986</div>
-                    <p>Đất nước bước vào thời kỳ Đổi mới</p>
-                </div>
-                
-                <div class="timeline-item">
-                    <div class="timeline-date">1995</div>
-                    <p>Việt Nam gia nhập ASEAN và bình thường hóa quan hệ với Hoa Kỳ</p>
-                </div>
-                
-                <div class="timeline-item">
-                    <div class="timeline-date">2007</div>
-                    <p>Việt Nam trở thành thành viên thứ 150 của Tổ chức Thương mại Thế giới (WTO)</p>
-                </div>
-                
-                <div class="timeline-item">
-                    <div class="timeline-date">2020-2025</div>
-                    <p>Việt Nam khẳng định vị thế trên trường quốc tế, phát triển mạnh mẽ về kinh tế và xã hội</p>
+                <div class="timeline-grid">
+                    <div class="timeline-item">
+                        <div class="timeline-date">2/9/1945</div>
+                        <p>Chủ tịch Hồ Chí Minh đọc Tuyên ngôn Độc lập, khai sinh nước Việt Nam Dân chủ Cộng hòa</p>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-date">1946</div>
+                        <p>Cuộc Tổng tuyển cử đầu tiên bầu Quốc hội Việt Nam</p>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-date">1954</div>
+                        <p>Chiến thắng Điện Biên Phủ, kết thúc thời kỳ kháng chiến chống Pháp</p>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-date">1975</div>
+                        <p>Giải phóng miền Nam, thống nhất đất nước</p>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-date">1986</div>
+                        <p>Đất nước bước vào thời kỳ Đổi mới</p>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-date">1995</div>
+                        <p>Việt Nam gia nhập ASEAN và bình thường hóa quan hệ với Hoa Kỳ</p>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-date">2007</div>
+                        <p>Việt Nam trở thành thành viên thứ 150 của Tổ chức Thương mại Thế giới (WTO)</p>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-date">2020-2025</div>
+                        <p>Việt Nam khẳng định vị thế trên trường quốc tế, phát triển mạnh mẽ về kinh tế và xã hội</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -639,27 +651,7 @@ window.addEventListener("resize", updatePadding);
             </div>
         </div>
     </section>
-
-    <!-- HOẠT ĐỘNG KỶ NIỆM -->
-    <section id="activities" style="background-color: #f9f9f9;">
-        <div class="container">
-            <h2 class="section-title"><i class="fas fa-calendar-alt"></i> LỄ DIỄU BINH, DIỄU HÀNH: Kỷ niệm 80 NĂM QUỐC KHÁNH 2/9/2025</h2>
-            
-            <div class="news-container">
-                <div class="news-item">
-                    <div class="news-img">
-                        <img src="https://cdn.thuvienphapluat.vn/uploads/tintuc/2025/04/21/dieu-binh-2-9.jpg" alt="Lễ diễu hành">
-                    </div>
-                    <div class="news-content">
-                        <div class="news-date"><i class="far fa-calendar-alt"></i> 2/9/2025</div>
-                        <h3 class="news-title">Lễ diễu hành, diễu binh tại Quảng trường Ba Đình</h3>
-                        <p>Lễ diễu hành truyền thống với sự tham gia của các lực lượng vũ trang và nhân dân.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
+    
     <!-- GIÁO DỤC TRUYỀN THỐNG -->
     <section id="education" class="education-section">
         <div class="education-content">
